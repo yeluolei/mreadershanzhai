@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style2.css" rel="stylesheet" type="text/css" />
+    <script src="http://localhost:24667/Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <div class="Maincontain">
+        <div class="head">
+            <div class="headup">
+                <div class="topbar">
+                    <div class="topbartext">
+                        <div id="signin">
+                            <% Html.RenderPartial("LogOnUserControl"); %>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo">
+                    <div>
+                        <div>
+                            <img src="/images/logo.png" alt="Mreader" height="51" width="147" />
+                        </div>
+                    </div>
+                </div>
+                <br class="b3" />
+                <div class="search">
+                    <div class="searchboxbar">
+                        <form id="searchform"  method="get">
+                        <div class="searchbox">
+                            <span class="bo"><span class="bi">
+                                <input class="text" size="69" maxlength="250" accesskey="S" type="text"/>
+                                <input class="image" value="Search" alt="Search" title="Search" style="height: 33px;
+                                    width: 185px;" src="/images/search.jpg"
+                                    type="image"/>
+                            </span></span>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page">
+            <ul id="menu">
+                <li>
+                    <%: Html.ActionLink("Home", "Index", "Home")%></li>
+                <li>
+                    <%: Html.ActionLink("About", "About", "Home")%></li>
+                <li>
+                    <%: Html.ActionLink("BookView", "BookView", "Home")%></li>
+            </ul>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div id="footer">
+                <div class="footmain">
+                 <center>
+                        <%= Html.ActionLink("About us","about","home") %>
+                        <a href="mailto:zxykobezxy@gmail.com">Feed back</a>
+                        <a href="#">Help</a> 
+                        <a href="#">Contact us</a>
+                  </center>
+                    <center>
+                    <div class="copyright">
+                        <p>© 2010 Mreader</p>
+                        </div>
+                        </center>
+                </div>
+                
+            </div>
+        </div>
+</body>
+</html>
