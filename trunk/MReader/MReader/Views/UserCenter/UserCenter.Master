@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<asp:Content ID="content1" ContentPlaceHolderID="MainContent" runat="server">
+    <table class="style1">
+        <tr>
+            <td>
+                <%=Html.ActionLink("Account","Index") %><br />
+                <%=Html.ActionLink("History", "History")%><br />
+                <%=Html.ActionLink("Favourite", "Favourite")%><br />
+                <%=Html.ActionLink("Balance", "Balance")%><br />
+
+            </td>
+            <td>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+    <br />
+</asp:Content>

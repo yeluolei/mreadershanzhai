@@ -54,6 +54,9 @@
                     <%: Html.ActionLink("About", "About", "Home")%></li>
                 <li>
                     <%: Html.ActionLink("BookView", "BookView", "Home")%></li>
+                <li>
+                    <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
+
             </ul>
         </div>
         <div id="main">
