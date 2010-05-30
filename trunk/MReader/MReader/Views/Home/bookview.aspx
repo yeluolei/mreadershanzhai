@@ -4,6 +4,7 @@
     bookview
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
     <%using (Html.BeginForm())
       {%>
     <div id="pager">
@@ -42,7 +43,7 @@
                                     <td>                                       
                                         <%=Html.TextBox("pageIndex",Model.pageIndex) %>
                                         <%=Html.Label("//"+Model.book.TotalPages.ToString() + " Pages")%>
-                                        <input type="Submit" value="Go" />
+                                        <input type="submit" value="Go" />
                                     </td>
                                     <td>
                                         <div id="nextbutton">
@@ -66,6 +67,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID= "HeadContent" runat="server">
+        <link href="../../Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
         <script language="javascript" type="text/javascript">
             var pageNumGlobal;
             var bookNameGlobal;

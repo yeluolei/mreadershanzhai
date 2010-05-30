@@ -8,6 +8,7 @@ namespace MReader.Models
     public class BookRepository
     {
         BookDBDataContext db = new BookDBDataContext();
+
         public void NewBook( Book book )
         {
             db.Books.InsertOnSubmit(book);
@@ -19,6 +20,10 @@ namespace MReader.Models
             return db.Books.SingleOrDefault(d => d.ID == ID);
         }
 
+
+
+
+        //搜索
         public IQueryable<Book> SearchBookbyBookName( string bookName )
         {
             throw new NotImplementedException();
@@ -34,6 +39,7 @@ namespace MReader.Models
             throw new NotImplementedException();
         }
 
+        //删除
         public void DeleteBook( Book book )
         {
             db.Books.DeleteOnSubmit(book);

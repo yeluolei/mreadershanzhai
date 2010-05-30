@@ -12,6 +12,8 @@ namespace MReader.Models
         {
             get { return (GetRuleViolations().Count() == 0); }
         }
+
+        //书名，ISBN，作者不能为空
         public IEnumerable<RuleViolation> GetRuleViolations()
         {
             if (String.IsNullOrEmpty(_Title))
@@ -23,6 +25,7 @@ namespace MReader.Models
             yield break;
         }
 
+        //若验证不通过抛出异常
         partial void OnValidate(ChangeAction action)
         {
             if (!IsValid)
@@ -30,6 +33,8 @@ namespace MReader.Models
         }
     }
 
+
+    //条件异常类型
     public class RuleViolation
     {
         public string ErrorMessage { get; private set; }

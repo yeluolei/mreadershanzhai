@@ -147,7 +147,7 @@
     <Content Include="Content\demo.css" />
     <Content Include="Content\flora.accordion.css" />
     <Content Include="Content\Style.css" />
-    <Content Include="Content\Style2.css" />
+    <Content Include="Content\BookViewStyle.css" />
     <Content Include="Views\Global.asax" />
     <Content Include="images\arrow_left_green_48.png" />
     <Content Include="images\arrow_right_green_48.png" />

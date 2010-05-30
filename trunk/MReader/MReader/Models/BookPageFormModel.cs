@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
+//书籍阅读页面Model
 namespace MReader.Models
 {
     public class BookPageFormModel
@@ -29,6 +31,8 @@ namespace MReader.Models
                 return (pageIndex < book.TotalPages);
             }
         }
+
+
 
         public bool HasPrevoiusPage
         {

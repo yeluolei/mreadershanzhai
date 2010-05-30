@@ -46,3 +46,11 @@ D:\MyProj\mreadershanzhai\MReader\MReader.Tests\bin\Debug\MReader.pdb
 D:\MyProj\mreadershanzhai\MReader\MReader.Tests\obj\Debug\ResolveAssemblyReference.cache
 D:\MyProj\mreadershanzhai\MReader\MReader.Tests\obj\Debug\MReader.Tests.dll
 D:\MyProj\mreadershanzhai\MReader\MReader.Tests\obj\Debug\MReader.Tests.pdb
+E:\Project\MReader\MReader.Tests\bin\Debug\MReader.Tests.dll.config
+E:\Project\MReader\MReader.Tests\bin\Debug\MReader.Tests.dll
+E:\Project\MReader\MReader.Tests\bin\Debug\MReader.Tests.pdb
+E:\Project\MReader\MReader.Tests\bin\Debug\MReader.dll
+E:\Project\MReader\MReader.Tests\bin\Debug\MReader.pdb
+E:\Project\MReader\MReader.Tests\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\MReader\MReader.Tests\obj\Debug\MReader.Tests.dll
+E:\Project\MReader\MReader.Tests\obj\Debug\MReader.Tests.pdb

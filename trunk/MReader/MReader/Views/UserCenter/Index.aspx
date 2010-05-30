@@ -10,8 +10,5 @@
     <%=Html.Label(Model.Customer.DateRegistered.ToString()) %><br />
     <label>User Level : </label>
     <%=Html.Label(Model.Customer.UserLevel.ToString() )%><br />
-
-
-
 </asp:Content>
  

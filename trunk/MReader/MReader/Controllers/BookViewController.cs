@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
+//貌似是没用的啊
 namespace MReader.Controllers
 {
     public class BookViewController : Controller
