@@ -35,7 +35,8 @@ namespace MReader.Controllers
             return View();
         }
 
-
+        // BookView 
+        // Get
         [Authorize]
         public ActionResult BookView( int? page,int? ID)
         {
@@ -44,10 +45,12 @@ namespace MReader.Controllers
             string URL = book.Content + temppage.ToString()+".png"; 
            
             BookPageFormModel bh = new BookPageFormModel(book,temppage,URL);
-            
             return View(bh);
         }
 
+        //
+        // BookView 
+        // Post
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult BookView(BookPageFormModel bookModel)
         { 

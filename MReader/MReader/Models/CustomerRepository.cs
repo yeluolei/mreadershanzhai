@@ -17,7 +17,6 @@ namespace MReader.Models
         public Customer getCustomer(string userName) {
             try
             {
-                
                 return db.Customers.Single(cus => cus.UserName == userName);
             }catch{
                 Customer newCustomer = new Customer(userName);
@@ -33,8 +32,5 @@ namespace MReader.Models
         {
             db.SubmitChanges();
         }
-
-
-        
     }
 }

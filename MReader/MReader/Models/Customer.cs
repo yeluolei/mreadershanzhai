@@ -8,12 +8,17 @@ namespace MReader.Models
 {
     partial class Customer
     {
+        //新建一个用户
         public Customer(string userName)
-          
-
         {
-            this._FavouriteBooks = new EntitySet<FavouriteBook>(new Action<FavouriteBook>(this.attach_FavouriteBooks), new Action<FavouriteBook>(this.detach_FavouriteBooks));
-            this._PurchaseHistories = new EntitySet<PurchaseHistory>(new Action<PurchaseHistory>(this.attach_PurchaseHistories), new Action<PurchaseHistory>(this.detach_PurchaseHistories));
+            this._FavouriteBooks = new EntitySet<FavouriteBook>
+                (new Action<FavouriteBook>(this.attach_FavouriteBooks), 
+                new Action<FavouriteBook>(this.detach_FavouriteBooks));
+            this._PurchaseHistories = new EntitySet<PurchaseHistory>
+                (new Action<PurchaseHistory>(this.attach_PurchaseHistories),
+                new Action<PurchaseHistory>(this.detach_PurchaseHistories));
+
+
             OnCreated();
             this.UserName = userName;
             this.DateRegistered = DateTime.Now;

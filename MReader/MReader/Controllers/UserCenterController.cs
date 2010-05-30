@@ -14,7 +14,6 @@ namespace MReader.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            
             string userName = User.Identity.Name;
             Customer cus = cusRepo.getCustomer(userName);
             return View(new CustomerFormModel(cus));
@@ -45,14 +44,11 @@ namespace MReader.Controllers
         [HttpPost]
         public ActionResult Balance(FormCollection fc)
         {
-            
             string userName = User.Identity.Name;
             CustomerFormModel cus =new CustomerFormModel(cusRepo.getCustomer(userName));
             UpdateModel(cus);
             cus.Customer.CurrentMoney+=cus.MoneyToAdd;
             cusRepo.Save();
-            //Customer c = cusRepo.getCustomer(userName);
-            //return View(new CustomerFormModel(c,"Successfully Added"));
             cus.Message = "Successfully added!";
             return View(cus);
         } 
