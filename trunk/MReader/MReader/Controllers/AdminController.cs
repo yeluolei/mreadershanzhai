@@ -20,7 +20,8 @@ namespace MReader.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var books = db.GetAllBooks().ToList();
+            return View("Index", books);
         }
 
         [Authorize]
@@ -78,8 +79,7 @@ namespace MReader.Controllers
                 db.DeleteBook(book);
                 db.save();
                 return View(book);
-            }
-                
+            } 
         }
 
         [Authorize]
@@ -88,6 +88,20 @@ namespace MReader.Controllers
             return View();
         }
 
+        public ActionResult ViewBook(int id)
+        {
+            Book book = db.GetBookbyID(id);
+            if (book == null)
+            {
+                return View();
+            }
+            return View(book);
+        }
+        public ActionResult EditBook(int id)
+        {
+            Book book = db.GetBookbyID(id);
+            return View(book);
+        }
         public void unrar() {
             decompress("/book/as", "/book/logo.rar", "23");
         }

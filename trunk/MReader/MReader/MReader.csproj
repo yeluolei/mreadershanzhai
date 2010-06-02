@@ -148,6 +148,10 @@
     <Content Include="Content\flora.accordion.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\BookViewStyle.css" />
+    <Content Include="Views\Admin\DeleteBook.aspx" />
+    <Content Include="Views\Admin\EditBook.aspx" />
+    <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Admin\ViewBook.aspx" />
     <Content Include="Views\Global.asax" />
     <Content Include="images\arrow_left_green_48.png" />
     <Content Include="images\arrow_right_green_48.png" />
@@ -163,10 +167,7 @@
     <Content Include="Scripts\jquery.dimensions.js" />
     <Content Include="Scripts\jquery.easing.js" />
     <Content Include="Scripts\jquery.js" />
-    <Content Include="Views\Admin\DeleteBook.aspx" />
     <Content Include="Views\Admin\NewBook.aspx" />
-    <Content Include="Views\Admin\NotFound.aspx" />
-    <Content Include="Views\Admin\Success.aspx" />
     <Content Include="Views\Home\bookview.aspx" />
     <Content Include="Views\Home\list.aspx" />
     <Content Include="Views\Home\Login.aspx" />
