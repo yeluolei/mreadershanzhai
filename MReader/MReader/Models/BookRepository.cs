@@ -28,7 +28,13 @@ namespace MReader.Models
         {
             throw new NotImplementedException();
         }
-
+        public IQueryable<Book> GetAllBooks()
+        {
+            return from book in db.Books
+                   where book.ID>0
+                   orderby book.ID
+                   select book;
+        }
         public IQueryable<Book> SearchBookbyWriter( string writer )
         {
             throw new NotImplementedException();
