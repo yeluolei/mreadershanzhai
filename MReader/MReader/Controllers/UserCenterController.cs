@@ -46,7 +46,20 @@ namespace MReader.Controllers
         {
             string userName = User.Identity.Name;
             CustomerFormModel cus =new CustomerFormModel(cusRepo.getCustomer(userName));
-            UpdateModel(cus);
+            try
+            {
+                UpdateModel(cus);
+            }
+                catch
+            {
+                foreach (var issue in cus.GetRuleViolations())
+                {
+                    ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);
+                }
+                return View(cus);
+            }
+             
+
             cus.Customer.CurrentMoney+=cus.MoneyToAdd;
             cusRepo.Save();
             cus.Message = "Successfully added!";

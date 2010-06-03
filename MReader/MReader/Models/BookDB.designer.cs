@@ -84,17 +84,19 @@ namespace MReader.Models
 		
 		private string _Title;
 		
-		private decimal _Price;
+		private System.Nullable<decimal> _Price;
 		
-		private System.DateTime _PublishDate;
+		private System.Nullable<System.DateTime> _PublishDate;
 		
 		private string _Content;
 		
 		private string _Author;
 		
-		private int _TotalPages;
+		private System.Nullable<int> _TotalPages;
 		
 		private int _ID;
+		
+		private string _Publisher;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -104,18 +106,20 @@ namespace MReader.Models
     partial void OnISBNChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
-    partial void OnPriceChanging(decimal value);
+    partial void OnPriceChanging(System.Nullable<decimal> value);
     partial void OnPriceChanged();
-    partial void OnPublishDateChanging(System.DateTime value);
+    partial void OnPublishDateChanging(System.Nullable<System.DateTime> value);
     partial void OnPublishDateChanged();
     partial void OnContentChanging(string value);
     partial void OnContentChanged();
     partial void OnAuthorChanging(string value);
     partial void OnAuthorChanged();
-    partial void OnTotalPagesChanging(int value);
+    partial void OnTotalPagesChanging(System.Nullable<int> value);
     partial void OnTotalPagesChanged();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnPublisherChanging(string value);
+    partial void OnPublisherChanged();
     #endregion
 		
 		public Book()
@@ -123,7 +127,7 @@ namespace MReader.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISBN", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISBN", DbType="VarChar(50)")]
 		public string ISBN
 		{
 			get
@@ -143,7 +147,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(50)")]
 		public string Title
 		{
 			get
@@ -163,8 +167,8 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="SmallMoney NOT NULL")]
-		public decimal Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="SmallMoney")]
+		public System.Nullable<decimal> Price
 		{
 			get
 			{
@@ -183,8 +187,8 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishDate", DbType="DateTime NOT NULL")]
-		public System.DateTime PublishDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PublishDate
 		{
 			get
 			{
@@ -203,7 +207,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(50)")]
 		public string Content
 		{
 			get
@@ -223,7 +227,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="VarChar(30)")]
 		public string Author
 		{
 			get
@@ -243,8 +247,8 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPages", DbType="Int NOT NULL")]
-		public int TotalPages
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPages", DbType="Int")]
+		public System.Nullable<int> TotalPages
 		{
 			get
 			{
@@ -263,7 +267,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -279,6 +283,26 @@ namespace MReader.Models
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publisher", DbType="NVarChar(50)")]
+		public string Publisher
+		{
+			get
+			{
+				return this._Publisher;
+			}
+			set
+			{
+				if ((this._Publisher != value))
+				{
+					this.OnPublisherChanging(value);
+					this.SendPropertyChanging();
+					this._Publisher = value;
+					this.SendPropertyChanged("Publisher");
+					this.OnPublisherChanged();
 				}
 			}
 		}

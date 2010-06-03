@@ -3,11 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <form runat="server">
+    
     <h2>Balance</h2>
+    <%=Html.ValidationSummary() %>
     <label>User Name : </label>
     <%=Html.Label(Model.Customer.UserName) %><br />
     <label>Current Balance : </label>
-    <%=Html.Label(Convert.ToDouble(Model.Customer.CurrentMoney).ToString()) %><br />
+     
+    
+    <div><%= Model.Customer.CurrentMoney.ToString("C") %></div>
 
     <%=Html.LabelFor(m =>m.MoneyToAdd) %>
     <%=Html.TextBoxFor(model=>model.MoneyToAdd) %><br />
