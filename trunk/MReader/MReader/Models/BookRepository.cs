@@ -17,7 +17,14 @@ namespace MReader.Models
 
         public Book GetBookbyID(int ID)
         {
-            return db.Books.SingleOrDefault(d => d.ID == ID);
+            Book aBook = db.Books.SingleOrDefault(d => d.ID == ID);
+            if (aBook == null)
+            {
+                aBook = new Book();
+                aBook.Title = "NULL";
+
+            }
+            return aBook;
         }
 
 

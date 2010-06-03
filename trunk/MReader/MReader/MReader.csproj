@@ -73,6 +73,7 @@
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
+    <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Views\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

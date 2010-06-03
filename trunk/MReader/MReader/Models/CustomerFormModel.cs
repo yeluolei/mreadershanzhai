@@ -16,8 +16,23 @@ namespace MReader.Models
             Message = message;
         }
 
+        public string StringCurrentMoney
+        {
+            get
+            {
+                return Customer.CurrentMoney.ToString("C");
+            }
+        }
+
+
         [Required]
         [DisplayName("Money To Add")]
         public decimal MoneyToAdd { get; set; }
+
+
+        public IEnumerable<RuleViolation> GetRuleViolations()
+        {
+            yield return new RuleViolation("Must specify a valid money.","MoneyToAdd");
+        }
     }
 }
