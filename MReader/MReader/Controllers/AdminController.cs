@@ -18,13 +18,14 @@ namespace MReader.Controllers
         //
         // GET: /Admin/
 
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             var books = db.GetAllBooks().ToList();
             return View("Index", books);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public ActionResult NewBook()
         {
             return View();

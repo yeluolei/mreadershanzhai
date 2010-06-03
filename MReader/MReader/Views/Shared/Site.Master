@@ -18,6 +18,7 @@
                     <div class="topbartext">
                         <div id="signin">
                             <% Html.RenderPartial("LogOnUserControl"); %>
+                            
                         </div>
                     </div>
                 </div>
@@ -52,9 +53,10 @@
                 <li>
                     <%: Html.ActionLink("About", "About", "Home")%></li>
                 <li>
-                    <%: Html.ActionLink("BookView", "BookView", "Home")%></li>
+                    <%: Html.ActionLink("ViewBook", "ViewBook", "BookView")%></li>
                 <li>
                     <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
+                    
 
             </ul>
         </div>

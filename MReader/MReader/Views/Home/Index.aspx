@@ -12,10 +12,10 @@
         &nbsp;
         <img alt="cover" height="125" width="90px" src="/book/Essential_C++/Essential_C++-cover.png" />
     </div>
-
-        <%=Html.ActionLink("ASP.NET MVC","BookView",new {id=1,page=1} ) %>
+        <%--this function must contain 4 parameter to invoke the right method,so the last |new {}| can't be omitted!!--%>
+        <%=Html.ActionLink("ASP.NET MVC", "ViewBook", "BookView", new { id = 1, page = 1 }, new { })%>
         &nbsp;&nbsp;&nbsp;
-        <%=Html.ActionLink("Essential C++","BookView",new {id=2,page=1} ) %>
+        <%=Html.ActionLink("Essential C++", "ViewBook", "BookView", new { id = 2, page = 1 }, new { })%>
 
     </p>
 
