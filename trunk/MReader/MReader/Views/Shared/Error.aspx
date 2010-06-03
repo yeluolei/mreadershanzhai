@@ -7,5 +7,10 @@
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         Sorry, an error occurred while processing your request.
+        
     </h2>
+    <p>The error message is <b>"<%=Model.Exception.Message %>"</b></p>
+        <p>The ActionName is <b>"<%=Model.ActionName %>"</b></p>
+        <p>The Controller name is <b> "<%=Model.ControllerName %>"</b></p>
+         
 </asp:Content>

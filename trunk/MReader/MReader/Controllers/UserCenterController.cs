@@ -45,6 +45,7 @@ namespace MReader.Controllers
         public ActionResult Balance(FormCollection fc)
         {
             string userName = User.Identity.Name;
+            
             CustomerFormModel cus =new CustomerFormModel(cusRepo.getCustomer(userName));
             try
             {

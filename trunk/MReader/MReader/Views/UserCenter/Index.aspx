@@ -4,8 +4,9 @@
 <h2>Account Information</h2>
     <label >Name : </label> 
     <%=Html.LabelFor(model =>model.Customer.UserName) %><br />
-    <label>Remaining Money : $</label> 
-    <%=Html.Label(Model.Customer.CurrentMoney.ToString())%><br />
+    <label>Remaining Money : </label> 
+    <div>
+    <%=Model.Customer.CurrentMoney.ToString("c")%></div>
     <label>Date Registered : </label>
     <%=Html.Label(Model.Customer.DateRegistered.ToString()) %><br />
     <label>User Level : </label>

@@ -3,19 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MReader.Models;
 
 
-//貌似是没用的啊
 namespace MReader.Controllers
 {
     public class BookViewController : Controller
     {
-        //
-        // GET: /BookView/
+        /// <summary>
+        /// remember to name book database and customer database with meaningful name;
+        /// DO NOT USE |db| TO NAME THEM!!!
+        /// </summary> 
+        BookRepository bookDb = new BookRepository();
 
+        /// <summary>
+        /// this method should never be invoked
+        /// </summary>
+        /// <returns>the error view</returns>
         public ActionResult Index()
         {
-            return View();
+            
+            HandleErrorInfo err = new HandleErrorInfo(new Exception("No such book!"), "BookView", "Index");
+            return View("Error",err);
+        }
+
+        [Authorize]
+        public ActionResult ViewBook(int? page, int? ID)
+        {
+            Book book = bookDb.GetBookbyID(ID ?? 1);    
+
+            //handle exception if no such |ID|
+            if (book.Title.ToLower() == "null")
+            {
+                HandleErrorInfo err = new HandleErrorInfo(new Exception("No such book!"),"BookView","ViewBook");
+                
+
+                return View("Error", err);
+            }
+            int temppage = page ?? 1;
+            string URL = book.Content + temppage.ToString() + ".png";
+
+            BookPageFormModel bh = new BookPageFormModel(book, temppage, URL);
+
+            return View(bh);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ViewBook(BookPageFormModel bookModel)
+        {
+
+            return ViewBook(bookModel.pageIndex, Convert.ToInt32(Request.Form["ID"]));
         }
 
     }

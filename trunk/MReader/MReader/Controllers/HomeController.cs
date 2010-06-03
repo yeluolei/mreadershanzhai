@@ -15,8 +15,6 @@ namespace MReader.Controllers
         
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
@@ -30,33 +28,8 @@ namespace MReader.Controllers
             return View();
         }
 
-        public ActionResult list()
-        {
-            return View();
-        }
+         
 
-        // BookView 
-        // Get
-        [Authorize]
-        public ActionResult BookView( int? page,int? ID)
-        {
-            Book book = db.GetBookbyID( ID ?? 1 );
-            int temppage = page ?? 1;
-            string URL = book.Content + temppage.ToString()+".png"; 
-           
-            BookPageFormModel bh = new BookPageFormModel(book,temppage,URL);
-            return View(bh);
-        }
-
-        //
-        // BookView 
-        // Post
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult BookView(BookPageFormModel bookModel)
-        { 
-           
-            return BookView(bookModel.pageIndex, Convert.ToInt32(Request.Form["ID"]));
-        }
 
     }
 
