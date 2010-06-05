@@ -27,14 +27,33 @@ namespace MReader.Models
             return aBook;
         }
 
+        public Book GetBookbyGuid(Guid guid)
+        {
+            Book aBook = db.Books.SingleOrDefault(d => d.Guid == guid);
+            if (aBook == null)
+            {
+                aBook = new Book();
+                aBook.Title = "NULL";
+            }
+            return aBook;
+        }
 
+        //--------------------搜索---------------------
 
-
-        //搜索
+        /// <summary>
+        /// find a book by bookname
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <returns></returns>
         public IQueryable<Book> SearchBookbyBookName( string bookName )
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// return all books in the database
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Book> GetAllBooks()
         {
             return from book in db.Books
@@ -42,6 +61,8 @@ namespace MReader.Models
                    orderby book.ID
                    select book;
         }
+
+
         public IQueryable<Book> SearchBookbyWriter( string writer )
         {
             throw new NotImplementedException();

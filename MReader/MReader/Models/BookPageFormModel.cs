@@ -11,6 +11,7 @@ namespace MReader.Models
     {
         public int pageIndex { get;  set; }
         public string pageURL { get;   set; }
+        public string bookcover { get; set; }
         public Book book = new Book();
 
         public BookPageFormModel()
@@ -20,6 +21,7 @@ namespace MReader.Models
         public BookPageFormModel(Book book,int pageindex = 1, string pageURL="")
         {
             this.book = book;
+            bookcover = string.Format(book.Content, "cover");
             this.pageIndex = pageindex;
             this.pageURL = pageURL;
         }

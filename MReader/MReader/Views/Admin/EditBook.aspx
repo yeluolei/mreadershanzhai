@@ -70,13 +70,13 @@
                 <%: Html.ValidationMessageFor(model => model.TotalPages) %>
             </div>
             
-            <div class="editor-label">
+<%--            <div class="editor-label">
                 <%: Html.LabelFor(model => model.ID) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.ID) %>
                 <%: Html.ValidationMessageFor(model => model.ID) %>
-            </div>
+            </div>--%>
             
             <p>
                 <input type="submit" value="Save" />

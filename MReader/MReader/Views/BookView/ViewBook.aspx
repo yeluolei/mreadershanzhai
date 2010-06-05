@@ -18,7 +18,7 @@
                     <td id="sideviewport">
                         <div id="sidebar">  
                                 <div id="sidebarcover">
-                                    <img alt="cover" height="125" width="90px" src="<%=(Model.book.Content + "cover.png") %>" />
+                                    <img alt="cover" height="125" width="90px" src="<%=(Model.bookcover) %>" />
                                 </div>
                                 <div id="sidebarnav">
                                     <ul>
@@ -67,11 +67,13 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID= "HeadContent" runat="server">
-        <link href="../../Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
-        <script language="javascript" type="text/javascript">
+        <link href="/Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript">         
+
             var pageNumGlobal;
-            var bookNameGlobal;
+            var bookURLGlobal;
             var totalPagesGlobal;
+            var regex = /\{[0-9]+\}/;
             function preload(imgURL) {
                 var i = new Image();
                 i.src = imgURL;
@@ -94,7 +96,7 @@
             function next() {
                 pageNumGlobal = eval(pageNumGlobal) + 1;
                 if (pageNumGlobal <= totalPagesGlobal) {
-                    var img = document.getElementById("book").src = "/book/" + bookNameGlobal + "/" + bookNameGlobal + "-" + pageNumGlobal + ".png";
+                    var img = document.getElementById("book").src = bookURLGlobal.replace(regex,pageNumGlobal);
                     document.getElementById("pageIndex").value = pageNumGlobal;
                 }
                 Buttonvisible();
@@ -103,7 +105,7 @@
             function previous() {
                 pageNumGlobal = eval(pageNumGlobal) - 1;
                 if ( pageNumGlobal > 0) {
-                    var img = document.getElementById("book").src = "/book/" + bookNameGlobal + "/" + bookNameGlobal + "-" + pageNumGlobal + ".png";
+                    var img = document.getElementById("book").src = bookURLGlobal.replace(regex,pageNumGlobal);
                     document.getElementById("pageIndex").value = pageNumGlobal;
                 }
                 Buttonvisible();
@@ -112,17 +114,17 @@
             function preload() {
                 var temp = eval(pageNumGlobal) + 1;
                 if (temp <= totalPagesGlobal) {
-                    var img = "/book/" + bookNameGlobal + "/" + bookNameGlobal + "-" + temp + ".png";
+                    var img = bookURLGlobal.replace(regex,temp);
                     var i = new Image();
                     i.src = img;
                 }
             }
 
-            $(document).ready(function(){
+            $(document).ready( function(){
                     pageNumGlobal = <%=Model.pageIndex%>;
-                    bookNameGlobal = "<%= Model.book.Title %>";
+                    bookURLGlobal = "<%= Model.book.Content %>";
                     totalPagesGlobal = <%=Model.book.TotalPages %>;
                     Buttonvisible();
-                    });
+                    } );
    </script>
 </asp:Content>

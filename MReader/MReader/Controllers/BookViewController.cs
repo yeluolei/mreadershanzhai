@@ -41,7 +41,7 @@ namespace MReader.Controllers
                 return View("Error", err);
             }
             int temppage = page ?? 1;
-            string URL = book.Content + temppage.ToString() + ".png";
+            string URL = string.Format(book.Content, temppage);
 
             BookPageFormModel bh = new BookPageFormModel(book, temppage, URL);
 

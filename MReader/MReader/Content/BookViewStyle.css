@@ -4,11 +4,9 @@
 }
 #bookcontent
 {
-    border-style: solid none none none;
+    border: 2px solid #999999;
     text-align: center;
     width: 750px;
-    border-top-width: 1px;
-    border-top-color: #EBEFF9;
 }
 
 #bookcontent img
