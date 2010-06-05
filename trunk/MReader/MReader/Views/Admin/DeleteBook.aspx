@@ -24,8 +24,8 @@
         <div class="display-label">PublishDate</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.PublishDate) %></div>
         
-        <div class="display-label">Content</div>
-        <div class="display-field"><%: Model.Content %></div>
+<%--        <div class="display-label">Content</div>
+        <div class="display-field"><%: Model.Content %></div>--%>
         
         <div class="display-label">Author</div>
         <div class="display-field"><%: Model.Author %></div>
@@ -36,8 +36,8 @@
         <div class="display-label">ID</div>
         <div class="display-field"><%: Model.ID %></div>
         
-        <div class="display-label">IsValid</div>
-        <div class="display-field"><%: Model.IsValid %></div>
+<%--        <div class="display-label">IsValid</div>
+        <div class="display-field"><%: Model.IsValid %></div>--%>
         
     </fieldset>
     <% using (Html.BeginForm()) { %>
