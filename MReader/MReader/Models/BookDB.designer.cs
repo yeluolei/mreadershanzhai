@@ -30,6 +30,9 @@ namespace MReader.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertRemark(Remark instance);
+    partial void UpdateRemark(Remark instance);
+    partial void DeleteRemark(Remark instance);
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
@@ -65,11 +68,218 @@ namespace MReader.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Remark> Remarks
+		{
+			get
+			{
+				return this.GetTable<Remark>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Book> Books
 		{
 			get
 			{
 				return this.GetTable<Book>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Remarks")]
+	public partial class Remark : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RemarkID;
+		
+		private int _BookID;
+		
+		private string _RemarkUserName;
+		
+		private System.DateTime _RemarkTime;
+		
+		private string _RemarkContent;
+		
+		private EntityRef<Book> _Book;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRemarkIDChanging(int value);
+    partial void OnRemarkIDChanged();
+    partial void OnBookIDChanging(int value);
+    partial void OnBookIDChanged();
+    partial void OnRemarkUserNameChanging(string value);
+    partial void OnRemarkUserNameChanged();
+    partial void OnRemarkTimeChanging(System.DateTime value);
+    partial void OnRemarkTimeChanged();
+    partial void OnRemarkContentChanging(string value);
+    partial void OnRemarkContentChanged();
+    #endregion
+		
+		public Remark()
+		{
+			this._Book = default(EntityRef<Book>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarkID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RemarkID
+		{
+			get
+			{
+				return this._RemarkID;
+			}
+			set
+			{
+				if ((this._RemarkID != value))
+				{
+					this.OnRemarkIDChanging(value);
+					this.SendPropertyChanging();
+					this._RemarkID = value;
+					this.SendPropertyChanged("RemarkID");
+					this.OnRemarkIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookID", DbType="Int NOT NULL")]
+		public int BookID
+		{
+			get
+			{
+				return this._BookID;
+			}
+			set
+			{
+				if ((this._BookID != value))
+				{
+					if (this._Book.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBookIDChanging(value);
+					this.SendPropertyChanging();
+					this._BookID = value;
+					this.SendPropertyChanged("BookID");
+					this.OnBookIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarkUserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string RemarkUserName
+		{
+			get
+			{
+				return this._RemarkUserName;
+			}
+			set
+			{
+				if ((this._RemarkUserName != value))
+				{
+					this.OnRemarkUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._RemarkUserName = value;
+					this.SendPropertyChanged("RemarkUserName");
+					this.OnRemarkUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarkTime", DbType="DateTime NOT NULL")]
+		public System.DateTime RemarkTime
+		{
+			get
+			{
+				return this._RemarkTime;
+			}
+			set
+			{
+				if ((this._RemarkTime != value))
+				{
+					this.OnRemarkTimeChanging(value);
+					this.SendPropertyChanging();
+					this._RemarkTime = value;
+					this.SendPropertyChanged("RemarkTime");
+					this.OnRemarkTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarkContent", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string RemarkContent
+		{
+			get
+			{
+				return this._RemarkContent;
+			}
+			set
+			{
+				if ((this._RemarkContent != value))
+				{
+					this.OnRemarkContentChanging(value);
+					this.SendPropertyChanging();
+					this._RemarkContent = value;
+					this.SendPropertyChanged("RemarkContent");
+					this.OnRemarkContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Remark", Storage="_Book", ThisKey="BookID", OtherKey="ID", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.Remarks.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.Remarks.Add(this);
+						this._BookID = value.ID;
+					}
+					else
+					{
+						this._BookID = default(int);
+					}
+					this.SendPropertyChanged("Book");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -100,6 +310,10 @@ namespace MReader.Models
 		
 		private System.Nullable<System.Guid> _Guid;
 		
+		private string _Description;
+		
+		private EntitySet<Remark> _Remarks;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -124,10 +338,13 @@ namespace MReader.Models
     partial void OnPublisherChanged();
     partial void OnGuidChanging(System.Nullable<System.Guid> value);
     partial void OnGuidChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
     #endregion
 		
 		public Book()
 		{
+			this._Remarks = new EntitySet<Remark>(new Action<Remark>(this.attach_Remarks), new Action<Remark>(this.detach_Remarks));
 			OnCreated();
 		}
 		
@@ -211,7 +428,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Content
 		{
 			get
@@ -331,6 +548,39 @@ namespace MReader.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Remark", Storage="_Remarks", ThisKey="ID", OtherKey="BookID")]
+		public EntitySet<Remark> Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				this._Remarks.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -349,6 +599,18 @@ namespace MReader.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Remarks(Remark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_Remarks(Remark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
 		}
 	}
 }

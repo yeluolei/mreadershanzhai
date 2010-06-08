@@ -20,6 +20,9 @@
         <div class="display-label">Price</div>
         <div class="display-field"><%: String.Format("{0:F}", Model.Price) %></div>
         
+        <div class="display-label">Publisher</div>
+        <div class="display-field"><%: Model.Publisher %></div>
+
         <div class="display-label">PublishDate</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.PublishDate) %></div>
         
@@ -37,6 +40,10 @@
         
         <div class="display-label">IsValid</div>
         <div class="display-field"><%: Model.IsValid %></div>
+
+                
+        <div class="display-label">Description</div>
+        <div class="display-field"><%: Model.Description %></div>
         
     </fieldset>
     <p>

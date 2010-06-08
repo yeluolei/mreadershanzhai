@@ -21,6 +21,9 @@
                 Price
             </th>
             <th>
+               Publisher
+            </th>
+            <th>
                 PublishDate
             </th>
             <th>
@@ -56,6 +59,9 @@
             </td>
             <td>
                 <%: String.Format("{0:F}", item.Price) %>
+            </td>
+            <td>
+                <%:item.Publisher %>
             </td>
             <td>
                 <%: String.Format("{0:g}", item.PublishDate) %>

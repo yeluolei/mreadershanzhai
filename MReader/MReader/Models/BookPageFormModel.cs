@@ -35,7 +35,6 @@ namespace MReader.Models
         }
 
 
-
         public bool HasPrevoiusPage
         {
             get
