@@ -11,55 +11,47 @@
     <fieldset>
         <legend>Fields</legend>
         
-        <div class="display-label">ISBN</div>
+        <div class="display-label">ISBN:</div>
         <div class="display-field"><%: Model.ISBN %></div>
         
-        <div class="display-label">Title</div>
+        <div class="display-label">Title:</div>
         <div class="display-field"><%: Model.Title %></div>
         
-        <div class="display-label">Price</div>
+        <div class="display-label">Price:</div>
         <div class="display-field"><%: String.Format("{0:F}", Model.Price) %></div>
         
-        <div class="display-label">Publisher</div>
+        <div class="display-label">Publisher:</div>
         <div class="display-field"><%: Model.Publisher %></div>
 
-        <div class="display-label">PublishDate</div>
+        <div class="display-label">PublishDate:</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.PublishDate) %></div>
         
-        <div class="display-label">Content</div>
+        <div class="display-label">Content:</div>
         <div class="display-field"><%: Model.Content %></div>
         
-        <div class="display-label">Author</div>
+        <div class="display-label">Author:</div>
         <div class="display-field"><%: Model.Author %></div>
         
-        <div class="display-label">TotalPages</div>
+        <div class="display-label">TotalPages:</div>
         <div class="display-field"><%: Model.TotalPages %></div>
         
-        <div class="display-label">ID</div>
+        <div class="display-label">ID:</div>
         <div class="display-field"><%: Model.ID %></div>
         
-        <div class="display-label">IsValid</div>
+        <div class="display-label">IsValid:</div>
         <div class="display-field"><%: Model.IsValid %></div>
 
                 
-        <div class="display-label">Description</div>
+        <div class="display-label">Description:</div>
         <div class="display-field"><%: Model.Description %></div>
         
     </fieldset>
     <p>
 
-        <%: Html.ActionLink("Edit", "Edit", new { id=Model.ID }) %> |
+        <%: Html.ActionLink("Edit", "EditBook", new { id=Model.ID }) %> |
         <%: Html.ActionLink("Back to List", "Index") %>
     </p>
     </div>
-    <div>
-     <ul class="AdminButton">
-            <li><a href="ViewBook">查看图书详情</a></li>
-			<li><a href="NewBook">添加新书</a></li>
-            <li><a href="DeleteBook">删除图书</a></li>
-            <li><a href="ModifyBook">修改图书信息</a></li>
-       </ul>
-     </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

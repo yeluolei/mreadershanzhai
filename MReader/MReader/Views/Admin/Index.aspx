@@ -48,7 +48,7 @@
         <tr>
             <td>
                 <%: Html.ActionLink("Edit", "EditBook", new { id=item.ID }) %> |
-                <%: Html.ActionLink("Details", "ViewBook", new { id=item.ID })%> |
+                <%: Html.ActionLink("Details", "ViewBookInfo", new { id=item.ID })%> |
                 <%: Html.ActionLink("Delete", "DeleteBook", new { id=item.ID })%>
             </td>
             <td>
