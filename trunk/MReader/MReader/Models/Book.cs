@@ -8,6 +8,8 @@ namespace MReader.Models
 {
     public partial class Book
     {
+
+     //   public string bookcover = string.Format(content, "cover");
         public bool IsValid
         {
             get { return (GetRuleViolations().Count() == 0); }

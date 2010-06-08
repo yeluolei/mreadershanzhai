@@ -39,6 +39,14 @@
             </div>
             
             <div class="editor-label">
+                <%: Html.LabelFor(model => model.Publisher) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Publisher) %>
+                <%: Html.ValidationMessageFor(model => model.Publisher) %>
+            </div>
+
+            <div class="editor-label">
                 <%: Html.LabelFor(model => model.PublishDate) %>
             </div>
             <div class="editor-field">
@@ -69,14 +77,14 @@
                 <%: Html.TextBoxFor(model => model.TotalPages) %>
                 <%: Html.ValidationMessageFor(model => model.TotalPages) %>
             </div>
-            
-<%--            <div class="editor-label">
-                <%: Html.LabelFor(model => model.ID) %>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.Description) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.ID) %>
-                <%: Html.ValidationMessageFor(model => model.ID) %>
-            </div>--%>
+                <%: Html.TextBoxFor(model => model.Description) %>
+                <%: Html.ValidationMessageFor(model => model.Description) %>
+            </div>
             
             <p>
                 <input type="submit" value="Save" />

@@ -70,9 +70,12 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BookInfoController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
+    <Compile Include="Helps\PaginatedList.cs" />
+    <Compile Include="Models\BookInfoFormModel.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Views\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,13 +148,12 @@
     <Content Include="book\Essential_C++\Essential_C++-7.png" />
     <Content Include="book\Essential_C++\Essential_C++-8.png" />
     <Content Include="book\Essential_C++\Essential_C++-9.png" />
-    <Content Include="Content\flora.accordion.css" />
-    <Content Include="Content\Style.css" />
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Views\Admin\DeleteBook.aspx" />
     <Content Include="Views\Admin\EditBook.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\ViewBook.aspx" />
+    <Content Include="Views\BookInfo\Index.aspx" />
     <Content Include="Views\Global.asax" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Views\Admin\NewBook.aspx" />

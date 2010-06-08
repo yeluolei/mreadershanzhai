@@ -54,6 +54,14 @@
                 <%: Html.TextBoxFor(model => model.Author)%>
                 <%: Html.ValidationMessageFor(model => model.Author)%>
             </div>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.Publisher)%>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Publisher)%>
+                <%: Html.ValidationMessageFor(model => model.Publisher)%>
+            </div>
             
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.TotalPages)%>
@@ -76,6 +84,10 @@
             </div>          
             <input id = "upload" type="file" name="Upload" /><br />
             <%: Html.ValidationMessage("Upload") %>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Description) %>
+                <%: Html.ValidationMessageFor(model => model.Description) %>
+            </div>
             <p>
                 <input type="submit" value="Create" />
             </p>
