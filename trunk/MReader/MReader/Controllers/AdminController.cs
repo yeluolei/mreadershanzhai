@@ -133,7 +133,8 @@ namespace MReader.Controllers
             return View();
         }
 
-        public ActionResult ViewBook(int id)
+        [Authorize(Roles = "admin")]
+        public ActionResult ViewBookInfo(int id)
         {
             Book book = db.GetBookbyID(id);
             if (book == null)
@@ -143,15 +144,35 @@ namespace MReader.Controllers
             return View(book);
         }
 
+        // 
+        // EditBook:GET
+        [Authorize(Roles = "admin")]
         public ActionResult EditBook(int id)
         {
             Book book = db.GetBookbyID(id);
             return View(book);
         }
 
-        //public void unrar() {
-        //    decompress("/book/as", "/book/logo.rar", "23");
-        //}
+        //
+        // EditBook:POST
+        [Authorize(Roles = "admin"), AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditBook(int id, FormCollection collection)
+        {
+            Book book = db.GetBookbyID(id);
+            try
+            {
+                UpdateModel(book);
+                db.save();
+                return RedirectToAction("ViewBookInfo", new { id = book.ID });
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+
+
+
         private void decompress(string unRarPatch, string rarPatch)
         {
             System.Diagnostics.Process proc = new Process();

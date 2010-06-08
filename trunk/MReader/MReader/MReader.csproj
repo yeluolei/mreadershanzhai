@@ -152,7 +152,7 @@
     <Content Include="Views\Admin\DeleteBook.aspx" />
     <Content Include="Views\Admin\EditBook.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
-    <Content Include="Views\Admin\ViewBook.aspx" />
+    <Content Include="Views\Admin\ViewBookInfo.aspx" />
     <Content Include="Views\BookInfo\Index.aspx" />
     <Content Include="Views\Global.asax" />
     <Content Include="Scripts\jquery.js" />
