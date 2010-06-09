@@ -23,15 +23,15 @@
             <div>
                 Publisher date : <%:Model.book.PublishDate.ToShortDateString()%></div>
             <div>
-                Price : <%: Model.book.Price.ToString() %></div>
+                Price : <%: Model.book.Price.ToString("C") %></div>
             <div>
-                <%if (Model.HasBuied(Context.User.Identity.Name.ToString()))
+                <%if (Model.HasBought(Context.User.Identity.Name.ToString()))
                   {%>
-                <%: Html.ActionLink("Read", "ViewBook", "BookView")%>
+                <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
                 <% }%>
                 <%else
                     { %>
-                <%:Html.ActionLink("Buy","Buy") %>
+                <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
                 <%}%></div>
             <div>
                 <%:Model.book.Description%></div>

@@ -16,9 +16,13 @@ namespace MReader
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("bookinfo",
+                "BookInfo/{action}/{bookid}/{page}",
+                new { controller = "bookInfo", action = "index", bookid = UrlParameter.Optional, page = UrlParameter.Optional });
+
             routes.MapRoute("viewbook",
-            "BookView/ViewBook/{id}/{page}", 
-            new { controller = "BookView", action = "ViewBook", page = UrlParameter.Optional, ID = UrlParameter.Optional });
+            "BookView/{action}/{id}/{page}", 
+            new { controller = "BookView", action = "ViewBook", page = UrlParameter.Optional, id = UrlParameter.Optional });
 
             routes.MapRoute(
                 "Default", // Route name

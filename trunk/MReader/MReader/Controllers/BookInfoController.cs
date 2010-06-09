@@ -10,6 +10,7 @@ namespace MReader.Controllers
     public class BookInfoController : Controller
     {
         BookRepository bookDb = new BookRepository();
+        CustomerRepository cusDb = new CustomerRepository();
 
         //
         // GET: /BookInfo
@@ -36,5 +37,39 @@ namespace MReader.Controllers
             bookDb.save();
             return Index(id,PageIndex-1);
         }
+
+        [Authorize]
+        public ActionResult Buy(int bookId)
+        {
+
+            Book book = bookDb.GetBookbyID(bookId);
+            BookInfoFormModel bookInfo = new BookInfoFormModel(book);
+            return View(bookInfo);
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult Buy(int bookId,FormCollection fc)
+        {
+            Customer customer = cusDb.getCustomer(User.Identity.Name);
+
+            Book book = bookDb.GetBookbyID(bookId);
+            string [] ret = cusDb.Buy(User.Identity.Name,book);
+            if (ret.Length > 0)//fail to buy 
+            {
+                foreach (string str in ret)
+                {
+                    ModelState.AddModelError("",str);
+                }
+                //return View(bookId);
+               // return Buy(bookId);
+            }
+
+            book.Buyers.Add(new Buyer(customer));
+            bookDb.save();
+            return View("BoughtSuccess", book);
+
+        }
+
+
     }
 }
