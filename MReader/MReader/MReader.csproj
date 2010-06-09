@@ -76,6 +76,7 @@
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Helps\PaginatedList.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
+    <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Views\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +155,8 @@
     <Content Include="Views\Admin\EditBook.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\ViewBookInfo.aspx" />
+    <Content Include="Views\BookInfo\BoughtSuccess.aspx" />
+    <Content Include="Views\BookInfo\Buy.aspx" />
     <Content Include="Views\BookInfo\Index.aspx" />
     <Content Include="Views\Global.asax" />
     <Content Include="Scripts\jquery.js" />

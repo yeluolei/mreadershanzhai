@@ -9,10 +9,11 @@ namespace MReader.Models
     partial class Customer
     {
         //新建一个用户
+
         public Customer(string userName)
         {
             this._FavouriteBooks = new EntitySet<FavouriteBook>
-                (new Action<FavouriteBook>(this.attach_FavouriteBooks), 
+                (new Action<FavouriteBook>(this.attach_FavouriteBooks),
                 new Action<FavouriteBook>(this.detach_FavouriteBooks));
             this._PurchaseHistories = new EntitySet<PurchaseHistory>
                 (new Action<PurchaseHistory>(this.attach_PurchaseHistories),
@@ -26,5 +27,28 @@ namespace MReader.Models
             this.SpentCost = 0;
             this.CurrentMoney = 0;
         }
+
+        /// <summary>
+        /// TODO:eliminate multiple match
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
+        /// <author>latioswang</author>
+        public bool HasBought(int bookId)
+        {
+            try
+            {
+                var tmp = PurchaseHistories.SingleOrDefault(b => b.BookID == bookId);
+                return tmp == null;
+            }
+            catch
+            {
+                //multiple match then .... OK return true;
+                //TODO : eliminate multiple match
+                return true;
+            }
+        }
+
+
     }
 }

@@ -9,6 +9,8 @@ namespace MReader.Models
     public class BookInfoFormModel
     {
 
+        
+
         public Book book = new Book();
         public int pageIndex { get; set; }
         public PaginatedList<Remark> paginatedRemarks { get; set; }
@@ -20,10 +22,10 @@ namespace MReader.Models
         {
         }
 
-        public BookInfoFormModel(Book book,int? page)
+        public BookInfoFormModel(Book book,int page = 0)
         {
             this.book = book;
-            this.pageIndex = page ?? 0;
+            this.pageIndex = page;
             this.bookcover = string.Format(book.Content, "cover");
             this.paginatedRemarks = new PaginatedList<Remark>(FindAllRemarks(), pageIndex, pagesize);
             this.LatestBuyers = FindBuyers(); 
@@ -42,7 +44,7 @@ namespace MReader.Models
         }
 
 
-        public bool HasBuied(String UserName) {
+        public bool HasBought(String UserName) {
             if (book.Buyers.Any(b => b.BuyUserName.Equals(UserName, StringComparison.InvariantCultureIgnoreCase))
                 ||UserName.ToLower()=="admin")
                 return true;

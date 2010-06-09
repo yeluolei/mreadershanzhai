@@ -32,5 +32,38 @@ namespace MReader.Models
         {
             db.SubmitChanges();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
+        /// <author>latioswang</author>
+        public string [] Buy(string userName,Book book) {
+            Customer customer = this.getCustomer(userName);
+
+            if (customer.HasBought( book.ID)) {
+                return new string[] {"You've already bought it."};
+            }
+            
+            if (book.Price>customer.CurrentMoney) {
+                return new string[] {"You have not enough money."};
+            }
+
+            customer.CurrentMoney -= book.Price;
+            PurchaseHistory newPH = new PurchaseHistory();
+            newPH.BookID = book.ID;
+            //newPH.Customer = customer;
+            newPH.Price = book.Price;
+            newPH.PurchaseTime = DateTime.Now;
+            newPH.UserName = userName;
+            customer.PurchaseHistories.Add(newPH);
+            this.Save();
+
+            return new string[] {};
+            
+
+        }
     }
 }
