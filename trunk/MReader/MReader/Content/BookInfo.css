@@ -1,0 +1,65 @@
+﻿body {
+}
+
+.book
+{
+    display:block;
+    height:200px;
+    }
+
+.bookcover
+{
+    float:left;
+    width:200px;
+    height:200px;
+    margin-left:50px;
+    padding:0px;
+    }
+.cover
+{
+    height:200px;
+    }
+    
+.bookInfo
+{
+    font-size:110%;
+    float:left;
+    height:200px;
+    padding:0px;
+    }
+li
+{
+    list-style: none;
+    min-height: 50px;
+    border-top: 1px #CDCDCD dotted;
+    list-style-type: none;
+}
+
+li .bar
+{
+    background-color: #EBEFF9;
+    text-align:right;
+}
+.bar span
+{
+    margin-left:3px;
+    }
+.bar .user
+{
+    padding-left:10px;
+    text-align:left;
+    color: #008080;
+    font-weight: bold;
+    }
+.bar span .time
+{
+    float:right;
+    }
+    
+#RemarkContent
+{
+    width:100%;
+    height:auto;
+    min-height:50px;
+    overflow:scroll;
+    }

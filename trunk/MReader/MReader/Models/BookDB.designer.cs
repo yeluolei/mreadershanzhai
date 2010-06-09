@@ -36,6 +36,9 @@ namespace MReader.Models
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
+    partial void InsertBuyer(Buyer instance);
+    partial void UpdateBuyer(Buyer instance);
+    partial void DeleteBuyer(Buyer instance);
     #endregion
 		
 		public BookDBDataContext() : 
@@ -81,6 +84,14 @@ namespace MReader.Models
 			get
 			{
 				return this.GetTable<Book>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Buyer> Buyers
+		{
+			get
+			{
+				return this.GetTable<Buyer>();
 			}
 		}
 	}
@@ -314,6 +325,8 @@ namespace MReader.Models
 		
 		private EntitySet<Remark> _Remarks;
 		
+		private EntitySet<Buyer> _Buyers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -345,6 +358,7 @@ namespace MReader.Models
 		public Book()
 		{
 			this._Remarks = new EntitySet<Remark>(new Action<Remark>(this.attach_Remarks), new Action<Remark>(this.detach_Remarks));
+			this._Buyers = new EntitySet<Buyer>(new Action<Buyer>(this.attach_Buyers), new Action<Buyer>(this.detach_Buyers));
 			OnCreated();
 		}
 		
@@ -581,6 +595,19 @@ namespace MReader.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Buyer", Storage="_Buyers", ThisKey="ID", OtherKey="BookID")]
+		public EntitySet<Buyer> Buyers
+		{
+			get
+			{
+				return this._Buyers;
+			}
+			set
+			{
+				this._Buyers.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -611,6 +638,193 @@ namespace MReader.Models
 		{
 			this.SendPropertyChanging();
 			entity.Book = null;
+		}
+		
+		private void attach_Buyers(Buyer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_Buyers(Buyer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buyers")]
+	public partial class Buyer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BuyID;
+		
+		private System.DateTime _BuyTime;
+		
+		private string _BuyUserName;
+		
+		private int _BookID;
+		
+		private EntityRef<Book> _Book;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBuyIDChanging(int value);
+    partial void OnBuyIDChanged();
+    partial void OnBuyTimeChanging(System.DateTime value);
+    partial void OnBuyTimeChanged();
+    partial void OnBuyUserNameChanging(string value);
+    partial void OnBuyUserNameChanged();
+    partial void OnBookIDChanging(int value);
+    partial void OnBookIDChanged();
+    #endregion
+		
+		public Buyer()
+		{
+			this._Book = default(EntityRef<Book>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BuyID
+		{
+			get
+			{
+				return this._BuyID;
+			}
+			set
+			{
+				if ((this._BuyID != value))
+				{
+					this.OnBuyIDChanging(value);
+					this.SendPropertyChanging();
+					this._BuyID = value;
+					this.SendPropertyChanged("BuyID");
+					this.OnBuyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyTime", DbType="Date NOT NULL")]
+		public System.DateTime BuyTime
+		{
+			get
+			{
+				return this._BuyTime;
+			}
+			set
+			{
+				if ((this._BuyTime != value))
+				{
+					this.OnBuyTimeChanging(value);
+					this.SendPropertyChanging();
+					this._BuyTime = value;
+					this.SendPropertyChanged("BuyTime");
+					this.OnBuyTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyUserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BuyUserName
+		{
+			get
+			{
+				return this._BuyUserName;
+			}
+			set
+			{
+				if ((this._BuyUserName != value))
+				{
+					this.OnBuyUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._BuyUserName = value;
+					this.SendPropertyChanged("BuyUserName");
+					this.OnBuyUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookID", DbType="Int NOT NULL")]
+		public int BookID
+		{
+			get
+			{
+				return this._BookID;
+			}
+			set
+			{
+				if ((this._BookID != value))
+				{
+					if (this._Book.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBookIDChanging(value);
+					this.SendPropertyChanging();
+					this._BookID = value;
+					this.SendPropertyChanged("BookID");
+					this.OnBookIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Buyer", Storage="_Book", ThisKey="BookID", OtherKey="ID", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.Buyers.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.Buyers.Add(this);
+						this._BookID = value.ID;
+					}
+					else
+					{
+						this._BookID = default(int);
+					}
+					this.SendPropertyChanged("Book");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
