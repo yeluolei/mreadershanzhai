@@ -14,9 +14,10 @@ namespace MReader.Models
         public PaginatedList<Remark> paginatedRemarks { get; set; }
         public string bookcover { get; set; }
         const int pagesize = 10;
+        public IQueryable<Buyer> LatestBuyers { get; set; }
 
         public BookInfoFormModel() 
-        { 
+        {
         }
 
         public BookInfoFormModel(Book book,int? page)
@@ -25,11 +26,27 @@ namespace MReader.Models
             this.pageIndex = page ?? 0;
             this.bookcover = string.Format(book.Content, "cover");
             this.paginatedRemarks = new PaginatedList<Remark>(FindAllRemarks(), pageIndex, pagesize);
+            this.LatestBuyers = FindBuyers(); 
         }
 
         private IQueryable<Remark> FindAllRemarks()
         {
             return book.Remarks.AsQueryable();
+        }
+
+        private IQueryable<Buyer>FindBuyers(){
+            return from buyer in book.Buyers.AsQueryable()
+                   where buyer.BuyID > (book.Buyers.Count > 15 ? book.Buyers.Count - 15 : 0)
+                   orderby buyer.BuyTime descending
+                   select buyer;
+        }
+
+
+        public bool HasBuied(String UserName) {
+            if (book.Buyers.Any(b => b.BuyUserName.Equals(UserName, StringComparison.InvariantCultureIgnoreCase))
+                ||UserName.ToLower()=="admin")
+                return true;
+            return false;
         }
 
 

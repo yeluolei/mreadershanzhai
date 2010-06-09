@@ -24,6 +24,16 @@
       <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
+      <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Buyers" Member="Buyers">
+    <Type Name="Buyer">
+      <Column Name="BuyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BuyTime" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BuyUserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_Buyer" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
