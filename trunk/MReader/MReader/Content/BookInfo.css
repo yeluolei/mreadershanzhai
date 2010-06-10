@@ -63,3 +63,14 @@ li .bar
     min-height:50px;
     overflow:scroll;
     }
+.remark
+{
+    width:70em;
+    height:auto;
+    float:left;
+    }
+.buyers
+{
+    width:30em;
+    float:left;
+    }
