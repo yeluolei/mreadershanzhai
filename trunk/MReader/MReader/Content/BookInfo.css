@@ -65,12 +65,14 @@ li .bar
     }
 .remark
 {
-    width:70em;
+    width:70%;
+    padding-left:10px;
+    border-left:4px soild #CDCDCD;
     height:auto;
     float:left;
     }
 .buyers
 {
-    width:30em;
+    width:30%;
     float:left;
     }
