@@ -27,7 +27,7 @@
             <div>
                 <%if (Model.HasBought(Context.User.Identity.Name.ToString()))
                   {%>
-                <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
+                <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID })%>
                 <% }%>
                 <%else
                     { %>
