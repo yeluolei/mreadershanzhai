@@ -50,8 +50,7 @@
                     </div>
                     <div class="time">
                         <span>
-                            <%:Html.Encode(remark.RemarkTime.TimeOfDay.ToString())%></span> <span class="time">
-                                <%:Html.Encode(remark.RemarkTime.Date.ToString()) %></span>
+                            <%:Html.Encode(remark.RemarkTime.ToString())%></span>
                     </div>
                 </div>
                 <p>
@@ -71,8 +70,8 @@
           { %>
             <li>
                 <%:Html.Encode(buyer.BuyUserName) %>
-                Buied@
-                <%:Html.Encode(buyer.BuyTime.ToShortTimeString()) %>
+                Bought@
+                <%:Html.Encode(buyer.BuyTime.ToString()) %>
             </li>
             <%} %>
         </div>

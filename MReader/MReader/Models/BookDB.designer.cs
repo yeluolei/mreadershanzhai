@@ -709,7 +709,7 @@ namespace MReader.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyTime", DbType="Date NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyTime", DbType="DateTime NOT NULL")]
 		public System.DateTime BuyTime
 		{
 			get

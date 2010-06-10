@@ -46,6 +46,7 @@ namespace MReader.Controllers
             BookInfoFormModel bookInfo = new BookInfoFormModel(book);
             return View(bookInfo);
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult Buy(int bookId,FormCollection fc)
