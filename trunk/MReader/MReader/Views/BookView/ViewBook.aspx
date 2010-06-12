@@ -22,8 +22,9 @@
                                 </div>
                                 <div id="sidebarnav">
                                     <ul>
-                                       <li>我要评论</li>
-                                       <li>查看评论</li>
+                                       <li><%=Html.ActionLink("Leave a comment","Index","BookInfo",
+                                               new {bookid = Model.book.ID},new{}) %></li>
+                                       
                                     </ul>
                                 </div>
                                 <div id="bookprofile"></div>
@@ -42,7 +43,7 @@
                                     </td>
                                     <td>                                       
                                         <%=Html.TextBox("pageIndex",Model.pageIndex) %>
-                                        <%=Html.Label("//"+Model.book.TotalPages.ToString() + " Pages")%>
+                                        <%=Html.Label("/"+Model.book.TotalPages.ToString() + " Pages")%>
                                         <input type="submit" value="Go" />
                                     </td>
                                     <td>

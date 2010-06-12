@@ -6,8 +6,8 @@
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>NotFound</h2>
-
+    <h2>Sorry, We haven't found any books matching your request.</h2>
+    
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

@@ -36,7 +36,9 @@
                 <%else
                     { %>
                 <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
+                
                 <%}%></div>
+                 
             <div>
                 <%:Model.book.Description%></div>
         </div>
@@ -78,6 +80,7 @@
                                "Index",
                                new { bookid = Model.book.ID, page = (Model.pageIndex - 1) }, new { })%>
                     <% } %>
+                    <div>Pages:</div>
                     <%for (int i = 0; i < Model.TotalPage(); i++)
                       {%>
                           <%= Html.ActionLink((i + 1).ToString(),
@@ -92,7 +95,7 @@
                                new { bookid = Model.book.ID, page = (Model.pageIndex + 1) }, new { })%>
                     <% } %>
                     <%:Html.TextArea("RemarkContent")%>
-                    <input class="comment" type="submit" value="Comment" />
+                    <input class="comment" type="submit" value="Leave a comment" />
                     <%} %>
                 </td>
                 <td class="buyers">

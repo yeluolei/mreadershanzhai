@@ -3,10 +3,36 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        History</h2>
-    <label>
-        price purchasetime bookname
-    </label><br />
+        My Purchase History</h2>
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <b>Price</b>
+            </td>
+            <td>
+                <b>Purchase Time</b>
+            </td>
+            <td>
+                <b>Book Title</b>
+            </td>
+        </tr>
+        <%foreach (var hist in Model.Customer.PurchaseHistories)
+          { %>
+        <tr>
+            <td>
+                <%=hist.Price.ToString("C") %>
+            </td>
+            <td>
+                <%=hist.PurchaseTime.ToString() %>
+            </td>
+            <td>
+                <%=Html.ActionLink(hist.BookTitle, "index", "Bookinfo", new { bookid = hist.BookID }, new { })%>
+            </td>
+        </tr>
+        <%} %>
+    </table>
+    <%--
+     
     <%
         MReader.Models.BookRepository bookRepo = new MReader.Models.BookRepository();
         
@@ -14,6 +40,6 @@
       {%>
     <%=Html.Label(Convert.ToDouble(i.Price).ToString())%>
     <%=Html.Label(i.PurchaseTime.ToString()) %>
-    <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title,"View","BookView") %><br />
-    <%}%>
+    <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title, "index", "Bookinfo", new { bookid = i.BookID }, new { })%><br />
+    <%}%>--%>
 </asp:Content>

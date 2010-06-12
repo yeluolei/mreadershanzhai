@@ -15,10 +15,9 @@ namespace MReader.Controllers
         
         public ActionResult Index()
         {
-            int a = 123;
-            string str = string.Format("asdfsa",a);
-            Console.WriteLine(str);
-            return View();
+            BookSearchResult bsr = new BookSearchResult(db.GetRecommendBooks(5));
+            
+            return View(bsr);
         }
 
         public ActionResult About()

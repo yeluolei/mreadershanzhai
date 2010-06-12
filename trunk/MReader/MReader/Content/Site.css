@@ -176,6 +176,7 @@ input.image
     outline:medium none;
     font-size:15px;
     line-height:normal;
+    background-image:url("/images/search.jpg");
 }
 /*----------------------------------------------*/
 a:link

@@ -14,8 +14,8 @@ namespace MReader.Controllers
         //
         // GET: /Search/Title
 
-        //[Authorize]
-        //[HttpPost]
+        [Authorize]
+        [HttpPost]
         public ActionResult Title(string book_title)
         {
             var books = search.ByTitle( book_title );

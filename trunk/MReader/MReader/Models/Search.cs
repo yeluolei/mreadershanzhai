@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
 
 namespace MReader.Models
 {
@@ -25,7 +26,7 @@ namespace MReader.Models
             return keyword;
         }
 
-        public Books ByTitle (string book_title)
+        public BookSearchResult ByTitle (string book_title)
         {
             List<Book> books = db.GetAllBooks().ToList();
             List<Book> temp = new List<Book>() ;
@@ -33,7 +34,8 @@ namespace MReader.Models
 
             foreach (string yyx in keyword) {
                 foreach (Book book in books) {
-                    if (book.Title.Contains(yyx)) {
+                    if (book.Title.ToLower().Contains(yyx.ToLower() ))
+                    {
                         if (temp.Contains(book))
                         {
                             temp.Remove(book);
@@ -44,12 +46,12 @@ namespace MReader.Models
                     }
                 }
             }
-            Books result = new Books(temp);
+            BookSearchResult result = new BookSearchResult(temp);
             result.keyword.Add("Title:" + book_title);
             return result  ;
         }
 
-        public Books AdvancedSearch(string title, string ISBN, string author, string Publisher) {
+        public BookSearchResult AdvancedSearch(string title, string ISBN, string author, string Publisher) {
             List<Book> books = db.GetAllBooks().ToList();
             List<Book> temp = new List<Book>();
             List<string> title_keyword = MakeKeyword ( title );
@@ -60,14 +62,14 @@ namespace MReader.Models
                 bool ifmatch = false;
                 if (title != "")  {
                     foreach (string yyx in title_keyword) {
-                        if (book.Title.Contains(yyx))
+                        if (book.Title.ToLower().Contains(yyx.ToLower()))
                             ifmatch = true;
                         else
                             ifmatch = false;
                     }
                 }
                 if (  ISBN != "" ) {
-                    if ( ISBN == book.ISBN )
+                    if ( String.Equals(ISBN, book.ISBN,StringComparison.OrdinalIgnoreCase )  )
                         ifmatch = true ;
                     else 
                         ifmatch = false ;
@@ -75,7 +77,7 @@ namespace MReader.Models
                 if (author != "") {
                     foreach (string yyx in author_keyword)
                     {
-                        if (book.Author.Contains(yyx))
+                        if (book.Author.ToLower().Contains(yyx.ToLower()))
                             ifmatch = true;
                         else
                             ifmatch = false;
@@ -84,7 +86,7 @@ namespace MReader.Models
                 if (Publisher != "") {
                     foreach (string yyx in Publisher_keyword)
                     {
-                        if (book.Publisher.Contains(yyx))
+                        if (book.Publisher.ToLower().Contains(yyx.ToLower()))
                             ifmatch = true;
                         else
                             ifmatch = false;
@@ -93,7 +95,7 @@ namespace MReader.Models
                 if (ifmatch == true)
                     temp.Add(book);
             }
-            Books result = new Books(temp);
+            BookSearchResult result = new BookSearchResult(temp);
             if (ISBN != "")
                 result.keyword.Add("ISBN:" + ISBN + " ;");
             if (title != "")
