@@ -58,21 +58,46 @@ li .bar
     
 #RemarkContent
 {
+    white-space:normal;
     width:100%;
     height:auto;
-    min-height:50px;
-    overflow:scroll;
+    min-height:70px;
     }
+    
+table
+{
+    table-layout:fixed;
+    width:100%;
+    }
+    
+.behindBook
+{
+    margin-top:40px;
+    height:auto;
+    margin-bottom:10px;
+     }
 .remark
 {
+    overflow:hidden; 
+    white-space: normal;
+    word-wrap:break-all;
+    max-width:70%;
     width:70%;
-    padding-left:10px;
-    border-left:4px soild #CDCDCD;
-    height:auto;
-    float:left;
+    }
+.remark p
+{
+    display:block;
+    clear:both;
+    
     }
 .buyers
 {
-    width:30%;
-    float:left;
+    padding-top:3px;
+    border-left: 8px #9BBCE1 solid;
+    padding-left:10px;
+}
+
+.buyers li
+{
+    padding-top:10px;
     }

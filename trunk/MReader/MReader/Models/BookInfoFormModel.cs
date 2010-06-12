@@ -8,9 +8,6 @@ namespace MReader.Models
 {
     public class BookInfoFormModel
     {
-
-        
-
         public Book book = new Book();
         public int pageIndex { get; set; }
         public PaginatedList<Remark> paginatedRemarks { get; set; }
@@ -49,6 +46,12 @@ namespace MReader.Models
                 ||UserName.ToLower()=="admin")
                 return true;
             return false;
+        }
+
+
+
+        public int TotalPage(){
+            return paginatedRemarks.TotalPages;
         }
 
 
