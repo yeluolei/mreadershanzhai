@@ -18,7 +18,8 @@ namespace MReader.Controllers
         public ActionResult Index(int? ID,int? page)
         {
             Book book = bookDb.GetBookbyID(ID??26);
-            BookInfoFormModel bookInfo = new BookInfoFormModel(book , page??0);
+            Customer customer = cusDb.getCustomer(User.Identity.Name);
+            BookInfoFormModel bookInfo = new BookInfoFormModel(book ,customer, page??0);
             return View(bookInfo);
         }
 
@@ -43,10 +44,17 @@ namespace MReader.Controllers
         {
 
             Book book = bookDb.GetBookbyID(bookId);
-            BookInfoFormModel bookInfo = new BookInfoFormModel(book);
+            Customer customer = cusDb.getCustomer(User.Identity.Name);
+            BookInfoFormModel bookInfo = new BookInfoFormModel(book,customer);
             return View(bookInfo);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <param name="fc"></param>
+        /// <returns>success or fail page</returns>
         [Authorize]
         [HttpPost]
         public ActionResult Buy(int bookId,FormCollection fc)
@@ -54,18 +62,19 @@ namespace MReader.Controllers
             Customer customer = cusDb.getCustomer(User.Identity.Name);
 
             Book book = bookDb.GetBookbyID(bookId);
-            string [] ret = cusDb.Buy(User.Identity.Name,book);
-            if (ret.Length > 0)//fail to buy 
+            string [] errMsg = cusDb.Buy(User.Identity.Name,book);
+            if (errMsg.Length > 0)//fail to buy 
             {
-                foreach (string str in ret)
+                foreach (string str in errMsg)
                 {
                     ModelState.AddModelError("",str);
                 }
-                //return View(bookId);
-               // return Buy(bookId);
+                
+               return Buy(bookId);
             }
 
             book.Buyers.Add(new Buyer(customer));
+            book.TimesBought = book.Buyers.Count;
             bookDb.save();
             return View("BoughtSuccess", book);
 

@@ -39,7 +39,28 @@ namespace MReader.Models
             try
             {
                 var tmp = PurchaseHistories.SingleOrDefault(b => b.BookID == bookId);
-                return tmp == null;
+                return tmp != null;
+            }
+            catch
+            {
+                //multiple match then .... OK return true;
+                //TODO : eliminate multiple match
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
+        /// <author>latioswang</author>
+        public bool HasFaved(int bookId)
+        {
+            try
+            {
+                var tmp = this.FavouriteBooks.SingleOrDefault(b => b.BookID == bookId);
+                return tmp != null;
             }
             catch
             {

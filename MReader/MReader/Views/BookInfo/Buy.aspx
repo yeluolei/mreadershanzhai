@@ -10,7 +10,8 @@
     <h2>
         <%= Model.book.Title %></h2>
         <%=Html.ValidationSummary() %>
-    <div class="book">
+    <%Html.RenderPartial("BookForm", Model.book);%>
+    <%--<div class="book">
         <div class="bookcover">
             <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
         </div>
@@ -28,12 +29,18 @@
                 <%:Model.book.PublishDate.ToShortDateString()%></div>
             <div>
                 Price :
-                <%: Model.book.Price.ToString("C") %></div>
+                <%: Model.book.Price.ToString("C") %></div>--%>
+            <%=Html.Label("User name : ") %>
+            <%=Html.Encode(Model.customer.UserName) %>
+            <%=Html.Label("Current Balance : ") %>
+            <%=Html.Encode(Model.customer.CurrentMoney.ToString("C")) %>
+            <li><%=Html.ActionLink("Recharge my account", "Balance", "UserCenter", new { }, new { })%></li>
+             
             <% using(Html.BeginForm()) { %>
             <input type="submit" value="Buy" /> 
             <%} %>
-        </div>
-    </div>
+    <%--    </div>
+    </div>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

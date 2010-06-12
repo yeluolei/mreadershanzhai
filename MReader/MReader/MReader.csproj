@@ -79,7 +79,7 @@
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Helps\PaginatedList.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
-    <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\BookSearchResult.cs" />
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\Search.cs" />
@@ -172,9 +172,11 @@
     <Content Include="Views\Home\test.aspx" />
     <Content Include="Views\Home\test2.aspx" />
     <Content Include="Views\Search\AdvancedSearch.aspx" />
-    <Content Include="Views\Search\bookform.ascx" />
+    <Content Include="Views\Shared\BookForm.ascx" />
     <Content Include="Views\Search\NotFound.aspx" />
-    <Content Include="Views\Search\title.aspx" />
+    <Content Include="Views\Search\Title.aspx" />
+    <Content Include="Views\Shared\CompactBookForm.ascx" />
+    <Content Include="Views\Shared\RecommendedBooks.ascx" />
     <Content Include="Views\UserCenter\Balance.aspx" />
     <Content Include="Views\UserCenter\Favourite.aspx" />
     <Content Include="Views\UserCenter\History.aspx" />
@@ -214,7 +216,96 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="book\Effective.pdf" />
+    <None Include="book\asp.net\.svn\all-wcprops" />
+    <None Include="book\asp.net\.svn\entries" />
+    <None Include="book\asp.net\.svn\prop-base\p-1.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-10.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-11.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-12.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-13.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-14.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-15.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-16.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-17.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-18.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-19.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-2.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-20.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-3.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-4.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-5.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-6.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-7.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-8.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-9.png.svn-base" />
+    <None Include="book\asp.net\.svn\prop-base\p-cover.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-1.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-10.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-11.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-12.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-13.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-14.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-15.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-16.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-17.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-18.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-19.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-2.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-20.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-3.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-4.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-5.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-6.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-7.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-8.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-9.png.svn-base" />
+    <None Include="book\asp.net\.svn\text-base\p-cover.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\all-wcprops" />
+    <None Include="book\Essential_C++\.svn\entries" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-1-cover.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-1.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-10.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-11.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-12.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-13.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-14.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-15.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-16.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-17.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-18.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-19.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-2.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-20.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-3.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-4.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-5.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-6.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-7.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-8.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-9.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\prop-base\Essential_C++-cover.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-1-cover.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-1.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-10.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-11.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-12.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-13.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-14.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-15.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-16.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-17.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-18.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-19.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-2.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-20.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-3.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-4.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-5.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-6.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-7.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-8.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-9.png.svn-base" />
+    <None Include="book\Essential_C++\.svn\text-base\Essential_C++-cover.png.svn-base" />
     <None Include="Models\BookDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>BookDB.designer.cs</LastGenOutput>
@@ -237,7 +328,16 @@
       <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="book\asp.net\.svn\props\" />
+    <Folder Include="book\asp.net\.svn\tmp\prop-base\" />
+    <Folder Include="book\asp.net\.svn\tmp\props\" />
+    <Folder Include="book\asp.net\.svn\tmp\text-base\" />
+    <Folder Include="book\Essential_C++\.svn\props\" />
+    <Folder Include="book\Essential_C++\.svn\tmp\prop-base\" />
+    <Folder Include="book\Essential_C++\.svn\tmp\props\" />
+    <Folder Include="book\Essential_C++\.svn\tmp\text-base\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

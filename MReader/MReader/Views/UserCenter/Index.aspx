@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <h2>Account Information</h2>
     <label >Name : </label> 
-    <%=Html.LabelFor(model =>model.Customer.UserName) %><br />
+    <%=Html.Label(Model.Customer.UserName) %><br />
     <label>Remaining Money : </label> 
     <div>
     <%=Model.Customer.CurrentMoney.ToString("c")%></div>

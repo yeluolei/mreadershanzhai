@@ -38,26 +38,36 @@ namespace MReader.Models
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="bookId"></param>
-        /// <returns></returns>
+        /// <returns>
+        ///  a empty string[]: successfully bought 
+        ///  a non-empty string[]: has something wrong
+        /// </returns>
         /// <author>latioswang</author>
         public string [] Buy(string userName,Book book) {
             Customer customer = this.getCustomer(userName);
+            
 
+            //handle error
             if (customer.HasBought( book.ID)) {
-                return new string[] {"You've already bought it."};
+                return new string[] {"You've already bought it. Don't buy the same book twice."};
             }
             
             if (book.Price>customer.CurrentMoney) {
                 return new string[] {"You have not enough money."};
             }
 
+
+            //actural buy logic
             customer.CurrentMoney -= book.Price;
+            customer.SpentCost += book.Price;
             PurchaseHistory newPH = new PurchaseHistory();
             newPH.BookID = book.ID;
-            //newPH.Customer = customer;
+            
             newPH.Price = book.Price;
             newPH.PurchaseTime = DateTime.Now;
             newPH.UserName = userName;
+            newPH.BookTitle = book.Title;
+
             customer.PurchaseHistories.Add(newPH);
             this.Save();
 

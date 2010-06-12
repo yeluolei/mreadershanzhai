@@ -14,18 +14,19 @@ namespace MReader.Models
         public string bookcover { get; set; }
         const int pagesize = 10;
         public IQueryable<Buyer> LatestBuyers { get; set; }
-
+        public Customer customer;
         public BookInfoFormModel() 
         {
         }
 
-        public BookInfoFormModel(Book book,int page = 0)
+        public BookInfoFormModel(Book book,Customer customer,int page = 0)
         {
             this.book = book;
             this.pageIndex = page;
             this.bookcover = string.Format(book.Content, "cover");
             this.paginatedRemarks = new PaginatedList<Remark>(FindAllRemarks(), pageIndex, pagesize);
-            this.LatestBuyers = FindBuyers(); 
+            this.LatestBuyers = FindBuyers();
+            this.customer = customer;
         }
 
         private IQueryable<Remark> FindAllRemarks()

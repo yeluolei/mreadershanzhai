@@ -78,7 +78,22 @@ namespace MReader.Models
         {
             db.Books.DeleteOnSubmit(book);
         }
+        
+        /// <summary>
+        /// get |count| books which most people buy
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        /// <author>latioswang</author>
+        public List<Book> GetRecommendBooks(int count) {
+            var booklist =  from book in db.Books
+                   
+                   orderby book.TimesBought descending
+                   select book;
+            return booklist.Take(count).ToList();
 
+        }
+        
         public void save()
         {
             db.SubmitChanges();
