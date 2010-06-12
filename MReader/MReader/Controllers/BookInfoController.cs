@@ -35,7 +35,7 @@ namespace MReader.Controllers
             remark.RemarkContent = RemarkContent;
             book.Remarks.Add(remark);
             bookDb.save();
-            return Index(id,PageIndex-1);
+            return Index(id,PageIndex);
         }
 
         [Authorize]

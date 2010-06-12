@@ -10,7 +10,7 @@
     <div> Congratulations <b><%=User.Identity.Name %></b> your successfully purchaseed a new book!</div>
     <%-- NOTE: actionlink must *not* omit the last |new {}|
     --%>
-    <div>The new book is <b><%=Html.ActionLink(Model.Title, "ViewBook", "BookView", new { id = Model.ID })%></b>
+    <div>The new book is <b><%=Html.ActionLink(Model.Title, "ViewBook","BookView","viewbook", new { id = Model.ID , page = 0 })%></b>
     (<--click it's name to read)
     </div>
 
