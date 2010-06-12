@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<MReader.Models.Book>" %>
 
     <fieldset>
-        <legend>  <% =Html.Encode ( Model.Title ) %> </legend>
+        <legend>  <% =Html.ActionLink(Model.Title , "Search") %> </legend>
         
         <p>
             Price :
@@ -26,6 +26,9 @@
         <p>
             ISBN :
             <% =Html.Encode ( Model.ISBN ) %>
+        </p>
+        <p>
+            萝莉记得右边要加图片!!
         </p>
         
         

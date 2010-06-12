@@ -37,10 +37,12 @@
                         <div class="searchbox">
                             <span class="bo"><span class="bi">
                                 <input class="text" size="69" maxlength="250" accesskey="S" type="text"/>
+                      
                                 <input class="image" value="Search" alt="Search" title="Search" style="height: 33px;
                                     width: 185px;" src="/images/search.jpg"
                                     type="image"/>
                             </span></span>
+
                         </div>
                         </form>
                     </div>

@@ -14,7 +14,7 @@ namespace MReader.Controllers
     {
         BookRepository db = new BookRepository();
 
-        string bookPath = "E:\\study\\Programming\\Web\\MReaderIT2 - Copy\\MReader\\MReader\\book\\";
+        //string bookPath = "E:\\study\\Programming\\Web\\MReaderIT2 - Copy\\MReader\\MReader\\book\\";
         //
         // GET: /Admin/
 

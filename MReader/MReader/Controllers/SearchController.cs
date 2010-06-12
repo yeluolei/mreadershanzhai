@@ -12,20 +12,44 @@ namespace MReader.Controllers
         BookRepository db = new BookRepository();
         Search search = new Search();
         //
-        // GET: /Search/title
+        // GET: /Search/Title
 
-        [Authorize]
-        [HttpPost]
+        //[Authorize]
+        //[HttpPost]
         public ActionResult Title(string book_title)
         {
             var books = search.ByTitle( book_title );
             if (book_title == "")
                 return RedirectToAction("index", "home", new { });
-            Books temp = new Books(books);
-            if (books.Count() == 0)
+            if (books.books.Count() == 0)
                 return View("NotFound");
             else
-                return View( temp);
+                return View(books);
+        }
+
+        //
+        // GET:/Search/AdvancedSearch
+
+        public ActionResult AdvancedSearch() {
+            return View();
+        }
+
+        //
+        // POST:/Search/AdvancedSearch
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AdvancedSearch(FormCollection formValues) {
+            string title, ISBN, author, Publisher;
+            title = Request.Form["title"];
+            ISBN = Request.Form["ISBN"];
+            author = Request.Form["author"];
+            Publisher = Request.Form["Publisher"];
+            var books = search.AdvancedSearch(title, ISBN, author, Publisher);
+
+            if (books.books.Count() == 0)
+                return View("NotFound");
+            else
+                return View("title",books);
         }
     }
 }

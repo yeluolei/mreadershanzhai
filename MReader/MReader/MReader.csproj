@@ -73,11 +73,16 @@
     <Compile Include="Controllers\BookInfoController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Helps\PaginatedList.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
+    <Compile Include="Models\Books.cs" />
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\RuleViolation.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Views\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,6 +171,10 @@
     <Content Include="Views\Home\NewBook.aspx" />
     <Content Include="Views\Home\test.aspx" />
     <Content Include="Views\Home\test2.aspx" />
+    <Content Include="Views\Search\AdvancedSearch.aspx" />
+    <Content Include="Views\Search\bookform.ascx" />
+    <Content Include="Views\Search\NotFound.aspx" />
+    <Content Include="Views\Search\title.aspx" />
     <Content Include="Views\UserCenter\Balance.aspx" />
     <Content Include="Views\UserCenter\Favourite.aspx" />
     <Content Include="Views\UserCenter\History.aspx" />
