@@ -7,6 +7,7 @@ namespace MReader.Models
 {
     public class Books
     {
+        public List<string> keyword = new List<string> ();
         public List<Book> books;
         public Books(List<Book> books)
         {
