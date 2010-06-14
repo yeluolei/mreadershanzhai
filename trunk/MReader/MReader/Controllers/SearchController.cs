@@ -30,6 +30,7 @@ namespace MReader.Controllers
         //
         // GET:/Search/AdvancedSearch
 
+        [Authorize]
         public ActionResult AdvancedSearch() {
             return View();
         }
