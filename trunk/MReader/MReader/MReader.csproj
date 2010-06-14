@@ -154,8 +154,11 @@
     <Content Include="book\Essential_C++\Essential_C++-7.png" />
     <Content Include="book\Essential_C++\Essential_C++-8.png" />
     <Content Include="book\Essential_C++\Essential_C++-9.png" />
+    <Content Include="Content\accordion\flora.accordion.css" />
     <Content Include="Content\BookInfo.css" />
     <Content Include="Content\BookViewStyle.css" />
+    <Content Include="Scripts\accordion\jquery.accordion.js" />
+    <Content Include="Scripts\accordion\jquery.dimensions.js" />
     <Content Include="Views\Admin\DeleteBook.aspx" />
     <Content Include="Views\Admin\EditBook.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
