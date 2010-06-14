@@ -29,7 +29,7 @@
                 Price :
                 <%: Model.book.Price.ToString("C") %></div>
             <div>
-                <%if (Model.HasBought(Context.User.Identity.Name.ToString()))
+                <%if (Model.customer.HasBought(Model.book.ID))
                   {%>
                 <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
                 <% }%>

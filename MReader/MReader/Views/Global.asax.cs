@@ -28,6 +28,10 @@ namespace MReader
             "BookView/{action}/{id}/{page}", 
             new { controller = "BookView", action = "ViewBook", page = UrlParameter.Optional, id = UrlParameter.Optional });
 
+            routes.MapRoute("addbookmark",
+                "BookView/addbookmark",
+                new { Controller = "BookView", action = "ViewBook" });
+
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
