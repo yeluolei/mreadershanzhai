@@ -71,9 +71,8 @@ namespace MReader.Models
             customer.PurchaseHistories.Add(newPH);
             this.Save();
 
-            return new string[] {};
-            
-
+            return new string[] {};           
         }
+
     }
 }

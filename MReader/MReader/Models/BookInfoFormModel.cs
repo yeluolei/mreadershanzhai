@@ -44,7 +44,7 @@ namespace MReader.Models
 
         public bool HasBought(String UserName) {
             if (book.Buyers.Any(b => b.BuyUserName.Equals(UserName, StringComparison.InvariantCultureIgnoreCase))
-                ||UserName.ToLower()=="admin")
+                )
                 return true;
             return false;
         }
