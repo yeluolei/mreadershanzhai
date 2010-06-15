@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="Maincontain">
-        <div class="head">
+        <div id="masterhead" class="head">
             <div class="headup">
                 <div class="topbar">
                     <div class="topbartext">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="page">
+        <div id="masterMenu" class="page">
             <ul id="menu">
                 <li>
                     <%: Html.ActionLink("Home", "Index", "Home")%></li>
