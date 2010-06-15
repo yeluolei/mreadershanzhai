@@ -172,8 +172,6 @@
     <Content Include="Views\BookView\ViewBook.aspx" />
     <Content Include="Views\Home\Login.aspx" />
     <Content Include="Views\Home\NewBook.aspx" />
-    <Content Include="Views\Home\test.aspx" />
-    <Content Include="Views\Home\test2.aspx" />
     <Content Include="Views\Search\AdvancedSearch.aspx" />
     <Content Include="Views\Shared\BookForm.ascx" />
     <Content Include="Views\Search\NotFound.aspx" />
