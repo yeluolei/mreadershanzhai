@@ -9,6 +9,15 @@
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("div.logo").click(function () {
+                open("/");
+            }
+        )
+        }
+    );
+    </script>
 </head>
 <body>
     <div class="Maincontain">
@@ -21,27 +30,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div>
-                        <div>
-                            <a href="/"><img src="/images/logo.png" alt="Mreader" height="51" width="147" /></a>
-                        </div>
-                    </div>
+                <div class="logo" >
+                    <img src="/images/logo.png" alt="Mreader" height="51" width="147"/>
                 </div>
-                <br class="b3" />
-                <div class="search">
-                    <div class="searchboxbar">
-                        <% using (Html.BeginForm("title", "search"))
-                           { %>
-                        <div class="searchbox">
-                            <span class="bo"><span class="bi">
-                                <input class="text" size="69" maxlength="250" name="book_title" type="text" />
-                                <input class="image" title="Search" value=" " type="submit" />
-                                <%--                                <input type="submit" value="Search" />--%>
-                            </span></span>
-                        </div>
-                        <% } %>
+            </div>
+            <div class="search">
+                <div class="searchboxbar">
+                    <% using (Html.BeginForm("title", "search"))
+                       { %>
+                    <div class="searchbox">
+                        <span class="bo"><span class="bi">
+                            <input class="text" size="69" maxlength="250" name="book_title" type="text" />
+                            <input class="image" title="Search" value=" " type="submit" />
+                            <%--                                <input type="submit" value="Search" />--%>
+                        </span></span>
                     </div>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -59,6 +63,7 @@
         </div>
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
             <div id="footer">
                 <div class="footmain">
                     <center>
@@ -74,7 +79,6 @@
                     </center>
                 </div>
             </div>
-        </div>
     </div>
 </body>
 </html>

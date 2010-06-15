@@ -5,8 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <p>
+
     <%--<div style = "display :block">
         <img alt="cover" height="125" width="90px" src="/book/asp.net/asp.net-cover.png" />
         &nbsp;
@@ -18,6 +17,5 @@
         &nbsp;&nbsp;&nbsp;
         <%=Html.ActionLink("Essential C++", "ViewBook", "BookView", new { id = 2, page = 1 }, new { })%>--%>
 
-    </p>
 
 </asp:Content>
