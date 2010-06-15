@@ -34,16 +34,16 @@
 		                                    <a class="ui-accordion-link acc1"><b>Book Information</b>
 			                                    <span class="ui-accordion-right"></span></a> 
 		                                    <div> 
-                                                <b><%:Html.Label("Title:") %></b> <br />
-			                                    &nbsp&nbsp<%=Model.book.Title %><br /> 
-                                                <b><%:Html.Label("Author:") %></b><br />
-			                                    &nbsp&nbsp<%=Model.book.Author %><br />
-                                               <b> <%:Html.Label("PublishData:") %> </b><br />
-			                                    &nbsp&nbsp<%=Model.book.PublishDate %><br /> 
-                                               <b> <%:Html.Label("Publisher:") %></b><br />
-                                                &nbsp&nbsp<%=Model.book.Publisher %><br />
-                                               <b> <%:Html.Label("Price:") %></b><br />
-                                                &nbsp&nbsp<%=Model.book.Price %><br />
+                                                <p id="mark"><b><%:Html.Label("Title:") %></b> <br />
+			                                    &nbsp&nbsp <%=Model.book.Title %></p> 
+                                                <p><b><%:Html.Label("Author:") %></b><br />
+			                                    &nbsp&nbsp <%=Model.book.Author %></p>
+                                               <p><b> <%:Html.Label("PublishData:") %> </b><br />
+			                                    &nbsp&nbsp <%=Model.book.PublishDate %> </p>
+                                               <p><b> <%:Html.Label("Publisher:") %></b><br />
+                                                &nbsp&nbsp <%=Model.book.Publisher %></p>
+                                               <p><b> <%:Html.Label("Price:") %></b><br />
+                                                &nbsp&nbsp <%=Model.book.Price %></p>
 		                                    </div> 
 	                                    </li> 
 	                                    <li> 
@@ -64,7 +64,7 @@
                                 <tr>
                                     <td>
                                         <div id = "previousbutton">  
-                                           <a href="#" onclick="previous()"><img src="/images/arrow_left_green_48.png" /></a>
+                                           <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />
                                         </div>
                                     </td>
                                     <td>                                       
@@ -75,18 +75,19 @@
                                     </td>
                                     <td>
                                         <div id="nextbutton">                                    
-                                            <a href="#" onclick="next()" ><img src="/images/arrow_right_green_48.png" /></a>                     
+                                            <img onclick="next()" class="imagebutton" alt="next" src="/images/arrow_right_green_48.png" />                     
                                         </div>
                                     </td>
                                     <td>
                                         <input id = "bookmark" type = "button" value="bookmark"/>
+                                        <input id = "note" type = "button" value="note"/> 
                                         <img id = "scroll" src="/images/12-em-plus.png" />
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div id="bookcontent">
-                            <img id="book" height="1035px" width="800px" alt="loading" src="<%=Model.pageURL%>"  />
+                            <img id="book" height="1035px" width="800px" alt="loading" oncontextmenu="return false;" src="<%=Model.pageURL%>"  />
                         </div>
                         
                     </td>
@@ -102,7 +103,6 @@
 
         <link href="/Content/accordion/flora.accordion.css" rel="stylesheet" type="text/css" />
         <script src="/Scripts/accordion/jquery.accordion.js" type="text/javascript"></script>
-<%--        <script src="/Scripts/accordion/jquery.dimensions.js" type="text/javascript"></script>--%>
 
         <script language="javascript" type="text/javascript">         
 
@@ -113,6 +113,8 @@
             var ajaxUrl;
             var ajaxUrl2;
             var firstClick = true;
+            var x = 10;  
+	        var y = 20;
 
             function preload(imgURL) {
                 var i = new Image();
@@ -148,6 +150,9 @@
                     var img = document.getElementById("book").src = bookURLGlobal.replace(regex,pageNumGlobal);
                     document.getElementById("pageIndex").value = pageNumGlobal;
                 }
+                else{
+                    pageNumGlobal = 1;
+                    }
                 Buttonvisible();
             }
 
@@ -166,26 +171,19 @@
                     totalPagesGlobal = <%=Model.book.TotalPages %>;
                     Buttonvisible();
 
-//                    alert("http://" + window.location.host + "/bookview/addbookmark");
-
                     $("#bookmark").click( function() {
                             GetURL();
                             $.get( ajaxUrl,
                             function(data, textStatus){ alert("succeed");} );
                     });
 
-
+                    $("#note").click(function(){
+                            $("#toolbar").append("<input id=\"note2\" type = \"text\" />");});
 
 	                    $("#acc1").accordion({
 		                    alwaysOpen: false,
 		                    autoheight: false,
 		                    header: 'a.acc1',
-		                    clearStyle: true
-	                    });
-	                    $("#acc2").accordion({
-		                    alwaysOpen: false,
-		                    autoheight: false,
-		                    header: 'a.acc2',
 		                    clearStyle: true
 	                    });
 
@@ -194,12 +192,37 @@
                                     function(data){ 
                                                     var temp = "";
                                                     for( var i = 0; i<data.length; ++i){
-                                                        temp = temp + data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a><br />";
+                                                        temp = temp + "<p >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p>";
                                                     }
                                                     $("#bookmark_content").text("");
                                                    $("#bookmark_content").append(temp);
                                                  } );
-                                    });                           
+                                    }); 
+
+
+	                $("#mark").mouseover(function(e){
+       	                this.myTitle = "test";
+		                this.title = "";	
+	                    var tooltip = "<div id='tooltip'>"+ "123412" +"<\/div>"; //创建 div 元素
+		                $("body").append(tooltip);	//把它追加到文档中
+		                $("#tooltip")
+			                .css({
+				                "top": (e.pageY+y) + "px",
+				                "left": (e.pageX+x)  + "px"
+			                }).show("fast");	  //设置x坐标和y坐标，并且显示
+                    });
+                    $("#mark").mouseout(function(){		
+		                this.title = this.myTitle;
+		                $("#tooltip").remove();   //移除 
+                    });
+
+                    $("#mark").mousemove(function(e){
+		                $("#tooltip")
+			                .css({
+				                "top": (e.pageY+y) + "px",
+				                "left": (e.pageX+x)  + "px"});
+			                });
+                       
                     } );
 
             function GetURL(){
@@ -207,13 +230,10 @@
                 }
 
             function gotoPage( pageNum ) {
-//                var img = document.getElementById("book").src = bookURLGlobal.replace(regex,pageNum);
                 document.getElementById("book").src = bookURLGlobal.replace(regex,pageNum);
                 document.getElementById("pageIndex").value = pageNum;
                 pageNumGlobal = pageNum;
-                }
-            
-            
-
+                }      
+                                          
    </script>
 </asp:Content>
