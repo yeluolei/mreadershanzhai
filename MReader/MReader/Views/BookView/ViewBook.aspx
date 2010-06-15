@@ -29,51 +29,31 @@
                                 </div>
                                 <div id="bookprofile">
                                     <ul id="acc1" class="ui-accordion-container"> 
-	                                    <li> 
+                                          <li> 
 		                                    <div class="ui-accordion-left"></div> 
-		                                    <a class="ui-accordion-link acc1" id="getBookmark">Bookmark
-			                                    <span class="ui-accordion-right"></span></a> 
-		                                    <div id = "bookmark_content">                                
-<%--			                                    <ul class="ui-accordion-container" id="acc2"> 
-				                                    <li> 
-					                                    <div class="ui-accordion-left"></div> 
-					                                    <a class="ui-accordion-link acc2">2a
-						                                    <span class="ui-accordion-right"></span></a> 
-					                                    <div> 
-						                                    2a<br /> 
-						                                    2a<br /> 
- 
-						                                    2a<br /> 
-					                                    </div> 
-				                                    </li> 
-				                                    <li> 
-					                                    <div class="ui-accordion-left"></div> 
-					                                    <a class="ui-accordion-link acc2">2b
-						                                    <span class="ui-accordion-right"></span></a> 
-					                                    <div> 
-						                                    2b<br /> 
- 
-						                                    2b<br /> 
-						                                    2b<br /> 
-					                                    </div> 
-				                                    </li> 
-			                                    </ul> --%>
-		                                    </div> 
-	                                    </li> 
-	                                    <li> 
- 
-		                                    <div class="ui-accordion-left"></div> 
-		                                    <a class="ui-accordion-link acc1">Book Information
+		                                    <a class="ui-accordion-link acc1"><b>Book Information</b>
 			                                    <span class="ui-accordion-right"></span></a> 
 		                                    <div> 
-			                                    <%=Model.book.Title %><br /> 
-			                                    <%=Model.book.Author %><br /> 
-			                                    <%=Model.book.PublishDate %><br /> 
-                                                <%=Model.book.Publisher %><br />
-                                                <%=Model.book.Price %><br />
+                                                <b><%:Html.Label("Title:") %></b> <br />
+			                                    &nbsp&nbsp<%=Model.book.Title %><br /> 
+                                                <b><%:Html.Label("Author:") %></b><br />
+			                                    &nbsp&nbsp<%=Model.book.Author %><br />
+                                               <b> <%:Html.Label("PublishData:") %> </b><br />
+			                                    &nbsp&nbsp<%=Model.book.PublishDate %><br /> 
+                                               <b> <%:Html.Label("Publisher:") %></b><br />
+                                                &nbsp&nbsp<%=Model.book.Publisher %><br />
+                                               <b> <%:Html.Label("Price:") %></b><br />
+                                                &nbsp&nbsp<%=Model.book.Price %><br />
 		                                    </div> 
- 
 	                                    </li> 
+	                                    <li> 
+		                                    <div class="ui-accordion-left"></div> 
+		                                    <a class="ui-accordion-link acc1" id="getBookmark"><b>Bookmark</b>
+			                                    <span class="ui-accordion-right"></span></a> 
+		                                    <div id = "bookmark_content">                                
+		                                    </div> 
+	                                    </li> 
+	    
                                     </ul> 
                                 </div> <%-- bookprofile--%>
                         </div>
@@ -91,6 +71,7 @@
                                         <%=Html.TextBox("pageIndex",Model.pageIndex) %>
                                         <%=Html.Label("/"+Model.book.TotalPages.ToString() + " Pages")%>
                                         <input type="submit" value="Go" />
+                                        
                                     </td>
                                     <td>
                                         <div id="nextbutton">                                    
@@ -99,12 +80,13 @@
                                     </td>
                                     <td>
                                         <input id = "bookmark" type = "button" value="bookmark"/>
+                                        <img id = "scroll" src="/images/12-em-plus.png" />
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div id="bookcontent">
-                            <img id="book" height="1035px" width="800px" alt="loading" src="<%=Model.pageURL%>" />
+                            <img id="book" height="1035px" width="800px" alt="loading" src="<%=Model.pageURL%>"  />
                         </div>
                         
                     </td>
@@ -217,7 +199,7 @@
                                                     $("#bookmark_content").text("");
                                                    $("#bookmark_content").append(temp);
                                                  } );
-                                    });
+                                    });                           
                     } );
 
             function GetURL(){
