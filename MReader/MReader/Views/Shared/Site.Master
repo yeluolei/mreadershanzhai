@@ -54,7 +54,7 @@
                 <%if (Context.User.IsInRole("admin"))
                   { %>
                 <li class="Menu4">
-                    <%: Html.ActionLink("AdMin", "Index", "Admin")%></li>
+                    <%: Html.ActionLink("AdMin", "Index", "AdminBook")%></li>
                 <%} %>
                 <li class="Menu3">
                     <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>

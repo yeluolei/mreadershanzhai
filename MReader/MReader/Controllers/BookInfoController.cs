@@ -15,9 +15,9 @@ namespace MReader.Controllers
         //
         // GET: /BookInfo
         [Authorize]
-        public ActionResult Index(int? ID,int? page)
+        public ActionResult Index(int? bookid,int? page)
         {
-            Book book = bookDb.GetBookbyID(ID??26);
+            Book book = bookDb.GetBookbyID(bookid??26);
             Customer customer = cusDb.getCustomer(User.Identity.Name);
             BookInfoFormModel bookInfo = new BookInfoFormModel(book ,customer, page??0);
             return View(bookInfo);
@@ -26,9 +26,9 @@ namespace MReader.Controllers
         //
         // POST: /BookInfo
         [Authorize, AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Index(int id,int PageIndex,String RemarkContent)
+        public ActionResult Index(int bookid,int PageIndex,String RemarkContent)
         {
-            Book book = bookDb.GetBookbyID(id);
+            Book book = bookDb.GetBookbyID(bookid);
             Remark remark = new Remark();
              
             remark.RemarkTime = DateTime.Now;
@@ -36,7 +36,7 @@ namespace MReader.Controllers
             remark.RemarkContent = RemarkContent;
             book.Remarks.Add(remark);
             bookDb.save();
-            return Index(id,PageIndex);
+            return Index(bookid,PageIndex);
         }
 
         [Authorize]

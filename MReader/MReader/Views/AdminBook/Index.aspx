@@ -88,7 +88,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "NewBook") %>
+        <%: Html.ActionLink("Create New", "NewBook","AdminBook") %>
     </p>
 
 </asp:Content>
