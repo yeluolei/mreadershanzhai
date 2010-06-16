@@ -17,6 +17,7 @@
       <Column Name="TimesBought" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
       <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
+      <Association Name="Book_Rater" Member="Raters" ThisKey="ID" OtherKey="BookId" Type="Rater" />
     </Type>
   </Table>
   <Table Name="dbo.Buyers" Member="Buyers">
@@ -36,6 +37,14 @@
       <Column Name="RemarkTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="RemarkContent" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="Book_Remark" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Raters" Member="Raters">
+    <Type Name="Rater">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Book_Rater" Member="Book" ThisKey="BookId" OtherKey="ID" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

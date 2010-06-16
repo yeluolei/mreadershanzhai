@@ -31,6 +31,7 @@
       <Association Name="Customer_FavouriteBook" Member="FavouriteBooks" ThisKey="UserName" OtherKey="UserName" Type="FavouriteBook" />
       <Association Name="Customer_PurchaseHistory" Member="PurchaseHistories" ThisKey="UserName" OtherKey="UserName" Type="PurchaseHistory" />
       <Association Name="Customer_Bookmark" Member="Bookmarks" ThisKey="UserName" OtherKey="UserName" Type="Bookmark" />
+      <Association Name="Customer_Rater" Member="Raters" ThisKey="UserName" OtherKey="UserName" Type="Rater" />
     </Type>
   </Table>
   <Table Name="dbo.Bookmarks" Member="Bookmarks">
@@ -42,6 +43,14 @@
       <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Note" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Customer_Bookmark" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Raters" Member="Raters">
+    <Type Name="Rater">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Customer_Rater" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
