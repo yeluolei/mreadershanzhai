@@ -69,7 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminBookController.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BookInfoController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -159,16 +160,24 @@
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Scripts\accordion\jquery.accordion.js" />
     <Content Include="Scripts\accordion\jquery.dimensions.js" />
-    <Content Include="Views\Admin\DeleteBook.aspx" />
-    <Content Include="Views\Admin\EditBook.aspx" />
-    <Content Include="Views\Admin\Index.aspx" />
-    <Content Include="Views\Admin\ViewBookInfo.aspx" />
+    <Content Include="Views\AdminBook\DeleteBook.aspx" />
+    <Content Include="Views\AdminBook\EditBook.aspx" />
+    <Content Include="Views\AdminBook\Index.aspx" />
+    <Content Include="Views\AdminBook\ViewBookInfo.aspx" />
+    <Content Include="Views\AdminUser\Create.aspx" />
+    <Content Include="Views\AdminUser\Delete.aspx" />
+    <Content Include="Views\AdminUser\Details.aspx" />
+    <Content Include="Views\AdminUser\Edit.aspx" />
+    <Content Include="Views\AdminUser\Error.aspx" />
+    <Content Include="Views\AdminUser\Index.aspx" />
+    <Content Include="Views\AdminUser\NotFound.aspx" />
+    <Content Include="Views\AdminUser\Success.aspx" />
     <Content Include="Views\BookInfo\BoughtSuccess.aspx" />
     <Content Include="Views\BookInfo\Buy.aspx" />
     <Content Include="Views\BookInfo\Index.aspx" />
     <Content Include="Views\Global.asax" />
     <Content Include="Scripts\jquery.js" />
-    <Content Include="Views\Admin\NewBook.aspx" />
+    <Content Include="Views\AdminBook\NewBook.aspx" />
     <Content Include="Views\BookView\ViewBook.aspx" />
     <Content Include="Views\Home\Login.aspx" />
     <Content Include="Views\Search\AdvancedSearch.aspx" />

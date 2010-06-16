@@ -14,6 +14,26 @@ namespace MReader.Models
         /// </summary>
         /// <param name="userName"></param>
         /// <returns>the customer of |userName|</returns>
+        /// 
+        public IQueryable<Customer> getAllCustomers()
+        {
+            return from cus in db.Customers
+                   where cus.UserName!=null
+                   orderby cus.UserName
+                   select cus;
+        }
+        public void AddCustomer(Customer cus)
+        {
+            db.Customers.InsertOnSubmit(cus);
+        }
+        public void DeleteCustomer(Customer cus)
+        {
+            db.Customers.DeleteOnSubmit(cus);
+        }
+        public bool isExist(string userName)
+        {
+            return db.Customers.Count(cus => cus.UserName == userName) > 0;
+        }
         public Customer getCustomer(string userName) {
             try
             {
