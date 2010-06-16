@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="Maincontain">
-        <div id="masterhead" class="head">
+        <div class="head">
             <div class="headup">
                 <div class="topbar">
                     <div class="topbartext">
@@ -30,8 +30,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo" >
-                    <img src="/images/logo.png" alt="Mreader" height="51" width="147"/>
+                <div class="logo">
+                    <img src="/images/logo.png" alt="Mreader" height="51" width="147" />
                 </div>
             </div>
             <div class="search">
@@ -42,43 +42,46 @@
                         <span class="bo"><span class="bi">
                             <input class="text" size="69" maxlength="250" name="book_title" type="text" />
                             <input class="image" title="Search" value=" " type="submit" />
-                            <%--                                <input type="submit" value="Search" />--%>
                         </span></span>
                     </div>
                     <% } %>
+                    <a href="/Search/AdvancedSearch">Advance Search</a>
                 </div>
             </div>
         </div>
-        <div id="masterMenu" class="page">
+        <div class="MenuPage">
             <ul id="menu">
-                <li>
-                    <%: Html.ActionLink("Home", "Index", "Home")%></li>
-                <li>
-                    <%: Html.ActionLink("About", "About", "Home")%></li>
-                <li>
-                    <%: Html.ActionLink("ViewBook", "ViewBook", "BookView")%></li>
-                <li>
+                <%if (Context.User.IsInRole("admin"))
+                  { %>
+                <li class="Menu4">
+                    <%: Html.ActionLink("AdMin", "Index", "Admin")%></li>
+                <%} %>
+                <li class="Menu3">
                     <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
+                <li class="Menu2">
+                    <%: Html.ActionLink("About", "About", "Home")%></li>
+                <li class="Menu1">
+                    <%: Html.ActionLink("Home", "Index", "Home")%></li>
             </ul>
         </div>
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer">
+            <div class="footmain">
+                <center>
+                    <%= Html.ActionLink("About us","about","home") %>
+                    <a href="mailto:zxykobezxy@gmail.com">Feed back</a> <a href="#">Help</a> <a href="#">
+                        Contact us</a>
+                </center>
+                <center>
+                    <div class="copyright">
+                        <p>
+                            © 2010 Mreader</p>
+                    </div>
+                </center>
             </div>
-            <div id="footer">
-                <div class="footmain">
-                    <center>
-                        <%= Html.ActionLink("About us","about","home") %>
-                        <a href="mailto:zxykobezxy@gmail.com">Feed back</a> <a href="#">Help</a> <a href="#">
-                            Contact us</a>
-                    </center>
-                    <center>
-                        <div class="copyright">
-                            <p>
-                                © 2010 Mreader</p>
-                        </div>
-                    </center>
-                </div>
-            </div>
+        </div>
     </div>
 </body>
 </html>
