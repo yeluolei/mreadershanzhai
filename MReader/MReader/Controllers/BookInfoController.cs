@@ -20,7 +20,7 @@ namespace MReader.Controllers
             Book book = bookDb.GetBookbyID(bookid??26);
             Customer customer = cusDb.getCustomer(User.Identity.Name);
             BookInfoFormModel bookInfo = new BookInfoFormModel(book ,customer, page??0);
-            return View(bookInfo);
+            return View("index",bookInfo);
         }
 
         //
@@ -88,12 +88,15 @@ namespace MReader.Controllers
         /// <returns>if rate successfully</returns>
         /// <author> latioswang </author>
         
-        public bool Rate(int bookid, int rating)
+        public ActionResult Rate(int bookid, int rating)
         {
             Book book = bookDb.GetBookbyID(bookid);
             Customer cus = cusDb.getCustomer(User.Identity.Name);
             if (cus.HasRated(bookid))
-                return false;//already rated;
+            {
+               // ModelState.AddModelError("rating", "You've already rated this book");
+                return this.Index(bookid,0);//already rated;
+            }
 
             Rater newrater = new Rater();
             newrater.BookId = bookid;
@@ -111,13 +114,11 @@ namespace MReader.Controllers
                     break;
                 case 5: book.rate5++;
                     break;
-                default: return false;
-
+                
             }
             bookDb.save();
             cusDb.Save();
-            RedirectToAction("index", "bookinfo", new { bookid = bookid });
-            return true;//ok
+            return this.Index(bookid,0);
         }
 
 

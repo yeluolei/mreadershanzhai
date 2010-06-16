@@ -65,6 +65,26 @@
                         { %>
                     <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
                     <%}%>
+                <div>
+                    <p><%=Model.book.rate1 %> people rated the book as 1 star</p>
+                    <p><%=Model.book.rate2 %> people rated the book as 2 star</p>
+                    <p><%=Model.book.rate3 %> people rated the book as 3 star</p>
+                    <p><%=Model.book.rate4 %> people rated the book as 4 star</p>
+                    <p><%=Model.book.rate5 %> people rated the book as 5 star</p>
+                    <p>Average rating is <%=Model.book.averageRating.ToString() %> stars.</p>
+                    <% if (!Model.customer.HasRated(Model.book.ID)) { %>
+                    <label>rate as </label>
+                        <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
+                        <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
+                        <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
+                        <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
+                        <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                        
+                        <label> stars.</label>
+                        <%} %>
+                        
+                    </div>
+            
                     </div>
                 <div>
                     <%:Model.book.Description%></div>
@@ -109,8 +129,7 @@
                                "Index",
                                new { bookid = Model.book.ID, page = (Model.pageIndex - 1) }, new { })%>
                     <% } %>
-                    <div>
-                        Pages:</div>
+                     
                     <%for (int i = 0; i < Model.TotalPage(); i++)
                       {%>
                     <%= Html.ActionLink((i + 1).ToString(),
