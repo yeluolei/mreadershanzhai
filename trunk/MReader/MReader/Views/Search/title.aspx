@@ -12,7 +12,6 @@
 
     <% foreach ( var book in Model.books ) {
            Html.RenderPartial("bookform",book);} %>
-       
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

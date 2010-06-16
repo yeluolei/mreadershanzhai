@@ -75,6 +75,7 @@
         <table>
             <tr>
                 <td class="remark">
+                    <div class="topBar"><center>Comment</center></div>
                     <%foreach (var remark in Model.paginatedRemarks)
                       { %>
                     <li>
@@ -128,6 +129,7 @@
                     <%} %>
                 </td>
                 <td class="buyers">
+                    <div class="topBar"><center>Sale History </center></div>
                     <%foreach (var buyer in Model.LatestBuyers)
                       { %>
                     <li>

@@ -72,10 +72,11 @@ li .bar
     }
     
 table
-{
+{  
     table-layout:fixed;
     width:100%;
     }
+
     
 .behindBook
 {
@@ -83,25 +84,41 @@ table
     height:auto;
     margin-bottom:10px;
      }
+.behindBook td
+{
+    vertical-align:top;    
+    }
 .remark
 {
-    overflow:hidden; 
+    overflow: hidden;
     white-space: normal;
-    word-wrap:break-all;
-    max-width:70%;
-    width:70%;
+    word-wrap: break-all;
+    max-width: 70%;
+    width: 70%;
+}
+.topBar
+{    padding :1px 1px 1px 1px ;
+    height : 25px;
+    border: #bfceff 1px solid;
+    font-weight: bold;
+    font-size:large;
+       /* Firefox 3.6 */  
+    background-image: -moz-linear-gradient(top, #ddecfb, #ffffff);   
+     /* Safari & Chrome */  
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffffff),color-stop(1, #ddecfb));   
+     /* IE6 & IE7 */  
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ddecfb', endColorstr='#ffffff');
     }
 .remark p
 {
     display:block;
     clear:both;
-    
     }
 .buyers
 {
     padding-top:3px;
     border-left: 8px #9BBCE1 solid;
-    padding-left:10px;
+    padding-left:5px;
 }
 
 .buyers li
