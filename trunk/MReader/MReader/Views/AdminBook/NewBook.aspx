@@ -8,7 +8,7 @@
 
     <h2>NewBook</h2>
 
-    <% using (Html.BeginForm("NewBook","Admin",FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return CheckForm()" } ))
+    <% using (Html.BeginForm("NewBook","AdminBook",FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return CheckForm()" } ))
        {%>
         <%: Html.ValidationSummary(true)%>
 
