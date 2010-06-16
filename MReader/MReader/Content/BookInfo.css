@@ -22,10 +22,17 @@
     
 .bookInfo
 {
+    width:240px;
     font-size:110%;
     float:left;
     height:200px;
     padding:0px;
+    }
+.bookInfo table,
+.bookInfo table td,
+.bookInfo table tr
+{
+    border-width:0px;
     }
 li
 {

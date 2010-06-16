@@ -133,13 +133,13 @@ body
   {
       }
       
- .bo
- {
-     border:2px solid #C7D9E9;
-     clear:both;
-     display:block;
-     float:left;
- }
+.bo
+{
+    border:2px solid #C7D9E9;
+    clear:both;
+    display:block;
+    float:left;
+}
      
 .bi
 {
@@ -243,42 +243,16 @@ first child of the left and right table columns */
 
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
-.page
-{
-    width: 100%;
-    margin-top:110px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#header
-{
-    position: relative;
-    margin-bottom: 0px;
-    color: #000;
-    padding: 0;
-}
-
-#header h1
-{
-    font-weight: bold;
-    padding: 5px 0;
-    margin: 0;
-    color: #fff;
-    border: none;
-    line-height: 2em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 32px !important;
-}
 
 #main
 {
     padding:  30px 0px 15px 0px;
     background-color: #fff;
     margin-bottom: 30px;
-    _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 }
+
 /*----------------------------------------------------------*/
+/*for foot*/
 #footer
 {
     margin:0 0 0.667em;
@@ -318,9 +292,16 @@ page width. Or, you can specify an exact pixel width. */
 
 /* TAB MENU   
 ----------------------------------------------------------*/
+.MenuPage
+{
+    width: 100%;
+    margin-top:110px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 ul#menu
 {
-    border-bottom: 1px #5C87B2 solid;
     padding: 0 0 2px;
     position: relative;
     margin: 0;
@@ -329,40 +310,61 @@ ul#menu
 
 ul#menu li
 {
-    display: inline;
+    border-top:0px;
+    min-width: 105px;
+    display: block;
     list-style: none;
-}
-
-ul#menu li#greeting
-{
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    color: #fff;
+    position: relative;
+    background-color: transparent;
+    margin-right: 1px;
+    float:right;
+    text-align: center;
+    font-family: arial, sans-serif;
 }
 
 ul#menu li a
 {
-    padding: 10px 20px;
+    padding: 0.5em 0px;
+    border-bottom: 4px solid;
+    display: block;
+    font-size: 117%;
     font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
+    line-height: normal;
+    outline: none;
 }
+
+ul#menu .Menu1 a
+{
+    border-color: #6A439C;
+    color: #6A439C;
+    }
+ul#menu .Menu2 a
+{
+    border-color: #0253A2;
+    color: #0253A2;
+    
+    }
+ ul#menu  .Menu3 a
+ {
+     border-color: #0191CE;
+     color: #0191CE;
+     } 
+ ul#menu .Menu4 a
+ {
+     border-color: #00AEFF;
+     color: #0296DB;
+     }
 
 ul#menu li a:hover
 {
-    background-color: #fff;
-    text-decoration: none;
+    text-decoration: none;   
 }
 
-ul#menu li a:active
+ul#menu li a:visited
 {
-    background-color: #a6e2a6;
-    text-decoration: none;
+    text-decoration: none;   
 }
+
 
 ul#menu li.selected a
 {
@@ -392,18 +394,6 @@ legend
     padding: 2px 4px 8px 4px;
 }
 
-/*input[type="text"] 
-{
-    width: 200px;
-    border: 1px solid #CCC;
-}
-
-input[type="password"] 
-{
-    width: 200px;
-    border: 1px solid #CCC;
-}
-*/
 
 /* TABLE
 ----------------------------------------------------------*/

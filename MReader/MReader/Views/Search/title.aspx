@@ -84,7 +84,7 @@
     }
 
     $(document).after(function () {
-        SearchHighlightID("searchresult","<%=Model.SSKeyWord %>");
+        SearchHighlightID("searchresult",<%=Model.SSKeyWord %>);
     })
 
 </script>

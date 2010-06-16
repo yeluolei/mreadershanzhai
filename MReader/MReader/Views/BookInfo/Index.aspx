@@ -4,7 +4,7 @@
     <%= Model.book.Title %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
-       <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -14,33 +14,61 @@
             <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
         </div>
         <div class="bookInfo">
-            <div>
-                Author :
-                <%: Model.book.Author %></div>
-            <div>
-                ISBN:<%:Model.book.ISBN %></div>
-            <div>
-                Publisher :
-                <%:Model.book.Publisher %></div>
-            <div>
-                Publisher date :
-                <%:Model.book.PublishDate.ToShortDateString()%></div>
-            <div>
-                Price :
-                <%: Model.book.Price.ToString("C") %></div>
-            <div>
-                <%if (Model.customer.HasBought(Model.book.ID))
-                  {%>
-                <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
-                <% }%>
-                <%else
-                    { %>
-                <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
-                
-                <%}%></div>
-                 
-            <div>
-                <%:Model.book.Description%></div>
+            <table>
+                <tr>
+                    <td>
+                        Author :
+                    </td>
+                    <td>
+                        <%: Model.book.Author %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ISBN:
+                    </td>
+                    <td>
+                        <%:Model.book.ISBN %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Publisher :
+                    </td>
+                    <td>
+                        <%:Model.book.Publisher %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Publisher date :
+                    </td>
+                    <td>
+                        <%:Model.book.PublishDate.ToShortDateString()%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price :
+                    </td>
+                    <td>
+                        <%: Model.book.Price.ToString("C") %>
+                    </td>
+                </tr>
+                </table>
+                <div>
+                    <%if (Model.customer.HasBought(Model.book.ID))
+                      {%>
+                    <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
+                    <% }%>
+                    <%else
+                        { %>
+                    <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
+                    <%}%>
+                    </div>
+                <div>
+                    <%:Model.book.Description%></div>
+            
         </div>
     </div>
     <div class="behindBook">
@@ -51,19 +79,19 @@
                       { %>
                     <li>
                         <div class="bar">
-                        <table>
-                        <tr>
-                            <td class="user">
-                                <span>
-                                    <%:Html.Encode(remark.RemarkUserName)%>
-                                </span>
-                            </td>
-                            <td class="time">
-                                <span>
-                                    <%:Html.Encode(remark.RemarkTime.ToString())%></span>
-                            </td>
-                            </tr>
-                          </table>
+                            <table>
+                                <tr>
+                                    <td class="user">
+                                        <span>
+                                            <%:Html.Encode(remark.RemarkUserName)%>
+                                        </span>
+                                    </td>
+                                    <td class="time">
+                                        <span>
+                                            <%:Html.Encode(remark.RemarkTime.ToString())%></span>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <p>
                             <%:Html.Encode(remark.RemarkContent.ToString())%></p>
@@ -80,14 +108,15 @@
                                "Index",
                                new { bookid = Model.book.ID, page = (Model.pageIndex - 1) }, new { })%>
                     <% } %>
-                    <div>Pages:</div>
+                    <div>
+                        Pages:</div>
                     <%for (int i = 0; i < Model.TotalPage(); i++)
                       {%>
-                          <%= Html.ActionLink((i + 1).ToString(),
+                    <%= Html.ActionLink((i + 1).ToString(),
                                "Index",
                                new { bookid = Model.book.ID, page = i }, new { })%>
-                               &nbsp;
-                               <%} %>
+                    &nbsp;
+                    <%} %>
                     <% if (Model.HasNextPage)
                        { %>
                     <%= Html.ActionLink("Next page",
