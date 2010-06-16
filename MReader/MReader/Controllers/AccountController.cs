@@ -95,6 +95,8 @@ namespace MReader.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
+                    CustomerRepository cusdb = new CustomerRepository();
+                    cusdb.getCustomer(model.UserName);//add customer to our database
                     return RedirectToAction("Index", "Home");
                 }
                 else
