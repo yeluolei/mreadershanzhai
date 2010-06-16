@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BookDB" Class="BookDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BookDB.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BookDBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Books" Member="Books">
-    <Type Name="Book">
-      <Column Name="ISBN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Price" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
-      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Content" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Author" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="TotalPages" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Publisher" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="TimesFavored" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TimesBought" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
-      <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
-      <Association Name="Book_Rater" Member="Raters" ThisKey="ID" OtherKey="BookId" Type="Rater" />
-    </Type>
-  </Table>
   <Table Name="dbo.Buyers" Member="Buyers">
     <Type Name="Buyer">
       <Column Name="BuyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,12 +19,28 @@
       <Association Name="Book_Remark" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Raters" Member="Raters">
-    <Type Name="Rater">
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.Books" Member="Books">
+    <Type Name="Book">
+      <Column Name="ISBN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Price" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Author" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotalPages" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="Book_Rater" Member="Book" ThisKey="BookId" OtherKey="ID" Type="Book" IsForeignKey="true" />
+      <Column Name="Publisher" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TimesFavored" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimesBought" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rate5" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rate4" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rate3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rate2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rate1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
+      <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
     </Type>
   </Table>
 </Database>

@@ -70,6 +70,21 @@ namespace MReader.Models
             }
         }
 
+        public bool HasRated(int bookId)
+        {
+            try
+            {
+                var tmp = this.Raters.SingleOrDefault(r => r.BookId==bookId);
+                return tmp != null;
+            }
+            catch
+            {
+                //multiple match then .... OK return true;
+                //TODO : eliminate multiple match
+                return true;
+            }
+        }
+
 
     }
 }

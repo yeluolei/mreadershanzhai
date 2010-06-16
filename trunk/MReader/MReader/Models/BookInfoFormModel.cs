@@ -78,5 +78,7 @@ namespace MReader.Models
                 return paginatedRemarks.HasPreviousPage;
             }
         }
+
+        
     }
 }
