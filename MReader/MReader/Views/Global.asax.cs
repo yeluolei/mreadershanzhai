@@ -32,6 +32,11 @@ namespace MReader
                 "BookView/addbookmark",
                 new { Controller = "BookView", action = "ViewBook" });
 
+            routes.MapRoute("adminuser",
+                "AdminUser/{action}/{username}",
+                new { Controller = "AdminUser", action = "Index",username=""});
+
+
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
