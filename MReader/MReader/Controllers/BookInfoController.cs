@@ -80,6 +80,46 @@ namespace MReader.Controllers
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookid"></param>
+        /// <param name="rating">rating = 1..5</param>
+        /// <returns>if rate successfully</returns>
+        /// <author> latioswang </author>
+        
+        public bool Rate(int bookid, int rating)
+        {
+            Book book = bookDb.GetBookbyID(bookid);
+            Customer cus = cusDb.getCustomer(User.Identity.Name);
+            if (cus.HasRated(bookid))
+                return false;//already rated;
+
+            Rater newrater = new Rater();
+            newrater.BookId = bookid;
+            newrater.UserName = User.Identity.Name;
+            cus.Raters.Add(newrater);
+            switch (rating)
+            {
+                case 1: book.rate1++;
+                    break;
+                case 2: book.rate2++;
+                    break;
+                case 3: book.rate3++;
+                    break;
+                case 4: book.rate4++;
+                    break;
+                case 5: book.rate5++;
+                    break;
+                default: return false;
+
+            }
+            bookDb.save();
+            cusDb.Save();
+            RedirectToAction("index", "bookinfo", new { bookid = bookid });
+            return true;//ok
+        }
+
 
     }
 }
