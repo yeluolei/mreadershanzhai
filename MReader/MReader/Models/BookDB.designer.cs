@@ -36,6 +36,9 @@ namespace MReader.Models
     partial void InsertRemark(Remark instance);
     partial void UpdateRemark(Remark instance);
     partial void DeleteRemark(Remark instance);
+    partial void InsertCatagoryLib(CatagoryLib instance);
+    partial void UpdateCatagoryLib(CatagoryLib instance);
+    partial void DeleteCatagoryLib(CatagoryLib instance);
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
@@ -84,6 +87,14 @@ namespace MReader.Models
 			get
 			{
 				return this.GetTable<Remark>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CatagoryLib> CatagoryLibs
+		{
+			get
+			{
+				return this.GetTable<CatagoryLib>();
 			}
 		}
 		
@@ -470,6 +481,120 @@ namespace MReader.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CatagoryLib")]
+	public partial class CatagoryLib : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _CatagoryName;
+		
+		private EntitySet<Book> _Books;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCatagoryNameChanging(string value);
+    partial void OnCatagoryNameChanged();
+    #endregion
+		
+		public CatagoryLib()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatagoryName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CatagoryName
+		{
+			get
+			{
+				return this._CatagoryName;
+			}
+			set
+			{
+				if ((this._CatagoryName != value))
+				{
+					this.OnCatagoryNameChanging(value);
+					this.SendPropertyChanging();
+					this._CatagoryName = value;
+					this.SendPropertyChanged("CatagoryName");
+					this.OnCatagoryNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatagoryLib_Book", Storage="_Books", ThisKey="ID", OtherKey="CategoryID")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.CatagoryLib = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.CatagoryLib = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Books")]
 	public partial class Book : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -512,9 +637,13 @@ namespace MReader.Models
 		
 		private int _rate1;
 		
+		private int _CategoryID;
+		
 		private EntitySet<Buyer> _Buyers;
 		
 		private EntitySet<Remark> _Remarks;
+		
+		private EntityRef<CatagoryLib> _CatagoryLib;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -556,12 +685,15 @@ namespace MReader.Models
     partial void Onrate2Changed();
     partial void Onrate1Changing(int value);
     partial void Onrate1Changed();
+    partial void OnCategoryIDChanging(int value);
+    partial void OnCategoryIDChanged();
     #endregion
 		
 		public Book()
 		{
 			this._Buyers = new EntitySet<Buyer>(new Action<Buyer>(this.attach_Buyers), new Action<Buyer>(this.detach_Buyers));
 			this._Remarks = new EntitySet<Remark>(new Action<Remark>(this.attach_Remarks), new Action<Remark>(this.detach_Remarks));
+			this._CatagoryLib = default(EntityRef<CatagoryLib>);
 			OnCreated();
 		}
 		
@@ -925,6 +1057,30 @@ namespace MReader.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
+		public int CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					if (this._CatagoryLib.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryID = value;
+					this.SendPropertyChanged("CategoryID");
+					this.OnCategoryIDChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Buyer", Storage="_Buyers", ThisKey="ID", OtherKey="BookID")]
 		public EntitySet<Buyer> Buyers
 		{
@@ -948,6 +1104,40 @@ namespace MReader.Models
 			set
 			{
 				this._Remarks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatagoryLib_Book", Storage="_CatagoryLib", ThisKey="CategoryID", OtherKey="ID", IsForeignKey=true)]
+		public CatagoryLib CatagoryLib
+		{
+			get
+			{
+				return this._CatagoryLib.Entity;
+			}
+			set
+			{
+				CatagoryLib previousValue = this._CatagoryLib.Entity;
+				if (((previousValue != value) 
+							|| (this._CatagoryLib.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CatagoryLib.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._CatagoryLib.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._CategoryID = value.ID;
+					}
+					else
+					{
+						this._CategoryID = default(int);
+					}
+					this.SendPropertyChanged("CatagoryLib");
+				}
 			}
 		}
 		

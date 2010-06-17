@@ -121,6 +121,32 @@ namespace MReader.Controllers
             return this.Index(bookid,0);
         }
 
+        /// <summary>
+        /// add a book to favlist
+        /// </summary>
+        /// <param name="bookid"></param>
+        /// <returns></returns>
+        /// <author>latioswang</author>
+        public ActionResult Favourite(int bookid)
+        {
+            Book book = bookDb.GetBookbyID(bookid);
+            Customer cus = cusDb.getCustomer(User.Identity.Name);
+            if (cus.HasFaved(bookid))
+            {
+                
+                return this.Index(bookid, 0);//already faved;
+            }
 
+            FavouriteBook newfav = new FavouriteBook();
+            newfav.BookID = bookid;
+            newfav.UserName = User.Identity.Name;
+            newfav.FavTime = DateTime.Now;
+            cus.FavouriteBooks.Add(newfav);
+             
+            //bookDb.save();
+            cusDb.Save();
+            return this.Index(bookid, 0);
+
+        }
     }
 }

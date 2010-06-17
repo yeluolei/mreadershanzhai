@@ -19,6 +19,13 @@
       <Association Name="Book_Remark" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CatagoryLib" Member="CatagoryLibs">
+    <Type Name="CatagoryLib">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatagoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CatagoryLib_Book" Member="Books" ThisKey="ID" OtherKey="CategoryID" Type="Book" />
+    </Type>
+  </Table>
   <Table Name="dbo.Books" Member="Books">
     <Type Name="Book">
       <Column Name="ISBN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -39,8 +46,10 @@
       <Column Name="rate3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rate2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rate1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
       <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
+      <Association Name="CatagoryLib_Book" Member="CatagoryLib" ThisKey="CategoryID" OtherKey="ID" Type="CatagoryLib" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -4,10 +4,10 @@
     <table class="style1">
         <tr>
             <td>
-                <%=Html.ActionLink("Account","Index") %><br />
-                <%=Html.ActionLink("History", "History")%><br />
-                <%=Html.ActionLink("Favourite", "Favourite")%><br />
-                <%=Html.ActionLink("Balance", "Balance")%><br />
+                <%=Html.ActionLink("My Account","Index") %><br />
+                <%=Html.ActionLink("Purchase History", "History")%><br />
+                <%=Html.ActionLink("My Favourite Books", "Favourite")%><br />
+                <%=Html.ActionLink("My Balance", "Balance")%><br />
 
             </td>
             <td>

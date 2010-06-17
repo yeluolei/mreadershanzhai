@@ -30,21 +30,21 @@ namespace MReader.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertFavouriteBook(FavouriteBook instance);
-    partial void UpdateFavouriteBook(FavouriteBook instance);
-    partial void DeleteFavouriteBook(FavouriteBook instance);
     partial void InsertPurchaseHistory(PurchaseHistory instance);
     partial void UpdatePurchaseHistory(PurchaseHistory instance);
     partial void DeletePurchaseHistory(PurchaseHistory instance);
-    partial void InsertCustomer(Customer instance);
-    partial void UpdateCustomer(Customer instance);
-    partial void DeleteCustomer(Customer instance);
     partial void InsertBookmark(Bookmark instance);
     partial void UpdateBookmark(Bookmark instance);
     partial void DeleteBookmark(Bookmark instance);
     partial void InsertRater(Rater instance);
     partial void UpdateRater(Rater instance);
     partial void DeleteRater(Rater instance);
+    partial void InsertFavouriteBook(FavouriteBook instance);
+    partial void UpdateFavouriteBook(FavouriteBook instance);
+    partial void DeleteFavouriteBook(FavouriteBook instance);
+    partial void InsertCustomer(Customer instance);
+    partial void UpdateCustomer(Customer instance);
+    partial void DeleteCustomer(Customer instance);
     #endregion
 		
 		public CustomerInfoDataContext() : 
@@ -77,27 +77,11 @@ namespace MReader.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<FavouriteBook> FavouriteBooks
-		{
-			get
-			{
-				return this.GetTable<FavouriteBook>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PurchaseHistory> PurchaseHistories
 		{
 			get
 			{
 				return this.GetTable<PurchaseHistory>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Customer> Customers
-		{
-			get
-			{
-				return this.GetTable<Customer>();
 			}
 		}
 		
@@ -116,203 +100,20 @@ namespace MReader.Models
 				return this.GetTable<Rater>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FavouriteBooks")]
-	public partial class FavouriteBook : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _UserName;
-		
-		private int _BookID;
-		
-		private int _Page;
-		
-		private System.DateTime _FavTime;
-		
-		private EntityRef<Customer> _Customer;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnBookIDChanging(int value);
-    partial void OnBookIDChanged();
-    partial void OnPageChanging(int value);
-    partial void OnPageChanged();
-    partial void OnFavTimeChanging(System.DateTime value);
-    partial void OnFavTimeChanged();
-    #endregion
-		
-		public FavouriteBook()
-		{
-			this._Customer = default(EntityRef<Customer>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		public System.Data.Linq.Table<FavouriteBook> FavouriteBooks
 		{
 			get
 			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
+				return this.GetTable<FavouriteBook>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserName
+		public System.Data.Linq.Table<Customer> Customers
 		{
 			get
 			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					if (this._Customer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookID", DbType="Int NOT NULL")]
-		public int BookID
-		{
-			get
-			{
-				return this._BookID;
-			}
-			set
-			{
-				if ((this._BookID != value))
-				{
-					this.OnBookIDChanging(value);
-					this.SendPropertyChanging();
-					this._BookID = value;
-					this.SendPropertyChanged("BookID");
-					this.OnBookIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Page", DbType="Int NOT NULL")]
-		public int Page
-		{
-			get
-			{
-				return this._Page;
-			}
-			set
-			{
-				if ((this._Page != value))
-				{
-					this.OnPageChanging(value);
-					this.SendPropertyChanging();
-					this._Page = value;
-					this.SendPropertyChanged("Page");
-					this.OnPageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FavTime", DbType="DateTime NOT NULL")]
-		public System.DateTime FavTime
-		{
-			get
-			{
-				return this._FavTime;
-			}
-			set
-			{
-				if ((this._FavTime != value))
-				{
-					this.OnFavTimeChanging(value);
-					this.SendPropertyChanging();
-					this._FavTime = value;
-					this.SendPropertyChanged("FavTime");
-					this.OnFavTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_FavouriteBook", Storage="_Customer", ThisKey="UserName", OtherKey="UserName", IsForeignKey=true)]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
-				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Customer.Entity = null;
-						previousValue.FavouriteBooks.Remove(this);
-					}
-					this._Customer.Entity = value;
-					if ((value != null))
-					{
-						value.FavouriteBooks.Add(this);
-						this._UserName = value.UserName;
-					}
-					else
-					{
-						this._UserName = default(string);
-					}
-					this.SendPropertyChanged("Customer");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Customer>();
 			}
 		}
 	}
@@ -537,276 +338,6 @@ namespace MReader.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customers")]
-	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _UserName;
-		
-		private decimal _CurrentMoney;
-		
-		private System.DateTime _DateRegistered;
-		
-		private decimal _SpentCost;
-		
-		private int _UserLevel;
-		
-		private EntitySet<FavouriteBook> _FavouriteBooks;
-		
-		private EntitySet<PurchaseHistory> _PurchaseHistories;
-		
-		private EntitySet<Bookmark> _Bookmarks;
-		
-		private EntitySet<Rater> _Raters;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnCurrentMoneyChanging(decimal value);
-    partial void OnCurrentMoneyChanged();
-    partial void OnDateRegisteredChanging(System.DateTime value);
-    partial void OnDateRegisteredChanged();
-    partial void OnSpentCostChanging(decimal value);
-    partial void OnSpentCostChanged();
-    partial void OnUserLevelChanging(int value);
-    partial void OnUserLevelChanged();
-    #endregion
-		
-		public Customer()
-		{
-			this._FavouriteBooks = new EntitySet<FavouriteBook>(new Action<FavouriteBook>(this.attach_FavouriteBooks), new Action<FavouriteBook>(this.detach_FavouriteBooks));
-			this._PurchaseHistories = new EntitySet<PurchaseHistory>(new Action<PurchaseHistory>(this.attach_PurchaseHistories), new Action<PurchaseHistory>(this.detach_PurchaseHistories));
-			this._Bookmarks = new EntitySet<Bookmark>(new Action<Bookmark>(this.attach_Bookmarks), new Action<Bookmark>(this.detach_Bookmarks));
-			this._Raters = new EntitySet<Rater>(new Action<Rater>(this.attach_Raters), new Action<Rater>(this.detach_Raters));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentMoney", DbType="Money NOT NULL")]
-		public decimal CurrentMoney
-		{
-			get
-			{
-				return this._CurrentMoney;
-			}
-			set
-			{
-				if ((this._CurrentMoney != value))
-				{
-					this.OnCurrentMoneyChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentMoney = value;
-					this.SendPropertyChanged("CurrentMoney");
-					this.OnCurrentMoneyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateRegistered", DbType="DateTime NOT NULL")]
-		public System.DateTime DateRegistered
-		{
-			get
-			{
-				return this._DateRegistered;
-			}
-			set
-			{
-				if ((this._DateRegistered != value))
-				{
-					this.OnDateRegisteredChanging(value);
-					this.SendPropertyChanging();
-					this._DateRegistered = value;
-					this.SendPropertyChanged("DateRegistered");
-					this.OnDateRegisteredChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpentCost", DbType="Money NOT NULL")]
-		public decimal SpentCost
-		{
-			get
-			{
-				return this._SpentCost;
-			}
-			set
-			{
-				if ((this._SpentCost != value))
-				{
-					this.OnSpentCostChanging(value);
-					this.SendPropertyChanging();
-					this._SpentCost = value;
-					this.SendPropertyChanged("SpentCost");
-					this.OnSpentCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLevel", DbType="Int NOT NULL")]
-		public int UserLevel
-		{
-			get
-			{
-				return this._UserLevel;
-			}
-			set
-			{
-				if ((this._UserLevel != value))
-				{
-					this.OnUserLevelChanging(value);
-					this.SendPropertyChanging();
-					this._UserLevel = value;
-					this.SendPropertyChanged("UserLevel");
-					this.OnUserLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_FavouriteBook", Storage="_FavouriteBooks", ThisKey="UserName", OtherKey="UserName")]
-		public EntitySet<FavouriteBook> FavouriteBooks
-		{
-			get
-			{
-				return this._FavouriteBooks;
-			}
-			set
-			{
-				this._FavouriteBooks.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_PurchaseHistory", Storage="_PurchaseHistories", ThisKey="UserName", OtherKey="UserName")]
-		public EntitySet<PurchaseHistory> PurchaseHistories
-		{
-			get
-			{
-				return this._PurchaseHistories;
-			}
-			set
-			{
-				this._PurchaseHistories.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Bookmark", Storage="_Bookmarks", ThisKey="UserName", OtherKey="UserName")]
-		public EntitySet<Bookmark> Bookmarks
-		{
-			get
-			{
-				return this._Bookmarks;
-			}
-			set
-			{
-				this._Bookmarks.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Rater", Storage="_Raters", ThisKey="UserName", OtherKey="UserName")]
-		public EntitySet<Rater> Raters
-		{
-			get
-			{
-				return this._Raters;
-			}
-			set
-			{
-				this._Raters.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_FavouriteBooks(FavouriteBook entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_FavouriteBooks(FavouriteBook entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
-		}
-		
-		private void attach_PurchaseHistories(PurchaseHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_PurchaseHistories(PurchaseHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
-		}
-		
-		private void attach_Bookmarks(Bookmark entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_Bookmarks(Bookmark entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
-		}
-		
-		private void attach_Raters(Rater entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_Raters(Rater entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
 		}
 	}
 	
@@ -1181,6 +712,475 @@ namespace MReader.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FavouriteBooks")]
+	public partial class FavouriteBook : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _UserName;
+		
+		private int _BookID;
+		
+		private int _Page;
+		
+		private System.DateTime _FavTime;
+		
+		private EntityRef<Customer> _Customer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnBookIDChanging(int value);
+    partial void OnBookIDChanged();
+    partial void OnPageChanging(int value);
+    partial void OnPageChanged();
+    partial void OnFavTimeChanging(System.DateTime value);
+    partial void OnFavTimeChanged();
+    #endregion
+		
+		public FavouriteBook()
+		{
+			this._Customer = default(EntityRef<Customer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					if (this._Customer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookID", DbType="Int NOT NULL")]
+		public int BookID
+		{
+			get
+			{
+				return this._BookID;
+			}
+			set
+			{
+				if ((this._BookID != value))
+				{
+					this.OnBookIDChanging(value);
+					this.SendPropertyChanging();
+					this._BookID = value;
+					this.SendPropertyChanged("BookID");
+					this.OnBookIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Page", DbType="Int NOT NULL")]
+		public int Page
+		{
+			get
+			{
+				return this._Page;
+			}
+			set
+			{
+				if ((this._Page != value))
+				{
+					this.OnPageChanging(value);
+					this.SendPropertyChanging();
+					this._Page = value;
+					this.SendPropertyChanged("Page");
+					this.OnPageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FavTime", DbType="DateTime NOT NULL")]
+		public System.DateTime FavTime
+		{
+			get
+			{
+				return this._FavTime;
+			}
+			set
+			{
+				if ((this._FavTime != value))
+				{
+					this.OnFavTimeChanging(value);
+					this.SendPropertyChanging();
+					this._FavTime = value;
+					this.SendPropertyChanged("FavTime");
+					this.OnFavTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_FavouriteBook", Storage="_Customer", ThisKey="UserName", OtherKey="UserName", IsForeignKey=true)]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.FavouriteBooks.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.FavouriteBooks.Add(this);
+						this._UserName = value.UserName;
+					}
+					else
+					{
+						this._UserName = default(string);
+					}
+					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customers")]
+	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _UserName;
+		
+		private decimal _CurrentMoney;
+		
+		private System.DateTime _DateRegistered;
+		
+		private decimal _SpentCost;
+		
+		private int _UserLevel;
+		
+		private EntitySet<PurchaseHistory> _PurchaseHistories;
+		
+		private EntitySet<Bookmark> _Bookmarks;
+		
+		private EntitySet<Rater> _Raters;
+		
+		private EntitySet<FavouriteBook> _FavouriteBooks;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnCurrentMoneyChanging(decimal value);
+    partial void OnCurrentMoneyChanged();
+    partial void OnDateRegisteredChanging(System.DateTime value);
+    partial void OnDateRegisteredChanged();
+    partial void OnSpentCostChanging(decimal value);
+    partial void OnSpentCostChanged();
+    partial void OnUserLevelChanging(int value);
+    partial void OnUserLevelChanged();
+    #endregion
+		
+		public Customer()
+		{
+			this._PurchaseHistories = new EntitySet<PurchaseHistory>(new Action<PurchaseHistory>(this.attach_PurchaseHistories), new Action<PurchaseHistory>(this.detach_PurchaseHistories));
+			this._Bookmarks = new EntitySet<Bookmark>(new Action<Bookmark>(this.attach_Bookmarks), new Action<Bookmark>(this.detach_Bookmarks));
+			this._Raters = new EntitySet<Rater>(new Action<Rater>(this.attach_Raters), new Action<Rater>(this.detach_Raters));
+			this._FavouriteBooks = new EntitySet<FavouriteBook>(new Action<FavouriteBook>(this.attach_FavouriteBooks), new Action<FavouriteBook>(this.detach_FavouriteBooks));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentMoney", DbType="Money NOT NULL")]
+		public decimal CurrentMoney
+		{
+			get
+			{
+				return this._CurrentMoney;
+			}
+			set
+			{
+				if ((this._CurrentMoney != value))
+				{
+					this.OnCurrentMoneyChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentMoney = value;
+					this.SendPropertyChanged("CurrentMoney");
+					this.OnCurrentMoneyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateRegistered", DbType="DateTime NOT NULL")]
+		public System.DateTime DateRegistered
+		{
+			get
+			{
+				return this._DateRegistered;
+			}
+			set
+			{
+				if ((this._DateRegistered != value))
+				{
+					this.OnDateRegisteredChanging(value);
+					this.SendPropertyChanging();
+					this._DateRegistered = value;
+					this.SendPropertyChanged("DateRegistered");
+					this.OnDateRegisteredChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpentCost", DbType="Money NOT NULL")]
+		public decimal SpentCost
+		{
+			get
+			{
+				return this._SpentCost;
+			}
+			set
+			{
+				if ((this._SpentCost != value))
+				{
+					this.OnSpentCostChanging(value);
+					this.SendPropertyChanging();
+					this._SpentCost = value;
+					this.SendPropertyChanged("SpentCost");
+					this.OnSpentCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLevel", DbType="Int NOT NULL")]
+		public int UserLevel
+		{
+			get
+			{
+				return this._UserLevel;
+			}
+			set
+			{
+				if ((this._UserLevel != value))
+				{
+					this.OnUserLevelChanging(value);
+					this.SendPropertyChanging();
+					this._UserLevel = value;
+					this.SendPropertyChanged("UserLevel");
+					this.OnUserLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_PurchaseHistory", Storage="_PurchaseHistories", ThisKey="UserName", OtherKey="UserName")]
+		public EntitySet<PurchaseHistory> PurchaseHistories
+		{
+			get
+			{
+				return this._PurchaseHistories;
+			}
+			set
+			{
+				this._PurchaseHistories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Bookmark", Storage="_Bookmarks", ThisKey="UserName", OtherKey="UserName")]
+		public EntitySet<Bookmark> Bookmarks
+		{
+			get
+			{
+				return this._Bookmarks;
+			}
+			set
+			{
+				this._Bookmarks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Rater", Storage="_Raters", ThisKey="UserName", OtherKey="UserName")]
+		public EntitySet<Rater> Raters
+		{
+			get
+			{
+				return this._Raters;
+			}
+			set
+			{
+				this._Raters.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_FavouriteBook", Storage="_FavouriteBooks", ThisKey="UserName", OtherKey="UserName")]
+		public EntitySet<FavouriteBook> FavouriteBooks
+		{
+			get
+			{
+				return this._FavouriteBooks;
+			}
+			set
+			{
+				this._FavouriteBooks.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PurchaseHistories(PurchaseHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_PurchaseHistories(PurchaseHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
+		}
+		
+		private void attach_Bookmarks(Bookmark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_Bookmarks(Bookmark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
+		}
+		
+		private void attach_Raters(Rater entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_Raters(Rater entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
+		}
+		
+		private void attach_FavouriteBooks(FavouriteBook entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_FavouriteBooks(FavouriteBook entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
 		}
 	}
 }
