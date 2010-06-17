@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace MReader.Models
 {
@@ -48,6 +49,16 @@ namespace MReader.Models
                 }
             }
         }
+
+        public SelectList Categories
+        {
+            get
+            {
+                BookRepository bookdb = new BookRepository();
+                return bookdb.Categories;
+            }
+        }
+
        
     }
 
