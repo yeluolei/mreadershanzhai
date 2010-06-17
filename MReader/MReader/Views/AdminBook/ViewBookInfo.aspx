@@ -44,6 +44,9 @@
                 
         <div class="display-label">Description:</div>
         <div class="display-field"><%: Model.Description %></div>
+
+        <div class="display-label">Category:</div>
+        <div class="display-field"><%: Model.CatagoryLib.CatagoryName %></div>
         
     </fieldset>
     <p>

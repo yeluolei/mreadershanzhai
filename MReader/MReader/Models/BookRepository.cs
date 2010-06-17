@@ -2,12 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MReader.Models
 {
     public class BookRepository
     {
         BookDBDataContext db = new BookDBDataContext();
+
+        public SelectList Categories
+        {
+            get;
+            private set;
+        }
+
+        public BookRepository()
+        {
+            var cates = from cate in db.CatagoryLibs
+                        where cate.ID >= 0
+                        select cate;
+            Categories = new SelectList(cates, "ID", "CatagoryName");
+        }
+
+        
 
         public void NewBook( Book book )
         {
@@ -98,5 +115,7 @@ namespace MReader.Models
         {
             db.SubmitChanges();
         }
+        
+
     }
 }
