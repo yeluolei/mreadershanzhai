@@ -9,8 +9,9 @@
             <td>
                 <b>Book Name</b>
             </td>
+            
             <td>
-                <b>Position</b>
+                <b>Operation</b>
             </td>
         </tr>
         <%
@@ -21,8 +22,9 @@
             <td>
                 <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title, "index", "bookinfo", new { bookid = i.BookID }, new { })%><br />
             </td>
+            
             <td>
-                <%=Html.ActionLink("Page "+i.Page.ToString(),"ViewBook","BookView",new {id = i.ID , page = i.Page },new{}) %>
+            <%=Html.ActionLink("Delete","DeleteFavourite",new{bookid = i.BookID}) %>
             </td>
         </tr>
         <%}%>

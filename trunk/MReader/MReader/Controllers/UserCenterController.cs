@@ -8,35 +8,35 @@ namespace MReader.Controllers
 {
     public class UserCenterController : Controller
     {
-        CustomerRepository cusRepo = new CustomerRepository();
+        CustomerRepository cusDb = new CustomerRepository();
         //
         // GET: /UserCenter/
         [Authorize]
         public ActionResult Index()
         {
             string userName = User.Identity.Name;
-            Customer cus = cusRepo.getCustomer(userName);
+            Customer cus = cusDb.getCustomer(userName);
             return View(new CustomerFormModel(cus));
         }
         [Authorize]
         public ActionResult History()
         {
             string userName = User.Identity.Name;
-            Customer cus = cusRepo.getCustomer(userName);
+            Customer cus = cusDb.getCustomer(userName);
             return View(new CustomerFormModel(cus));
         }
         [Authorize]
         public ActionResult Favourite()
         {
             string userName = User.Identity.Name;
-            Customer cus = cusRepo.getCustomer(userName);
+            Customer cus = cusDb.getCustomer(userName);
             return View(new CustomerFormModel(cus));
         }
         [Authorize]
         public ActionResult Balance()
         {
             string userName = User.Identity.Name;
-            Customer cus = cusRepo.getCustomer(userName);
+            Customer cus = cusDb.getCustomer(userName);
             return View(new CustomerFormModel(cus));
         } 
 
@@ -46,7 +46,7 @@ namespace MReader.Controllers
         {
             string userName = User.Identity.Name;
             
-            CustomerFormModel cus =new CustomerFormModel(cusRepo.getCustomer(userName));
+            CustomerFormModel cus =new CustomerFormModel(cusDb.getCustomer(userName));
             try
             {
                 UpdateModel(cus);
@@ -62,9 +62,21 @@ namespace MReader.Controllers
              
 
             cus.Customer.CurrentMoney+=cus.MoneyToAdd;
-            cusRepo.Save();
+            cusDb.Save();
             cus.Message = "Successfully added!";
             return View(cus);
-        } 
+        }
+
+        public ActionResult DeleteFavourite(int bookid)
+        {
+            Customer customer = cusDb.getCustomer(User.Identity.Name);
+            if (customer.HasFaved(bookid))
+            {
+                FavouriteBook fav = customer.FavouriteBooks.Single(f=>f.BookID == bookid);
+                customer.FavouriteBooks.Remove(fav);
+                cusDb.Save();
+            }
+            return View("Favourite", new CustomerFormModel(customer));
+        }
     }
 }
