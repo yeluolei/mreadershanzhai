@@ -26,10 +26,44 @@ namespace MReader.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        public ActionResult SetPopularBook(int id)
+        {
+            Book book = db.GetBookbyID(id);
+            db.SetPopular(book);
+            db.save();
+            return RedirectToAction("successful");
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult UnsetPopularBook(int id)
+        {
+            Book book = db.GetBookbyID(id);
+            if (db.IsPopular(book))
+            {
+                db.UnsetPopular(book);
+                db.save();
+            }
+            return RedirectToAction("successful");
+        }
+       
+        [Authorize(Roles = "admin")]
         public ActionResult NewBook()
         {
             return View();
         }
+        
+        [Authorize(Roles = "admin")]
+        public ActionResult Successful()
+        {
+            return View();
+        }
+        
+        [Authorize(Roles = "admin")]
+        public ActionResult PopularBookList()
+        {
+            return View(db.GetAllPopBooks().ToList());
+        }
+
 
         [AcceptVerbs(HttpVerbs.Post)]
         [Authorize(Roles = "admin")]

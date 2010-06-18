@@ -41,6 +41,8 @@
             <th>
                 IsValid
             </th>
+            
+
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -81,6 +83,12 @@
             <td>
                 <%: item.IsValid %>
             </td>
+            <th>
+                <%:  Html.ActionLink("设为推荐书籍", "SetPopularBook", new {id = item.ID})%>
+             </th>
+             <th>
+                 <%:  Html.ActionLink("取消推荐书籍", "UnsetPopularBook", new {id = item.ID})%>
+             </th>
         </tr>
     
     <% } %>
@@ -90,7 +98,9 @@
     <p>
         <%: Html.ActionLink("Create New", "NewBook","AdminBook") %>
     </p>
-
+    <p>
+        <%: Html.ActionLink("Popular Book List", "PopularBookList","AdminBook") %>
+    </p>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

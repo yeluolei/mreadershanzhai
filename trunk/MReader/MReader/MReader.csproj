@@ -164,6 +164,10 @@
     <Content Include="Views\AdminBook\DeleteBook.aspx" />
     <Content Include="Views\AdminBook\EditBook.aspx" />
     <Content Include="Views\AdminBook\Index.aspx" />
+    <Content Include="Views\AdminBook\PopularBookList.aspx" />
+    <Content Include="Views\AdminBook\SetPopularBook.aspx" />
+    <Content Include="Views\AdminBook\SetPopularSuccessful.aspx" />
+    <Content Include="Views\AdminBook\Successful.aspx" />
     <Content Include="Views\AdminBook\ViewBookInfo.aspx" />
     <Content Include="Views\AdminUser\Create.aspx" />
     <Content Include="Views\AdminUser\Delete.aspx" />
