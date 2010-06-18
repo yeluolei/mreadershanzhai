@@ -26,31 +26,32 @@ namespace MReader.Models
 
         public bool IsPopular(Book book)
         {
-            return db.PopularBooks.Count(x => x.BookID == book.ID)>0;
+            return db.PopularBooks.Count(x => x.BookID == book.ID) > 0;
         }
 
         public int SetPopular(Book book)
         {
-            if(IsPopular(book))
+            if (IsPopular(book))
                 return 0;
             PopularBook pb = new PopularBook();
             book.PopularBooks.Add(pb);
             db.PopularBooks.InsertOnSubmit(pb);
+
             return 1;
         }
         public int UnsetPopular(Book book)
         {
             if (!IsPopular(book))
                 return 0;
-            PopularBook pb = db.PopularBooks.Single(x => x.BookID == book.ID);      
+            PopularBook pb = db.PopularBooks.Single(x => x.BookID == book.ID);
             db.PopularBooks.DeleteOnSubmit(pb);
             return 1;
         }
         public IQueryable<Book> GetAllPopBooks()
         {
-            return from x in db.Books where x.PopularBooks.Count()!=0 select x;
+            return from x in db.Books where x.PopularBooks.Count() != 0 select x;
         }
-        public void NewBook( Book book )
+        public void NewBook(Book book)
         {
             db.Books.InsertOnSubmit(book);
             //throw new NotImplementedException();
@@ -86,7 +87,7 @@ namespace MReader.Models
         /// </summary>
         /// <param name="bookName"></param>
         /// <returns></returns>
-        public IQueryable<Book> SearchBookbyBookName( string bookName )
+        public IQueryable<Book> SearchBookbyBookName(string bookName)
         {
             throw new NotImplementedException();
         }
@@ -98,48 +99,58 @@ namespace MReader.Models
         public IQueryable<Book> GetAllBooks()
         {
             return from book in db.Books
-                   where book.ID>0
+                   where book.ID > 0
                    orderby book.ID
                    select book;
         }
 
 
-        public IQueryable<Book> SearchBookbyWriter( string writer )
+        public IQueryable<Book> SearchBookbyWriter(string writer)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Book> SearchBookbyISBN( string ISBN )
+        public IQueryable<Book> SearchBookbyISBN(string ISBN)
         {
             throw new NotImplementedException();
         }
 
         //删除
-        public void DeleteBook( Book book )
+        public void DeleteBook(Book book)
         {
             db.Books.DeleteOnSubmit(book);
         }
-        
+
         /// <summary>
         /// get |count| books which most people buy
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
         /// <author>latioswang</author>
-        public List<Book> GetRecommendBooks(int count) {
-            var booklist =  from book in db.Books
-                   
-                   orderby book.TimesBought descending
-                   select book;
+        public List<Book> GetRecommendBooks(int count)
+        {
+            var booklist = from book in db.Books
+
+                           orderby book.TimesBought descending
+                           select book;
             return booklist.Take(count).ToList();
 
         }
-        
+
         public void save()
         {
             db.SubmitChanges();
         }
-        
 
+        public List<Book> PopularBooks(int count)
+        {
+            var lst = db.PopularBooks.Take(count).ToList();
+            List<Book> ret = new List<Book>();
+            foreach (var i in lst)
+            {
+                ret.Add(i.Book);
+            }
+            return ret;
+        }
     }
 }

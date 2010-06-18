@@ -1,16 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<MReader.Models.Book>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+    Index
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Index</h2>
-
+    <h2>
+        Index</h2>
     <table>
         <tr>
-            <th></th>
+            <td>
+                <li>
+                    <%: Html.ActionLink("Upload a Book", "NewBook","AdminBook") %></li>
+        </tr>
+        </td>
+        <tr>
+            <td>
+                <li>
+                    <%: Html.ActionLink("Popular Book List", "PopularBookList","AdminBook") %></li>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>
+            </th>
             <th>
                 ISBN
             </th>
@@ -21,13 +34,10 @@
                 Price
             </th>
             <th>
-               Publisher
+                Publisher
             </th>
             <th>
                 PublishDate
-            </th>
-            <th>
-                Content
             </th>
             <th>
                 Author
@@ -39,25 +49,26 @@
                 ID
             </th>
             <th>
-                IsValid
+                Operations
             </th>
-            
-
         </tr>
-
-    <% foreach (var item in Model) { %>
-    
+        <% MReader.Models.BookRepository bookdb = new MReader.Models.BookRepository(); %>
+        <% foreach (var item in Model)
+           { %>
         <tr>
             <td>
-                <%: Html.ActionLink("Edit", "EditBook", new { id=item.ID }) %> |
-                <%: Html.ActionLink("Details", "ViewBookInfo", new { id=item.ID })%> |
+                <%: Html.ActionLink("Edit", "EditBook", new { id=item.ID }) %>
+                |
+                <%: Html.ActionLink("Details", "ViewBookInfo", new { id=item.ID })%>
+                |
                 <%: Html.ActionLink("Delete", "DeleteBook", new { id=item.ID })%>
             </td>
             <td>
                 <%: item.ISBN %>
             </td>
             <td>
-                <%: item.Title %>
+            <%=Html.ActionLink(item.Title,"index","bookinfo",new {bookid = item.ID},new{}) %>
+                <%--<%: item.Title %>--%>
             </td>
             <td>
                 <%: String.Format("{0:F}", item.Price) %>
@@ -68,9 +79,9 @@
             <td>
                 <%: String.Format("{0:g}", item.PublishDate) %>
             </td>
-            <td>
+            <%--<td>
                 <%: item.Content %>
-            </td>
+            </td>--%>
             <td>
                 <%: item.Author %>
             </td>
@@ -80,29 +91,23 @@
             <td>
                 <%: item.ID %>
             </td>
-            <td>
+            <%--<td>
                 <%: item.IsValid %>
+            </td>--%>
+            <td>
+                <% if (!bookdb.IsPopular(item))
+                   { %>
+                <%:  Html.ActionLink("Set Popular", "SetPopularBook", new { id = item.ID })%>
+                <% }
+                   else
+                   { %>
+                <b>
+                    <%:  Html.ActionLink("Unset Popular", "UnsetPopularBook", new { id = item.ID })%></b>
+                <%} %>
             </td>
-            <th>
-                <%:  Html.ActionLink("设为推荐书籍", "SetPopularBook", new {id = item.ID})%>
-             </th>
-             <th>
-                 <%:  Html.ActionLink("取消推荐书籍", "UnsetPopularBook", new {id = item.ID})%>
-             </th>
         </tr>
-    
-    <% } %>
-
+        <% } %>
     </table>
-
-    <p>
-        <%: Html.ActionLink("Create New", "NewBook","AdminBook") %>
-    </p>
-    <p>
-        <%: Html.ActionLink("Popular Book List", "PopularBookList","AdminBook") %>
-    </p>
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-

@@ -6,15 +6,15 @@
         My Purchase History</h2>
     <table style="width: 100%">
         <tr>
-            <td>
+            <th>
                 <b>Price</b>
-            </td>
-            <td>
+            </th>
+            <th>
                 <b>Purchase Time</b>
-            </td>
-            <td>
+            </th>
+            <th>
                 <b>Book Title</b>
-            </td>
+            </th>
         </tr>
         <%foreach (var hist in Model.Customer.PurchaseHistories)
           { %>

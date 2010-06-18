@@ -6,13 +6,13 @@
         Favourite</h2>
     <table>
         <tr>
-            <td>
+            <th>
                 <b>Book Name</b>
-            </td>
+            </th>
             
-            <td>
+            <th>
                 <b>Operation</b>
-            </td>
+            </th>
         </tr>
         <%
             MReader.Models.BookRepository bookRepo = new MReader.Models.BookRepository();

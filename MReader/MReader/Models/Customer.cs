@@ -12,14 +12,10 @@ namespace MReader.Models
 
         public Customer(string userName)
         {
-            this._FavouriteBooks = new EntitySet<FavouriteBook>
-                (new Action<FavouriteBook>(this.attach_FavouriteBooks),
-                new Action<FavouriteBook>(this.detach_FavouriteBooks));
-            this._PurchaseHistories = new EntitySet<PurchaseHistory>
-                (new Action<PurchaseHistory>(this.attach_PurchaseHistories),
-                new Action<PurchaseHistory>(this.detach_PurchaseHistories));
-
-
+            this._PurchaseHistories = new EntitySet<PurchaseHistory>(new Action<PurchaseHistory>(this.attach_PurchaseHistories), new Action<PurchaseHistory>(this.detach_PurchaseHistories));
+            this._Bookmarks = new EntitySet<Bookmark>(new Action<Bookmark>(this.attach_Bookmarks), new Action<Bookmark>(this.detach_Bookmarks));
+            this._Raters = new EntitySet<Rater>(new Action<Rater>(this.attach_Raters), new Action<Rater>(this.detach_Raters));
+            this._FavouriteBooks = new EntitySet<FavouriteBook>(new Action<FavouriteBook>(this.attach_FavouriteBooks), new Action<FavouriteBook>(this.detach_FavouriteBooks));
             OnCreated();
             this.UserName = userName;
             this.DateRegistered = DateTime.Now;
