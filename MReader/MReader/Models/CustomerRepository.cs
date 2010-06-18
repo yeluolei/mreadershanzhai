@@ -94,5 +94,15 @@ namespace MReader.Models
             return new string[] {};           
         }
 
+        public Bookmark GetBookmarkbyID(int id)
+        {
+            return db.Bookmarks.SingleOrDefault(d => d.ID == id);
+        }
+
+        public void DeleteBookmarkbyID(Bookmark bookmark)
+        {
+            db.Bookmarks.DeleteOnSubmit(bookmark);
+        }
+
     }
 }

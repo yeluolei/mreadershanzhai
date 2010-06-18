@@ -27,44 +27,42 @@
                                        
                                     </ul>
                                 </div>
+                                <input type="radio" class="star" />
+                                <input type="radio" class="star" />
+                                <input type="radio" class="star" />
+                                <input type="radio" class="star" />
+                                <input type="radio" class="star" />
+
                                 <div id="bookprofile">
-                                    <ul id="acc1" class="ui-accordion-container"> 
-                                          <li> 
-		                                    <div class="ui-accordion-left"></div> 
-		                                    <a class="ui-accordion-link acc1"><b>Book Information</b>
-			                                    <span class="ui-accordion-right"></span></a> 
-		                                    <div> 
-                                                <p id="mark"><b><%:Html.Label("Title:") %></b> <br />
-			                                    &nbsp&nbsp <%=Model.book.Title %></p> 
-                                                <p><b><%:Html.Label("Author:") %></b><br />
-			                                    &nbsp&nbsp <%=Model.book.Author %></p>
-                                               <p><b> <%:Html.Label("PublishData:") %> </b><br />
-			                                    &nbsp&nbsp <%=Model.book.PublishDate %> </p>
-                                               <p><b> <%:Html.Label("Publisher:") %></b><br />
-                                                &nbsp&nbsp <%=Model.book.Publisher %></p>
-                                               <p><b> <%:Html.Label("Price:") %></b><br />
-                                                &nbsp&nbsp <%=Model.book.Price %></p>
-		                                    </div> 
-	                                    </li> 
-	                                    <li> 
-		                                    <div class="ui-accordion-left"></div> 
-		                                    <a class="ui-accordion-link acc1" id="getBookmark"><b>Bookmark</b>
-			                                    <span class="ui-accordion-right"></span></a> 
-		                                    <div id = "bookmark_content">                                
-		                                    </div> 
-	                                    </li> 
-	    
-                                    </ul> 
+                                    <h3><a href="#">Book Information</a></h3>
+                                    <div> 
+                                        <p><b><%:Html.Label("Title:") %></b> <br />
+			                            &nbsp&nbsp <%=Model.book.Title %></p> 
+                                        <p><b><%:Html.Label("Author:") %></b><br />
+			                            &nbsp&nbsp <%=Model.book.Author %></p>
+                                        <p><b> <%:Html.Label("PublishData:") %> </b><br />
+			                            &nbsp&nbsp <%=Model.book.PublishDate %> </p>
+                                        <p><b> <%:Html.Label("Publisher:") %></b><br />
+                                        &nbsp&nbsp <%=Model.book.Publisher %></p>
+                                        <p><b> <%:Html.Label("Price:") %></b><br />
+                                        &nbsp&nbsp <%=Model.book.Price %></p>
+		                            </div> 
+
+                                    <h3 id = "bookmarktitle"><a href="#" id="getBookmark">Bookmark</span></h3>
+
+                                    <div id = "bookmark_content">                                
+		                            </div>
                                 </div> <%-- bookprofile--%>
                         </div>
                     </td>
                     <td>
+                    
                         <div id="toolbar">
                             <table>
                                 <tr>
                                     <td>
                                         <div id = "previousbutton">  
-                                           <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />
+                                          <%-- <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />--%>
                                         </div>
                                     </td>
                                     <td>                                       
@@ -80,8 +78,6 @@
                                     </td>
                                     <td>
                                         <input id = "bookmark" type = "button" value="bookmark"/>
-                                        <input id = "note" type = "button" value="note"/> 
-                                        <img id = "scroll" src="/images/12-em-plus.png" />
                                     </td>
                                 </tr>
                             </table>
@@ -96,13 +92,24 @@
         </div>
     </div>
     <%}%>
+     <div class="demo">
+ 
+    <div id="dialog" title="Add Bookmark">
+	    <label>note:</label><input type="text" id="note2" />
+        <input type="button" id="submitnote" value="submit"/>
+    </div>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID= "HeadContent" runat="server">
-        <link href="/Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
+        <script src="/Scripts/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <link href="/Content/demos.css" rel="stylesheet" type="text/css" />
+        <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
 
-        <link href="/Content/accordion/flora.accordion.css" rel="stylesheet" type="text/css" />
-        <script src="/Scripts/accordion/jquery.accordion.js" type="text/javascript"></script>
+        <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="/Content/jquery.rating.css" rel="stylesheet" type="text/css" />
+        <script src="/Scripts/jquery.rating.js" type="text/javascript"></script>
+		<link href="/Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
 
         <script language="javascript" type="text/javascript">         
 
@@ -166,74 +173,97 @@
             }
             
             $(document).ready( function(){
-                    pageNumGlobal = <%=Model.pageIndex%>;
-                    bookURLGlobal = "<%= Model.book.Content %>";
-                    totalPagesGlobal = <%=Model.book.TotalPages %>;
-                    Buttonvisible();
+                        pageNumGlobal = <%=Model.pageIndex%>;
+                        bookURLGlobal = "<%= Model.book.Content %>";
+                        totalPagesGlobal = <%=Model.book.TotalPages %>;
+                        Buttonvisible();
 
-                    $("#bookmark").click( function() {
-                            GetURL();
-                            $.get( ajaxUrl,
-                            function(data, textStatus){ alert("succeed");} );
-                    });
+                        $("#submitnote").click( function() {
+                                GetURL();
+                                $.get( ajaxUrl, function(data, textStatus){ alert("succeed");} );
+                                $("#dialog").dialog("close");
+                        });
+                        $("#bookmark").click( function() {
+                                $("#dialog").dialog("open");}
+                                            );
 
-                    $("#note").click(function(){
-                            $("#toolbar").append("<input id=\"note2\" type = \"text\" />");});
+                        $("#bookprofile").accordion({
+	                        event: "mouseover"
+                        });
 
-	                    $("#acc1").accordion({
-		                    alwaysOpen: false,
-		                    autoheight: false,
-		                    header: 'a.acc1',
-		                    clearStyle: true
-	                    });
+                        $("#getBookmark").click(getbookmarkJson()); 
 
-                        $("#getBookmark").click(function () {
-                                    $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
-                                    function(data){ 
-                                                    var temp = "";
-                                                    for( var i = 0; i<data.length; ++i){
-                                                        temp = temp + "<p >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p>";
-                                                    }
-                                                    $("#bookmark_content").text("");
-                                                   $("#bookmark_content").append(temp);
-                                                 } );
-                                    }); 
+                        $("#dialog").dialog({autoOpen:false, show: 'blind', modal:true, height: 140, hide: 'explode'});
 
-
-	                $("#mark").mouseover(function(e){
-       	                this.myTitle = "test";
-		                this.title = "";	
-	                    var tooltip = "<div id='tooltip'>"+ "123412" +"<\/div>"; //创建 div 元素
-		                $("body").append(tooltip);	//把它追加到文档中
-		                $("#tooltip")
-			                .css({
-				                "top": (e.pageY+y) + "px",
-				                "left": (e.pageX+x)  + "px"
-			                }).show("fast");	  //设置x坐标和y坐标，并且显示
-                    });
-                    $("#mark").mouseout(function(){		
-		                this.title = this.myTitle;
-		                $("#tooltip").remove();   //移除 
-                    });
-
-                    $("#mark").mousemove(function(e){
-		                $("#tooltip")
-			                .css({
-				                "top": (e.pageY+y) + "px",
-				                "left": (e.pageX+x)  + "px"});
-			                });
+                        $("#bookmark").droppable({
+			                        activeClass: 'ui-state-hover',
+			                        hoverClass: 'ui-state-active',
+			                        drop: function(event, ui) {
+				                        $(this).addClass('ui-state-highlight');
+			                        }
+		                            });
                        
                     } );
 
             function GetURL(){
-                ajaxUrl = "/bookview/addbookmark?bookid=" +  <%=Model.book.ID %> + "&pageNum=" + pageNumGlobal;
+                ajaxUrl = "/bookview/addbookmark?bookid=" +  <%=Model.book.ID %> + "&pageNum=" + pageNumGlobal + "&note=" + $("#note2").val();
                 }
 
             function gotoPage( pageNum ) {
                 document.getElementById("book").src = bookURLGlobal.replace(regex,pageNum);
                 document.getElementById("pageIndex").value = pageNum;
                 pageNumGlobal = pageNum;
-                }      
+                Buttonvisible();
+                }  
+               
+            function bindlable(){              
+                $("#mark").live("mouseover", function(e){
+       	                this.myTitle = this.title;
+		                this.title = "";	
+	                    var tooltip = "<div id='tooltip'>"+ "<p>note:"+this.myTitle +"</p><\/div>"; //创建 div 元素
+		                $("body").append(tooltip);	//把它追加到文档中
+		                $("#tooltip")
+			                .css({
+				                "top": (e.pageY+y) + "px",
+				                "left": (e.pageX+x)  + "px"
+			                }).show("fast");	  //设置x坐标和y坐标，并且显示
+                    });   
+
+                     $("#mark").live("mouseout",function(){		
+		                this.title = this.myTitle;
+		                $("#tooltip").remove();   //移除 
+                    });
+
+                    $("#mark").live("mousemove",function(e){
+		                $("#tooltip")
+			                .css({
+				                "top": (e.pageY+y) + "px",
+				                "left": (e.pageX+x)  + "px"});
+			                });
+              }
+
+              function deletebookmark( id, cnt ){
+                    $.get(("/bookview/deletebookmark?id=" + id),function(){ $("#"+id).remove(); });
+                    
+              }
+
+              function getbookmarkJson(){ 
+                                $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
+                                            function(data){ 
+                                                                var temp = "";
+                                                                $("#bookmark_content").text("");
+                                                                for( var i = 0; i<data.length; ++i)
+                                                                {
+                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
+                                                                    $("#bookmark_content").append(temp);
+                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
+                                                                }                                                   
+                                                                $("#bookmark_content").after("<div class=\"deletebookmark\"></div>");
+                                                                $("#deletebookmark").droppable()
+                                                          } 
+                                        );
+                                bindlable();
+                                    }
                                           
    </script>
 </asp:Content>

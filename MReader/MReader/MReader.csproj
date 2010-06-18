@@ -159,8 +159,13 @@
     <Content Include="Content\BookForm.css" />
     <Content Include="Content\BookInfo.css" />
     <Content Include="Content\BookViewStyle.css" />
+    <Content Include="Content\jquery-ui-1.8.2.custom.css" />
+    <Content Include="Content\jquery.rating.css" />
     <Content Include="Scripts\accordion\jquery.accordion.js" />
     <Content Include="Scripts\accordion\jquery.dimensions.js" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.2.custom.min.js" />
+    <Content Include="Scripts\jquery.rating.js" />
     <Content Include="Views\AdminBook\DeleteBook.aspx" />
     <Content Include="Views\AdminBook\EditBook.aspx" />
     <Content Include="Views\AdminBook\Index.aspx" />
