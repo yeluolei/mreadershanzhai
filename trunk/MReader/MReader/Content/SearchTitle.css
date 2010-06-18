@@ -1,6 +1,21 @@
-﻿.cover
+﻿.searchresult li
 {
-    float:left;
+    border: 2px dotted #00FFFF;
+    min-width: 100%;
+    display: block;
+    list-style: none;
+    min-height: 80px;
+}
+.add
+{
+    background-color:Yellow;
+    }
+.list
+{
+    min-height:80px;
+    }
+.cover
+{
     width:80px;
     height:80px;
     }
@@ -11,7 +26,6 @@
 .bookofinfo
 {
     height:70px;
-    float:left;
     }
 .price
 {
