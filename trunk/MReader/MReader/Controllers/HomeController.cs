@@ -15,7 +15,8 @@ namespace MReader.Controllers
         
         public ActionResult Index()
         {
-            BookSearchResult bsr = new BookSearchResult(db.GetRecommendBooks(5));
+            BookSearchResult bsr = new BookSearchResult(
+                new Helps.PaginatedList<Book>(db.GetRecommendBooks(5)));
             
             return View(bsr);
         }

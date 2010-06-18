@@ -15,10 +15,10 @@ namespace MReader.Controllers
         // GET: /Search/Title
 
         [Authorize]
-        [HttpPost]
-        public ActionResult Title(string book_title)
+        
+        public ActionResult Title(string book_title,int pageIndex = 0,int pageSize = 2)
         {
-            var books = search.ByTitle( book_title );
+            var books = search.ByTitle( book_title ,pageIndex,pageSize );
             if (book_title == "")
                 return RedirectToAction("index", "home", new { });
             if (books.books.Count() == 0)
