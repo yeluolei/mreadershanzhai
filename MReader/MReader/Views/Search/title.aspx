@@ -1,22 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<  MReader.Models.BookSearchResult >" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2><% foreach (string keyword in Model.keyword) {%>
+    <h2>
+        <% foreach (string keyword in Model.keyword)
+           {%>
         <%: Html.Label(keyword)%>
-    <%}%></h2>
-
-    <% foreach ( var book in Model.books ) {
-           Html.RenderPartial("bookform",book);} %>
+        <%}%></h2>
+    <% foreach (var book in Model.books)
+       {
+           Html.RenderPartial("bookform", book);
+       } %>
+    <% if (Model.books.HasPreviousPage)
+       { %>
+    <%=Html.ActionLink("Previous Page", "title", new { book_title = Model.keyword[0], pageindex = Model.books.PageIndex - 1 })%>
+    <%}
+       else
+       {%>
+    <label>
+        Previous Page</label>
+    <%} %>
+    <% for (int i = 0; i < Model.books.TotalPages; i++)
+       {%>
+    <% if (i != Model.books.PageIndex)%>
+    <%=i.ToString()%>
+    <% if (i == Model.books.PageIndex) %>
+    <%=Html.ActionLink(i.ToString(),"title",new{book_title = Model.keyword[0],pageindex = i}) %>
+    <label>
+    </label>
+    <%} %>
+    <% if (Model.books.HasNextPage)
+       { %>
+    <%=Html.ActionLink("Next Page", "title", new { book_title = Model.keyword[0], pageindex = Model.books.PageIndex + 1 })%>
+    <%}
+       else
+       {%>
+    <label>
+        Next Page</label>
+    <%} %>
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
-<script src="/Scripts/jquery-1.4.1.js" type="text/javascript"></script>
-<script type="text/javascript" language ="javascript">
+    <script src="/Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
 
     function highlightWord(node, word) {
         // Iterate into this nodes childNodes 
@@ -86,6 +112,5 @@
         SearchHighlightID("searchresult",<%=Model.SSKeyWord %>);
     })
 
-</script>
+    </script>
 </asp:Content>
-

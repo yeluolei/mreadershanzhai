@@ -12,7 +12,17 @@ namespace MReader.Helps
         public int TotalCount { get; private set; }
         public int TotalPages { get; private set; }
 
-        public PaginatedList(IQueryable<T> source, int pageIndex, int pageSize) {
+        public PaginatedList(List<T> source, int pageIndex = 0, int pageSize = 10)
+        {
+            PageIndex = pageIndex;
+            PageSize = pageSize;
+            TotalCount = source.Count();
+            TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+
+            this.AddRange(source.Skip(PageIndex * PageSize).Take(PageSize));
+        }
+
+        public PaginatedList(IQueryable<T> source, int pageIndex = 0, int pageSize = 10) {
             PageIndex = pageIndex;
             PageSize = pageSize;
             TotalCount = source.Count();

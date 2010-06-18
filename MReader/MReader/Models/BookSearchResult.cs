@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MReader.Helps;
 
 namespace MReader.Models
 {
     public class BookSearchResult
     {
         public List<string> keyword = new List<string> ();
-        public List<Book> books;
-        public BookSearchResult(List<Book> books)
+        public PaginatedList<Book> books;
+        public BookSearchResult(PaginatedList<Book> books)
         {
             this.books = books;
         }
