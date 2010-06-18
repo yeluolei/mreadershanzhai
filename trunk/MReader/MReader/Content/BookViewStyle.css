@@ -81,3 +81,10 @@
     color: #333;
     display: none;
 }
+
+.deletebookmark
+{
+    border: 1px solid #6B90DA;
+    background-color: #FFFFFF;
+    height: 50px;
+}

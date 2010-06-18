@@ -72,13 +72,14 @@ namespace MReader.Controllers
         }
 
         [Authorize]
-        public void AddBookmark(int pageNum,int bookID)
+        public void AddBookmark(int pageNum, int bookID, string note)
         {
             Customer cus = cusDb.getCustomer(User.Identity.Name);
             Bookmark bookmark = new Bookmark();
             bookmark.BookID = bookID;
             bookmark.PageNum = pageNum;
             bookmark.CreateTime = DateTime.Now;
+            bookmark.Note = note;
             //bookmark.Note = note;
             //bookmark.UserName = HttpContext.User.Identity.ToString();
             cus.Bookmarks.Add(bookmark);
@@ -98,8 +99,10 @@ namespace MReader.Controllers
             foreach (var bookmark in bookmarkofBook)
             {
                 Dictionary<string, string> tempDic = new Dictionary<string, string>();
+                tempDic.Add("ID", bookmark.ID.ToString());
                 tempDic.Add("createtime", bookmark.CreateTime.ToString());
                 tempDic.Add("pageNum", bookmark.PageNum.ToString());
+                tempDic.Add("note", bookmark.Note);
                 temp.Add(tempDic);
             }
             System.Web.Script.Serialization.JavaScriptSerializer s = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -107,6 +110,14 @@ namespace MReader.Controllers
             json.Data = s.Serialize(temp);
             Response.Write(json.Data);
             //return json;
+        }
+
+        [Authorize]
+        public void DeleteBookmark(int id)
+        {
+            Bookmark temp = cusDb.GetBookmarkbyID(id);
+            cusDb.DeleteBookmarkbyID(temp);
+            cusDb.Save();
         }
        
     }
