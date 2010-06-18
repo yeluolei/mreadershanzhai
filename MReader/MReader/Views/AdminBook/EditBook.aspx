@@ -95,10 +95,10 @@
                 <%: Html.ValidationMessageFor(model => model.Description) %>
             </div>
 
-
             <p>
                 <input type="submit" value="Save" />
             </p>
+
         </fieldset>
 
     <% } %>

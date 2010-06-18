@@ -24,8 +24,32 @@ namespace MReader.Models
             Categories = new SelectList(cates, "ID", "CatagoryName");
         }
 
-        
+        public bool IsPopular(Book book)
+        {
+            return db.PopularBooks.Count(x => x.BookID == book.ID)>0;
+        }
 
+        public int SetPopular(Book book)
+        {
+            if(IsPopular(book))
+                return 0;
+            PopularBook pb = new PopularBook();
+            book.PopularBooks.Add(pb);
+            db.PopularBooks.InsertOnSubmit(pb);
+            return 1;
+        }
+        public int UnsetPopular(Book book)
+        {
+            if (!IsPopular(book))
+                return 0;
+            PopularBook pb = db.PopularBooks.Single(x => x.BookID == book.ID);      
+            db.PopularBooks.DeleteOnSubmit(pb);
+            return 1;
+        }
+        public IQueryable<Book> GetAllPopBooks()
+        {
+            return from x in db.Books where x.PopularBooks.Count()!=0 select x;
+        }
         public void NewBook( Book book )
         {
             db.Books.InsertOnSubmit(book);

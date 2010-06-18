@@ -49,7 +49,15 @@
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_Buyer" Member="Buyers" ThisKey="ID" OtherKey="BookID" Type="Buyer" />
       <Association Name="Book_Remark" Member="Remarks" ThisKey="ID" OtherKey="BookID" Type="Remark" />
+      <Association Name="Book_PopularBook" Member="PopularBooks" ThisKey="ID" OtherKey="BookID" Type="PopularBook" />
       <Association Name="CatagoryLib_Book" Member="CatagoryLib" ThisKey="CategoryID" OtherKey="ID" Type="CatagoryLib" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PopularBooks" Member="PopularBooks">
+    <Type Name="PopularBook">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_PopularBook" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

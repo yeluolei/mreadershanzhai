@@ -42,6 +42,9 @@ namespace MReader.Models
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
+    partial void InsertPopularBook(PopularBook instance);
+    partial void UpdatePopularBook(PopularBook instance);
+    partial void DeletePopularBook(PopularBook instance);
     #endregion
 		
 		public BookDBDataContext() : 
@@ -103,6 +106,14 @@ namespace MReader.Models
 			get
 			{
 				return this.GetTable<Book>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PopularBook> PopularBooks
+		{
+			get
+			{
+				return this.GetTable<PopularBook>();
 			}
 		}
 	}
@@ -643,6 +654,8 @@ namespace MReader.Models
 		
 		private EntitySet<Remark> _Remarks;
 		
+		private EntitySet<PopularBook> _PopularBooks;
+		
 		private EntityRef<CatagoryLib> _CatagoryLib;
 		
     #region Extensibility Method Definitions
@@ -693,6 +706,7 @@ namespace MReader.Models
 		{
 			this._Buyers = new EntitySet<Buyer>(new Action<Buyer>(this.attach_Buyers), new Action<Buyer>(this.detach_Buyers));
 			this._Remarks = new EntitySet<Remark>(new Action<Remark>(this.attach_Remarks), new Action<Remark>(this.detach_Remarks));
+			this._PopularBooks = new EntitySet<PopularBook>(new Action<PopularBook>(this.attach_PopularBooks), new Action<PopularBook>(this.detach_PopularBooks));
 			this._CatagoryLib = default(EntityRef<CatagoryLib>);
 			OnCreated();
 		}
@@ -1107,6 +1121,19 @@ namespace MReader.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_PopularBook", Storage="_PopularBooks", ThisKey="ID", OtherKey="BookID")]
+		public EntitySet<PopularBook> PopularBooks
+		{
+			get
+			{
+				return this._PopularBooks;
+			}
+			set
+			{
+				this._PopularBooks.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatagoryLib_Book", Storage="_CatagoryLib", ThisKey="CategoryID", OtherKey="ID", IsForeignKey=true)]
 		public CatagoryLib CatagoryLib
 		{
@@ -1183,6 +1210,145 @@ namespace MReader.Models
 		{
 			this.SendPropertyChanging();
 			entity.Book = null;
+		}
+		
+		private void attach_PopularBooks(PopularBook entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_PopularBooks(PopularBook entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PopularBooks")]
+	public partial class PopularBook : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _BookID;
+		
+		private EntityRef<Book> _Book;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnBookIDChanging(int value);
+    partial void OnBookIDChanged();
+    #endregion
+		
+		public PopularBook()
+		{
+			this._Book = default(EntityRef<Book>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookID", DbType="Int NOT NULL")]
+		public int BookID
+		{
+			get
+			{
+				return this._BookID;
+			}
+			set
+			{
+				if ((this._BookID != value))
+				{
+					if (this._Book.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBookIDChanging(value);
+					this.SendPropertyChanging();
+					this._BookID = value;
+					this.SendPropertyChanged("BookID");
+					this.OnBookIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_PopularBook", Storage="_Book", ThisKey="BookID", OtherKey="ID", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.PopularBooks.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.PopularBooks.Add(this);
+						this._BookID = value.ID;
+					}
+					else
+					{
+						this._BookID = default(int);
+					}
+					this.SendPropertyChanged("Book");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
