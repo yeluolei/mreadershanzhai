@@ -10,10 +10,8 @@
 
     <table>
         <tr>
-            <th></th>
-            <th>
-                IsValid
-            </th>
+            <th>Operation</th>
+             
             <th>
                 averageRating
             </th>
@@ -29,9 +27,7 @@
             <th>
                 PublishDate
             </th>
-            <th>
-                Content
-            </th>
+            
             <th>
                 Author
             </th>
@@ -44,9 +40,7 @@
             <th>
                 Publisher
             </th>
-            <th>
-                Guid
-            </th>
+             
             <th>
                 Description
             </th>
@@ -80,13 +74,13 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id=item.ID }) %> |
-                <%: Html.ActionLink("Details", "Details", new { id=item.ID })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id=item.ID })%>
+              <%--  <%: Html.ActionLink("Edit", "Edit", new { id=item.ID }) %> |
+                <%: Html.ActionLink("Details", "Details", new { id=item.ID })%> |--%>
+                <%: Html.ActionLink("Remove from popular list", "UnsetPopularBook", new { id = item.ID })%>
             </td>
-            <td>
+            <%--<td>
                 <%: item.IsValid %>
-            </td>
+            </td>--%>
             <td>
                 <%: String.Format("{0:F}", item.averageRating) %>
             </td>
@@ -102,9 +96,9 @@
             <td>
                 <%: String.Format("{0:g}", item.PublishDate) %>
             </td>
-            <td>
+          <%--  <td>
                 <%: item.Content %>
-            </td>
+            </td>--%>
             <td>
                 <%: item.Author %>
             </td>
@@ -117,9 +111,9 @@
             <td>
                 <%: item.Publisher %>
             </td>
-            <td>
+            <%--<td>
                 <%: item.Guid %>
-            </td>
+            </td>--%>
             <td>
                 <%: item.Description %>
             </td>

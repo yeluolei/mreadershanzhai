@@ -18,7 +18,7 @@
                 <%: Html.LabelFor(model => model.UserName) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.UserName) %>
+                <%: Html.Label(Model.UserName) %>
                 <%: Html.ValidationMessageFor(model => model.UserName) %>
             </div>
             
@@ -34,7 +34,7 @@
                 <%: Html.LabelFor(model => model.DateRegistered) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.DateRegistered, String.Format("{0:g}", Model.DateRegistered)) %>
+                <%: Html.Label( String.Format("{0:g}", Model.DateRegistered)) %>
                 <%: Html.ValidationMessageFor(model => model.DateRegistered) %>
             </div>
             

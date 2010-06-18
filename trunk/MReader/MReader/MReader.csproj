@@ -195,6 +195,7 @@
     <Content Include="Views\Search\NotFound.aspx" />
     <Content Include="Views\Search\Title.aspx" />
     <Content Include="Views\Shared\CompactBookForm.ascx" />
+    <Content Include="Views\Shared\PopularBooks.ascx" />
     <Content Include="Views\Shared\RecommendedBooks.ascx" />
     <Content Include="Views\UserCenter\Balance.aspx" />
     <Content Include="Views\UserCenter\Favourite.aspx" />

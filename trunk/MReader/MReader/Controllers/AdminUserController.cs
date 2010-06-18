@@ -87,7 +87,8 @@ namespace MReader.Controllers
             }
             catch
             {
-                return View();
+
+                return View(cus);
             }
         }
 

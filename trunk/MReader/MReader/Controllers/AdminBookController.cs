@@ -201,7 +201,15 @@ namespace MReader.Controllers
             }
             catch
             {
-                throw new Exception();
+                foreach (var rv in book.GetRuleViolations())
+                {
+                    ModelState.AddModelError(rv.PropertyName,rv.ErrorMessage);
+                }
+                ModelState.AddModelError("","Please make sure all fields are valid.");
+
+
+
+                return View("EditBook",book);
             }
         }
 
