@@ -47,8 +47,8 @@
                                         <p><b> <%:Html.Label("Price:") %></b><br />
                                         &nbsp&nbsp <%=Model.book.Price %></p>
 		                            </div> 
-
-                                    <h3 id = "bookmarktitle"><a href="#" id="getBookmark">Bookmark</span></h3>
+                                    
+                                    <h3 id = "bookmarktitle"><a href="#" id="getBookmark">Bookmark</a></h3>
 
                                     <div id = "bookmark_content">                                
 		                            </div>
@@ -62,13 +62,13 @@
                                 <tr>
                                     <td>
                                         <div id = "previousbutton">  
-                                          <%-- <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />--%>
+                                           <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />
                                         </div>
                                     </td>
                                     <td>                                       
                                         <%=Html.TextBox("pageIndex",Model.pageIndex) %>
                                         <%=Html.Label("/"+Model.book.TotalPages.ToString() + " Pages")%>
-                                        <input type="submit" value="Go" />
+                                        <input id = "go" type="submit" value="Go" />
                                         
                                     </td>
                                     <td>
@@ -191,17 +191,34 @@
 	                        event: "mouseover"
                         });
 
-                        $("#getBookmark").click(getbookmarkJson()); 
+                        $("#getBookmark").click(function(){
+                                                        $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
+                                            function(data){ 
+                                                                var temp = "";
+                                                                $("#bookmark_content").text("");
+                                                                for( var i = 0; i<data.length; ++i)
+                                                                {
+                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
+                                                                    $("#bookmark_content").append(temp);
+                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
+                                                                }                                                   
+//                                                                $("#bookmark_content").after("<div class=\"deletebookmark\"></div>");
+                                                                $("#deletebookmark").droppable()
+                                                          } 
+                                        );
+                                bindlable();
+                        }); 
 
                         $("#dialog").dialog({autoOpen:false, show: 'blind', modal:true, height: 140, hide: 'explode'});
-
-                        $("#bookmark").droppable({
-			                        activeClass: 'ui-state-hover',
-			                        hoverClass: 'ui-state-active',
-			                        drop: function(event, ui) {
-				                        $(this).addClass('ui-state-highlight');
-			                        }
-		                            });
+                        $("#go").button();
+                        $("#bookmark").button();
+//                        $("#bookmark").droppable({
+//			                        activeClass: 'ui-state-hover',
+//			                        hoverClass: 'ui-state-active',
+//			                        drop: function(event, ui) {
+//				                        $(this).addClass('ui-state-highlight');
+//			                        }
+//		                            });
                        
                     } );
 
@@ -247,23 +264,23 @@
                     
               }
 
-              function getbookmarkJson(){ 
-                                $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
-                                            function(data){ 
-                                                                var temp = "";
-                                                                $("#bookmark_content").text("");
-                                                                for( var i = 0; i<data.length; ++i)
-                                                                {
-                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
-                                                                    $("#bookmark_content").append(temp);
-                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
-                                                                }                                                   
-                                                                $("#bookmark_content").after("<div class=\"deletebookmark\"></div>");
-                                                                $("#deletebookmark").droppable()
-                                                          } 
-                                        );
-                                bindlable();
-                                    }
+//              function getbookmarkJson(){ 
+//                                $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
+//                                            function(data){ 
+//                                                                var temp = "";
+//                                                                $("#bookmark_content").text("");
+//                                                                for( var i = 0; i<data.length; ++i)
+//                                                                {
+//                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
+//                                                                    $("#bookmark_content").append(temp);
+//                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
+//                                                                }                                                   
+//                                                                $("#bookmark_content").after("<div class=\"deletebookmark\"></div>");
+//                                                                $("#deletebookmark").droppable()
+//                                                          } 
+//                                        );
+//                                bindlable();
+//                                    }
                                           
    </script>
 </asp:Content>
