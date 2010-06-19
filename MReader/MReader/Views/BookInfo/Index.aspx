@@ -58,11 +58,11 @@
             </table>
             <div>
                 <%if (Model.customer.HasBought(Model.book.ID))
-                      {%>
+                  {%>
                 <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
                 <% }%>
                 <%else
-                        { %>
+                    { %>
                 <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
                 <%}%>
                 <div>
@@ -85,7 +85,8 @@
                         Average rating is
                         <%=Model.book.averageRating.ToString() %>
                         stars.</p>
-                    <% if (!Model.customer.HasRated(Model.book.ID)) { %>
+                    <% if (!Model.customer.HasRated(Model.book.ID))
+                       { %>
                     <label>
                         rate as
                     </label>
@@ -102,8 +103,15 @@
             <div>
                 <%:Model.book.Description%></div>
             <div>
-                <% if (!Model.customer.HasFaved(Model.book.ID)) { %>
+                <% if (!Model.customer.HasFaved(Model.book.ID))
+                   { %>
                 <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
+                <%}
+                   else
+                   {
+                %>
+                This book is in your
+                <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
                 <%} %>
             </div>
         </div>
