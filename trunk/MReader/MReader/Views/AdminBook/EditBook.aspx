@@ -53,14 +53,14 @@
                 <%: Html.TextBoxFor(model => model.PublishDate, String.Format("{0:g}", Model.PublishDate)) %>
                 <%: Html.ValidationMessageFor(model => model.PublishDate) %>
             </div>
-            
+        <%--    
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Content) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.Content) %>
                 <%: Html.ValidationMessageFor(model => model.Content) %>
-            </div>
+            </div>--%>
             
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Author) %>

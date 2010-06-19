@@ -104,5 +104,12 @@ namespace MReader.Models
             db.Bookmarks.DeleteOnSubmit(bookmark);
         }
 
+
+        public IQueryable<PurchaseHistory> GetPurchaseHistory(DateTime starttime, DateTime endtime)
+        {
+            return from ph in db.PurchaseHistories
+                   where ph.PurchaseTime >= starttime && ph.PurchaseTime <= endtime
+                   select ph;
+        }
     }
 }

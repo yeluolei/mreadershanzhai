@@ -88,7 +88,8 @@
                 <%: item.ISBN %>
             </td>
             <td>
-                <%: item.Title %>
+            <%=Html.ActionLink(item.Title,"ViewBookInfo",new{id = item.ID}) %>
+                
             </td>
             <td>
                 <%: String.Format("{0:F}", item.Price) %>

@@ -77,8 +77,10 @@
     <Compile Include="Controllers\SearchController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\SiteIncomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Helps\PaginatedList.cs" />
+    <Compile Include="Models\SiteIncomeFormModel.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
     <Compile Include="Models\BookSearchResult.cs" />
     <Compile Include="Models\Buyer.cs" />
@@ -155,6 +157,7 @@
     <Content Include="book\Essential_C++\Essential_C++-7.png" />
     <Content Include="book\Essential_C++\Essential_C++-8.png" />
     <Content Include="book\Essential_C++\Essential_C++-9.png" />
+    <Content Include="Content\homeindex.css" />
     <Content Include="Content\accordion\flora.accordion.css" />
     <Content Include="Content\BookForm.css" />
     <Content Include="Content\BookInfo.css" />
@@ -197,6 +200,7 @@
     <Content Include="Views\Shared\CompactBookForm.ascx" />
     <Content Include="Views\Shared\PopularBooks.ascx" />
     <Content Include="Views\Shared\RecommendedBooks.ascx" />
+    <Content Include="Views\SiteIncome\Index.aspx" />
     <Content Include="Views\UserCenter\Balance.aspx" />
     <Content Include="Views\UserCenter\Favourite.aspx" />
     <Content Include="Views\UserCenter\History.aspx" />
