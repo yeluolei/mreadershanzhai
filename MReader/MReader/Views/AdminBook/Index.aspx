@@ -48,6 +48,9 @@
             <th>
                 ID
             </th>
+            <th>Times Bought</th>
+            <th>Times Favored</th>
+
             <th>
                 Operations
             </th>
@@ -91,6 +94,10 @@
             <td>
                 <%: item.ID %>
             </td>
+
+            <td><%:item.TimesBought %></td>
+            <td><%:item.TimesFavored %></td>
+
             <%--<td>
                 <%: item.IsValid %>
             </td>--%>
