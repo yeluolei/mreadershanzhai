@@ -10,111 +10,119 @@
     <h2>
         <%= Model.book.Title %></h2>
     <div class="book">
-        <div class="bookcover">
-            <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
-        </div>
-        <div class="bookInfo">
-            <table>
-                <tr>
-                    <td>
-                        Author :
-                    </td>
-                    <td>
-                        <%: Model.book.Author %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ISBN:
-                    </td>
-                    <td>
-                        <%:Model.book.ISBN %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Publisher :
-                    </td>
-                    <td>
-                        <%:Model.book.Publisher %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Publisher date :
-                    </td>
-                    <td>
-                        <%:Model.book.PublishDate.ToShortDateString()%>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Price :
-                    </td>
-                    <td>
-                        <%: Model.book.Price.ToString("C") %>
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <%if (Model.customer.HasBought(Model.book.ID))
-                  {%>
-                <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
-                <% }%>
-                <%else
-                    { %>
-                <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
-                <%}%>
-                <div>
-                    <p>
-                        <%=Model.book.rate1 %>
-                        people rated the book as 1 star</p>
-                    <p>
-                        <%=Model.book.rate2 %>
-                        people rated the book as 2 star</p>
-                    <p>
-                        <%=Model.book.rate3 %>
-                        people rated the book as 3 star</p>
-                    <p>
-                        <%=Model.book.rate4 %>
-                        people rated the book as 4 star</p>
-                    <p>
-                        <%=Model.book.rate5 %>
-                        people rated the book as 5 star</p>
-                    <p>
-                        Average rating is
-                        <%=Model.book.averageRating.ToString() %>
-                        stars.</p>
-                    <% if (!Model.customer.HasRated(Model.book.ID))
-                       { %>
-                    <label>
-                        rate as
-                    </label>
-                    <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
-                    <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
-                    <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
-                    <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
-                    <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
-                    <label>
-                        stars.</label>
-                    <%} %>
-                </div>
-            </div>
-            <div>
-                <%:Model.book.Description%></div>
-            <div>
-                <% if (!Model.customer.HasFaved(Model.book.ID))
-                   { %>
-                <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
-                <%}
-                   else
-                   {
-                %>
-                This book is in your
-                <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
-                <%} %>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td class="bookcover">
+                    <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
+                </td>
+                <td>
+                    <div class="bookInfo">
+                        <table>
+                            <tr>
+                                <td>
+                                    Author :
+                                </td>
+                                <td>
+                                    <%: Model.book.Author %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ISBN:
+                                </td>
+                                <td>
+                                    <%:Model.book.ISBN %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Publisher :
+                                </td>
+                                <td>
+                                    <%:Model.book.Publisher %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Publisher date :
+                                </td>
+                                <td>
+                                    <%:Model.book.PublishDate.ToShortDateString()%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Price :
+                                </td>
+                                <td>
+                                    <%: Model.book.Price.ToString("C") %>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <%if (Model.customer.HasBought(Model.book.ID))
+                              {%>
+                            <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
+                            <% }%>
+                            <%else
+                                { %>
+                            <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
+                            <%}%>
+                        </div>
+                        <div>
+                            <%:Model.book.Description%></div>
+                        <div>
+                            <% if (!Model.customer.HasFaved(Model.book.ID))
+                               { %>
+                            <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
+                            <%} %>
+                            <% else
+                                {
+                            %>
+                            This book is in your
+                            <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
+                            <%} %>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p>
+                            <%=Model.book.rate1 %>
+                            people rated the book as 1 star</p>
+                        <p>
+                            <%=Model.book.rate2 %>
+                            people rated the book as 2 star</p>
+                        <p>
+                            <%=Model.book.rate3 %>
+                            people rated the book as 3 star</p>
+                        <p>
+                            <%=Model.book.rate4 %>
+                            people rated the book as 4 star</p>
+                        <p>
+                            <%=Model.book.rate5 %>
+                            people rated the book as 5 star</p>
+                        <p>
+                            Average rating is
+                            <%=Model.book.averageRating.ToString() %>
+                            stars.</p>
+                        <% if (!Model.customer.HasRated(Model.book.ID))
+                           { %>
+                        <label>
+                            rate as
+                        </label>
+                        <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
+                        <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
+                        <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
+                        <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
+                        <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                        <label>
+                            stars.</label>
+                        <%} %>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
     <div class="behindBook">
         <table>

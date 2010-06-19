@@ -9,11 +9,9 @@
 
 .bookcover
 {
-    float:left;
-    width:200px;
+    width:180px;
     height:200px;
-    margin-left:50px;
-    padding:0px;
+    padding-left:30px;
     }
 .cover
 {
@@ -76,8 +74,15 @@ table
     table-layout:fixed;
     width:100%;
     }
+.book table
+{
+    border:0px;
+    }
 
-    
+.book td
+{
+    border:0px;
+}
 .behindBook
 {
     margin-top:40px;
@@ -97,18 +102,16 @@ table
     width: 70%;
 }
 .topBar
-{    padding :1px 1px 1px 1px ;
+{
+    padding :1px 1px 1px 1px;
     height : 25px;
     border: #bfceff 1px solid;
     font-weight: bold;
     font-size:large;
        /* Firefox 3.6 */  
-    background-image: -moz-linear-gradient(top, #ddecfb, #ffffff);   
-     /* Safari & Chrome */  
     background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffffff),color-stop(1, #ddecfb));   
-     /* IE6 & IE7 */  
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ddecfb', endColorstr='#ffffff');
-    }
+     /* Safari & Chrome */
+}
 .remark p
 {
     display:block;
@@ -117,7 +120,7 @@ table
 .buyers
 {
     padding-top:3px;
-    border-left: 8px #9BBCE1 solid;
+  /*  border-left: 8px #9BBCE1 solid;*/
     padding-left:5px;
 }
 

@@ -17,7 +17,7 @@
             Publisher :
             <% =Html.Encode ( Model.Publisher ) %>
         </div>
-        <div class="publisherdate">
+        <div class="hide" name="hide">
             PublishDate :
             <% =Html.Encode ( String.Format("{0:g}", Model.PublishDate )) %>
             <br />
