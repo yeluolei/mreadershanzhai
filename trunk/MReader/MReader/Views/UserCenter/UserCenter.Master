@@ -8,7 +8,6 @@
                 <%=Html.ActionLink("Purchase History", "History")%><br />
                 <%=Html.ActionLink("My Favourite Books", "Favourite")%><br />
                 <%=Html.ActionLink("My Balance", "Balance")%><br />
-
             </td>
             <td>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
