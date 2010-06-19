@@ -1,48 +1,48 @@
-﻿.searchresult li
-{
-    border: 2px dotted #00FFFF;
-    min-width: 100%;
-    display: block;
-    list-style: none;
-    min-height: 80px;
+﻿body {
 }
-.add
+
+li
 {
-    background-color:Yellow;
+    margin-top:3px;
+    list-style:none;
     }
+.searchresult ul
+{
+    border:0px;
+    }
+
+.searchresult li
+{
+    border:0px;
+    }
+
 .list
 {
-    min-height:80px;
+    border:0px;
     }
+
+.list td
+{
+    border:0px;
+    }
+
+.list tr
+{
+    border:0px;
+    }
+
+.add
+{
+    background-color: #969EE9;
+}
+
 .cover
 {
-    width:80px;
+    width:100px;
     height:80px;
     }
+
 .cover img
 {
     height:80px;
     }
-.bookofinfo
-{
-    height:70px;
-    }
-.price
-{
-    display:none;
-    }
-.publisher
-{
-  
-    }
- .publishdate
- {
-     display:none;
-     }
- .isbn
- {
-     }
-.description
-{
-      display:none;
-      }

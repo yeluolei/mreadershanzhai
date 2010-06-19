@@ -1,10 +1,8 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<MReader.Models.Book>" %>
-<fieldset>
-    <legend>
-        <div id="bookcover">
-            <img height="160" width="100" src="<%=String.Format(Model.Content,"cover") %>" alt="<%=Model.Title%>" />
-        </div>
-    </legend>
+<center><fieldset>
+        <center><div id="bookcover">
+            <img height="130px"src="<%=String.Format(Model.Content,"cover") %>" alt="<%=Model.Title%>" />
+        </div></center>
     <div id="bookinfo">
         <div>
             <% =Html.ActionLink(Model.Title , "index","BookInfo",new {bookid = Model.ID},new {}) %>
@@ -40,3 +38,4 @@
         </div>--%>
     </div>
 </fieldset>
+</center>

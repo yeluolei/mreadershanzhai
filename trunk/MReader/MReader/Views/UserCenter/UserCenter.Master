@@ -1,19 +1,34 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
+User Center
+</asp:Content>
+
 <asp:Content ID="content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table class="style1">
+    <table class="all">
         <tr>
-            <td>
-                <%=Html.ActionLink("My Account","Index") %><br />
-                <%=Html.ActionLink("Purchase History", "History")%><br />
-                <%=Html.ActionLink("My Favourite Books", "Favourite")%><br />
-                <%=Html.ActionLink("My Balance", "Balance")%><br />
+            <td class="left">
+            <ul>
+                <li><%=Html.ActionLink("My Account","Index") %><span>>></span></li>
+                <li><%=Html.ActionLink("Purchase History", "History")%><span>>></span></li>
+                <li><%=Html.ActionLink("My Favourite Books", "Favourite")%><span>>></span></li>
+                <li><%=Html.ActionLink("My Balance", "Balance")%><span>>></span></li>
+                </ul>
             </td>
-            <td>
+            <td class="right">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </td>
         </tr>
     </table>
     <br />
+</asp:Content>
+
+
+<asp:Content ID="content3" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="/Content/UserCenter.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+      
+    <script type="text/javascript" language="javascript">
+    </script>
 </asp:Content>
