@@ -1,34 +1,36 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-User Center
+    User Center
 </asp:Content>
-
 <asp:Content ID="content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table class="all">
-        <tr>
-            <td class="left">
-            <ul>
-                <li><%=Html.ActionLink("My Account","Index") %><span>>></span></li>
-                <li><%=Html.ActionLink("Purchase History", "History")%><span>>></span></li>
-                <li><%=Html.ActionLink("My Favourite Books", "Favourite")%><span>>></span></li>
-                <li><%=Html.ActionLink("My Balance", "Balance")%><span>>></span></li>
-                </ul>
-            </td>
-            <td class="right">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                </asp:ContentPlaceHolder>
-            </td>
-        </tr>
-    </table>
-    <br />
+    <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-state-default ui-corner-top">
+                <%=Html.ActionLink("My Account","Index") %></li>
+            <li class="ui-state-default ui-corner-top">
+                <%=Html.ActionLink("Purchase History", "History")%></li>
+            <li class="ui-state-default ui-corner-top">
+                <%=Html.ActionLink("My Favourite Books", "Favourite")%></li>
+            <li class="ui-state-default ui-corner-top">
+                <%=Html.ActionLink("My Balance", "Balance")%></li>
+        </ul>
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
 </asp:Content>
-
-
 <asp:Content ID="content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/UserCenter.css" rel="stylesheet" type="text/css" />
     <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
-      
     <script type="text/javascript" language="javascript">
+        $(function () {
+//        $("#tabs ul")
+//            var item = document.getElementsByTagName("li");
+//            for( var i )
+//            .click($(this).addClass("ui-tabs-selected", "ui-state-active"));
+//        }
+          )
     </script>
 </asp:Content>

@@ -57,14 +57,22 @@
                                 </td>
                             </tr>
                         </table>
+                        <% if (!Model.customer.HasFaved(Model.book.ID))
+                           { %>
+                        <div class="favourite">
+                            <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
+                        </div>
+                        <%} %>
+                        <% else
+                            {
+                        %>
+                        <h6>
+                            This book is in your
+                            <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
+                        </h6>
+                        <%} %>
                         <div>
                             <%:Model.book.Description%></div>
-                        <div>
-                            <% if (!Model.customer.HasFaved(Model.book.ID))
-                               { %>
-                            <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
-                            <%} %>
-                        </div>
                     </div>
                 </td>
                 <td>
@@ -76,11 +84,21 @@
                         <%=Html.Label("Current Balance : ") %>
                         <%=Html.Encode(Model.customer.CurrentMoney.ToString("C")) %><br />
                     </h3>
-                    <%=Html.ActionLink("Recharge my account", "Balance", "UserCenter", new { }, new { })%>
-                    <% using (Html.BeginForm())
-                       { %>
-                    <input type="submit" value="Buy" />
-                    <%} %>
+                    <div class="button">
+                        <table>
+                            <tr>
+                                <td>
+                                    <%=Html.ActionLink("Recharge my account", "Balance", "UserCenter", new { }, new { })%>
+                                </td>
+                                <td>
+                                    <% using (Html.BeginForm())
+                                       { %>
+                                    <input id="Buy" type="submit" value="Buy" />
+                                    <%} %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -88,10 +106,19 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".bookInfo tr td:first").css('width', '100px');
+            $(".button a").button();
+            $("#Buy").button();
+            $(".favourite").button();
+        }
+     )
+    </script>
     <style type="text/css">
         h3
         {
             color: #0253a2;
         }
-        a</style>
+    </style>
 </asp:Content>

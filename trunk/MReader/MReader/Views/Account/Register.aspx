@@ -5,6 +5,12 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".register").button();
+    }
+)
+</script>
     <h2>Create a New Account</h2>
     <p>
         Use the form below to create a new account. 
@@ -17,7 +23,7 @@
         <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
+               
                 
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
@@ -52,7 +58,7 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Register" />
+                    <input class="register" type="submit" value="Register" />
                 </p>
             </fieldset>
         </div>

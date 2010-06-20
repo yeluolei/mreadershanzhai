@@ -9,14 +9,17 @@ Search Result
          Title :
          <%: Html.Label ( Model.keyword[0] + " ;" ) %>
       <%} %>
+      &nbsp;
     <%if (Model.keyword[1] != "") { %>
          ISBN :
          <%: Html.Label ( Model.keyword[1] + " ;" ) %>
       <%} %>
+      &nbsp;
     <%if (Model.keyword[2] != "") { %>
          author :
          <%: Html.Label ( Model.keyword[2] + " ;" ) %>
       <%} %>
+      &nbsp;
     <%if (Model.keyword[3] != "") { %>
          Publisher :
          <%: Html.Label ( Model.keyword[3] + " ;" ) %>
@@ -38,7 +41,7 @@ Search Result
     <%=Html.ActionLink("Previous Page", "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1] , author = Model.keyword[2] , Publisher = Model.keyword[3] , pageIndex = Model.books.PageIndex - 1 })%>
     <%}%>
 
-    <% for (int i = 1; i <= Model.books.TotalPages; i++)
+    <% for (int i = 0; i < Model.books.TotalPages; i++)
        {%>
     <% if (i == Model.books.PageIndex)%>
     <%=i.ToString()%>
@@ -58,8 +61,8 @@ Search Result
     <link rel="stylesheet" type="text/css" href="/Content/SearchTitle.css" />
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
-            $(".list").parent().hover(function () { $(this).css('background-color', '#EEEEEE') },
-            function () { $(this).css('background-color', 'white') }
+            $(".list").parent().hover(function () { $(this).css('background-color', '#EEEEEE');},
+            function () { $(this).css('background-color', 'white'); }
             );
         }
 )

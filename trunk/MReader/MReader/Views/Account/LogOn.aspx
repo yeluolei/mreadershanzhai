@@ -5,6 +5,12 @@
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".logon").button();
+    }
+)
+</script>
     <h2>Log On</h2>
     <p>
         Please enter your username and password. <%: Html.ActionLink("Register", "Register") %> if you don't have an account.
@@ -14,8 +20,6 @@
         <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
-                
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>
@@ -38,7 +42,7 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Log On" />
+                    <input class="logon" type="submit" value="Log On" />
                 </p>
             </fieldset>
         </div>

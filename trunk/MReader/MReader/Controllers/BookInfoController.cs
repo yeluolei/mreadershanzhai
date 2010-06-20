@@ -34,6 +34,7 @@ namespace MReader.Controllers
             remark.RemarkTime = DateTime.Now;
             remark.RemarkUserName = User.Identity.Name;
             remark.RemarkContent = RemarkContent;
+            RemarkContent = "";
             book.Remarks.Add(remark);
             bookDb.save();
             return Index(bookid,PageIndex);
@@ -76,7 +77,8 @@ namespace MReader.Controllers
             book.Buyers.Add(new Buyer(customer));
             book.TimesBought = book.Buyers.Count;
             bookDb.save();
-            return View("BoughtSuccess", book);
+            BookInfoFormModel bookInfo = new BookInfoFormModel(book, customer);
+            return View("BoughtSuccess", bookInfo);
 
         }
 

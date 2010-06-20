@@ -10,7 +10,8 @@
     <script src="/Scripts/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
     <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
-
+    <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
@@ -54,17 +55,17 @@
         </div>
         <div class="MenuPage">
             <ul id="menu">
-                <li class="Menu6">
-                    <%: Html.ActionLink("About", "About", "Home")%></li>
                 <%if (Context.User.IsInRole("admin"))
                   { %>
+                <li class="Menu6">
+                    <%: Html.ActionLink("AdminIncome","Index", "SiteIncome")%></li>
                 <li class="Menu5">
                     <%: Html.ActionLink("AdminUser", "Index", "AdminUser")%></li>
                 <li class="Menu4">
                     <%: Html.ActionLink("AdminBook", "Index", "AdminBook")%></li>
-                <li class="Menu3">
-                    <%: Html.ActionLink("AdminIncome","Index", "SiteIncome")%></li>
                 <%} %>
+                <li class="Menu3">
+                    <%: Html.ActionLink("About", "About", "Home")%></li>
                 <li class="Menu2">
                     <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
                 <li class="Menu1">

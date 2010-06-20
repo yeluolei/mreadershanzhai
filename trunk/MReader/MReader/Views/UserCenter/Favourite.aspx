@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/UserCenter/UserCenter.Master"
     Inherits="System.Web.Mvc.ViewPage<MReader.Models.CustomerFormModel>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <h2>
         Favourite</h2>
     <table>
