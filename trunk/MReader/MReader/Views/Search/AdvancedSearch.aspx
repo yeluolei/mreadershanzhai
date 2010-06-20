@@ -45,6 +45,15 @@
                 <%: Html.TextBoxFor(model => model.Publisher) %>
                 <%: Html.ValidationMessageFor(model => model.Publisher) %>
             </div>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model=>model.CatagoryLib.CatagoryName) %>
+            </div>
+
+            <div class="editor-field">
+                <%: Html.DropDownList("CategoryID",Model.Categories)%>
+                <%: Html.ValidationMessageFor(model => model.Description) %>
+            </div>
             
             <p>
                 <input type="submit" value="Search" />

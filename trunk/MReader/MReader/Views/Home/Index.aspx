@@ -8,6 +8,7 @@
 
         <div> <%Html.RenderPartial("RecommendedBooks",10); %></div>
         <div><%Html.RenderPartial("PopularBooks",10); %></div>
+<%--        <div><%Html.ActionLink ( "Programming" , ) %></div>--%>
  
 </asp:Content>
 

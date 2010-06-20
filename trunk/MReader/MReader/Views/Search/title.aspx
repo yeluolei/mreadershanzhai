@@ -5,10 +5,23 @@ Search Result
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-         Result for:<% foreach (string keyword in Model.keyword)
-           {%>
-        <%: Html.Label(keyword)%>
-        <%}%></h2>
+    <%if (Model.keyword[0] != "" ) { %>
+         Title :
+         <%: Html.Label ( Model.keyword[0] + " ;" ) %>
+      <%} %>
+    <%if (Model.keyword[1] != "") { %>
+         ISBN :
+         <%: Html.Label ( Model.keyword[1] + " ;" ) %>
+      <%} %>
+    <%if (Model.keyword[2] != "") { %>
+         author :
+         <%: Html.Label ( Model.keyword[2] + " ;" ) %>
+      <%} %>
+    <%if (Model.keyword[3] != "") { %>
+         Publisher :
+         <%: Html.Label ( Model.keyword[3] + " ;" ) %>
+      <%} %>
+    </h2>
     <div class="searchresult">
             <ul>
                 <% foreach (var book in Model.books)
@@ -22,21 +35,21 @@ Search Result
     <div style="margin-left:10px;">
     <% if (Model.books.HasPreviousPage)
        { %>
-    <%=Html.ActionLink("Previous Page", "title", new { book_title = Model.keyword[0], pageindex = Model.books.PageIndex - 1 })%>
+    <%=Html.ActionLink("Previous Page", "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1] , author = Model.keyword[2] , Publisher = Model.keyword[3] , pageIndex = Model.books.PageIndex - 1 })%>
     <%}%>
 
     <% for (int i = 1; i <= Model.books.TotalPages; i++)
        {%>
-    <% if (i != Model.books.PageIndex)%>
-    <%=i.ToString()%>
-    <% if (i == Model.books.PageIndex) %>
-    <%=Html.ActionLink(i.ToString(),"title",new{book_title = Model.keyword[0],pageindex = i}) %>
+    <% if (i == Model.books.PageIndex)%>
+    <%=( i + 1 ).ToString()%>
+    <% if (i != Model.books.PageIndex) %>
+    <%=Html.ActionLink((i + 1).ToString(), "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1], author = Model.keyword[2], Publisher = Model.keyword[3], pageIndex = i })%>
     <label>
     </label>
     <%} %>
     <% if (Model.books.HasNextPage)
        { %>
-    <%=Html.ActionLink("Next Page", "title", new { book_title = Model.keyword[0], pageindex = Model.books.PageIndex + 1 })%>
+    <%=Html.ActionLink("Next Page", "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1], author = Model.keyword[2], Publisher = Model.keyword[3], pageIndex = Model.books.PageIndex + 1 })%>
     <%} %>
     </div>
 </asp:Content>
