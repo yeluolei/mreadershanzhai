@@ -3,7 +3,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
     User Center
 </asp:Content>
+ 
 <asp:Content ID="content1" ContentPlaceHolderID="MainContent" runat="server">
+    
     <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
             <li class="ui-state-default ui-corner-top">
@@ -24,6 +26,7 @@
 <asp:Content ID="content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/UserCenter.css" rel="stylesheet" type="text/css" />
     <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/SearchTitle.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" language="javascript">
         $(function () {
 //        $("#tabs ul")

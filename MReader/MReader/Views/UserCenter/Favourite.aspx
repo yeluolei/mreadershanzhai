@@ -20,7 +20,8 @@
             {%>
         <tr>
             <td>
-                <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title, "index", "bookinfo", new { bookid = i.BookID }, new { })%><br />
+            <%Html.RenderPartial("BookForm",bookRepo.GetBookbyID(i.BookID));%>
+               <%-- <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title, "index", "bookinfo", new { bookid = i.BookID }, new { })%><br />--%>
             </td>
             
             <td>

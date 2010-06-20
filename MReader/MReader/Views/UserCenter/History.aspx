@@ -16,7 +16,10 @@
                 <b>Book Title</b>
             </th>
         </tr>
-        <%foreach (var hist in Model.Customer.PurchaseHistories)
+
+         <%
+            MReader.Models.BookRepository bookRepo = new MReader.Models.BookRepository();
+        foreach (var hist in Model.Customer.PurchaseHistories)
           { %>
         <tr>
             <td>
@@ -26,7 +29,8 @@
                 <%=hist.PurchaseTime.ToString() %>
             </td>
             <td>
-                <%=Html.ActionLink(hist.BookTitle, "index", "Bookinfo", new { bookid = hist.BookID }, new { })%>
+                <%Html.RenderPartial("BookForm",bookRepo.GetBookbyID(hist.BookID));%>
+              <%--  <%=Html.ActionLink(hist.BookTitle, "index", "Bookinfo", new { bookid = hist.BookID }, new { })%>--%>
             </td>
         </tr>
         <%} %>
