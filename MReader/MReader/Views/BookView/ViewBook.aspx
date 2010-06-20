@@ -95,16 +95,14 @@
      <div class="demo">
  
     <div id="dialog" title="Add Bookmark">
-	    <label>note:</label><input type="text" id="note2" />
+	    <label>note:</label><input type="text" id="note2" /><br />
         <input type="button" id="submitnote" value="submit"/>
     </div>
     </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID= "HeadContent" runat="server">
-        <script src="/Scripts/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-        <link href="/Content/demos.css" rel="stylesheet" type="text/css" />
-        <link href="/Content/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+
 
         <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="/Content/jquery.rating.css" rel="stylesheet" type="text/css" />
@@ -122,6 +120,7 @@
             var firstClick = true;
             var x = 10;  
 	        var y = 20;
+            var tempTitle;
 
             function preload(imgURL) {
                 var i = new Image();
@@ -182,6 +181,7 @@
                                 GetURL();
                                 $.get( ajaxUrl, function(data, textStatus){ alert("succeed");} );
                                 $("#dialog").dialog("close");
+                                getbookmarkJson();
                         });
                         $("#bookmark").click( function() {
                                 $("#dialog").dialog("open");}
@@ -206,9 +206,10 @@
                                                                 $("#deletebookmark").droppable()
                                                           } 
                                         );
-                                bindlable();
-                        }); 
-
+//                                bindlable();
+                        });
+                        getbookmarkJson(); 
+                        bindlable();
                         $("#dialog").dialog({autoOpen:false, show: 'blind', modal:true, height: 140, hide: 'explode'});
                         $("#go").button();
                         $("#bookmark").button();
@@ -236,8 +237,8 @@
             function bindlable(){              
                 $("#mark").live("mouseover", function(e){
        	                this.myTitle = this.title;
-		                this.title = "";	
-	                    var tooltip = "<div id='tooltip'>"+ "<p>note:"+this.myTitle +"</p><\/div>"; //创建 div 元素
+		                this.title = "a";	
+	                    var tooltip = "<div id='tooltip'>"+ "<p><h3>note:</h3>"+this.myTitle +"</p><\/div>"; //创建 div 元素
 		                $("body").append(tooltip);	//把它追加到文档中
 		                $("#tooltip")
 			                .css({
@@ -264,23 +265,23 @@
                     
               }
 
-//              function getbookmarkJson(){ 
-//                                $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
-//                                            function(data){ 
-//                                                                var temp = "";
-//                                                                $("#bookmark_content").text("");
-//                                                                for( var i = 0; i<data.length; ++i)
-//                                                                {
-//                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
-//                                                                    $("#bookmark_content").append(temp);
-//                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
-//                                                                }                                                   
+              function getbookmarkJson(){ 
+                                $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
+                                            function(data){ 
+                                                                var temp = "";
+                                                                $("#bookmark_content").text("");
+                                                                for( var i = 0; i<data.length; ++i)
+                                                                {
+                                                                    temp = "<div id =\""+data[i].ID +"\"><p id=\"mark\" title=\"" + data[i].note +"\" >"+data[i].createtime+"  page:<a href = \"javascript:gotoPage("+data[i].pageNum+")\">"+data[i].pageNum +">></a></p> <a onclick=\"deletebookmark(" +data[i].ID+","+ i + ")\">delete</a></div>";
+                                                                    $("#bookmark_content").append(temp);
+                                                                    $("#bookmark_content #mark").draggable({ revert: 'invalid' , containment: '#bookmark_content', scroll: false});
+                                                                }                                                   
 //                                                                $("#bookmark_content").after("<div class=\"deletebookmark\"></div>");
 //                                                                $("#deletebookmark").droppable()
-//                                                          } 
-//                                        );
+                                                          } 
+                                        );
 //                                bindlable();
-//                                    }
+                                    }
                                           
    </script>
 </asp:Content>

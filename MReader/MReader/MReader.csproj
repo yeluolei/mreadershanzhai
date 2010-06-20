@@ -165,6 +165,21 @@
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Content\jquery-ui-1.8.2.custom.css" />
     <Content Include="Content\jquery.rating.css" />
+    <Content Include="images\accordion-left-act.png" />
+    <Content Include="images\accordion-left-over.png" />
+    <Content Include="images\accordion-left.png" />
+    <Content Include="images\accordion-middle-act.png" />
+    <Content Include="images\accordion-middle-over.png" />
+    <Content Include="images\accordion-middle.png" />
+    <Content Include="images\accordion-right-act.png" />
+    <Content Include="images\accordion-right-over.png" />
+    <Content Include="images\accordion-right.png" />
+    <Content Include="images\arrow_left_green_48.png" />
+    <Content Include="images\arrow_right_green_48.png" />
+    <Content Include="images\headertop.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\search.jpg" />
+    <Content Include="images\shadow.png" />
     <Content Include="Scripts\accordion\jquery.accordion.js" />
     <Content Include="Scripts\accordion\jquery.dimensions.js" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
@@ -331,6 +346,7 @@
     <None Include="book\Essential_C++\.svn\text-base\Essential_C++-8.png.svn-base" />
     <None Include="book\Essential_C++\.svn\text-base\Essential_C++-9.png.svn-base" />
     <None Include="book\Essential_C++\.svn\text-base\Essential_C++-cover.png.svn-base" />
+    <None Include="images\header.old" />
     <None Include="Models\BookDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>BookDB.designer.cs</LastGenOutput>

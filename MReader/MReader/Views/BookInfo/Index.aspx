@@ -5,6 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("a").button();
+        })
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
