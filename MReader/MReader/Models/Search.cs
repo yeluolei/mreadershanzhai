@@ -51,7 +51,7 @@ namespace MReader.Models
             return result;
         }
 
-        public BookSearchResult AdvancedSearch(string title, string ISBN, string author, string Publisher,int pageIndex = 0,int pageSize = 10) {
+        public BookSearchResult AdvancedSearch(string title  , string ISBN  , string author  , string Publisher  , int pageIndex = 0 ,int pageSize = 2 ) {
             List<Book> books = db.GetAllBooks().ToList();
             List<Book> bookResult = new List<Book>();
             List<string> title_keyword = MakeKeyword ( title );
@@ -96,14 +96,21 @@ namespace MReader.Models
                     bookResult.Add(book);
             }
             BookSearchResult result = new BookSearchResult(new Helps.PaginatedList<Book>(bookResult,pageIndex,pageSize));
-            if (ISBN != "")
-                result.keyword.Add("ISBN:" + ISBN + " ;");
-            if (title != "")
-                result.keyword.Add("Title:" + title + " ;");
-            if (author != "")
-                result.keyword.Add("Author:" + author + " ;");
-            if (Publisher != "")
-                result.keyword.Add("Publisher:" + Publisher );
+
+            //if (title != "")
+            //    result.keyword.Add("Title:" + title + " ;");
+            //if (ISBN != "")
+            //    result.keyword.Add("ISBN:" + ISBN + " ;");
+            //if (author != "")
+            //    result.keyword.Add("Author:" + author + " ;");
+            //if (Publisher != "")
+            //    result.keyword.Add("Publisher:" + Publisher );
+
+            result.keyword.Add(title);
+            result.keyword.Add(ISBN);
+            result.keyword.Add(author);
+            result.keyword.Add(Publisher) ;
+
             return result;
         }
     }

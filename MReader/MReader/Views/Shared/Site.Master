@@ -36,11 +36,11 @@
             </div>
             <div class="search">
                 <div class="searchboxbar">
-                    <% using (Html.BeginForm("title", "search"))
+                    <% using (Html.BeginForm("BookSearch", "search"))
                        { %>
                     <div class="searchbox">
                         <span class="bo"><span class="bi">
-                            <input class="text" size="69" maxlength="250" name="book_title" type="text" />
+                            <input class="text" size="69" maxlength="250" name="title" type="text" />
                             <input class="image" title="Search" value=" " type="submit" />
                         </span></span>
                     </div>
