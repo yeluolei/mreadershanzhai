@@ -25,6 +25,8 @@ namespace MReader.Models
                 yield return new RuleViolation("ISDB required!!", "ISBN");
             if (String.IsNullOrEmpty(_Author))
                 yield return new RuleViolation("Author required!!", "Author");
+            if (new DateTime(1900, 1, 1) > this.PublishDate )
+                yield return new RuleViolation("Publish Date must larger than 1900/1/1", "PublishDate");
             yield break;
         }
 

@@ -49,7 +49,8 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult NewBook()
         {
-            return View();
+            
+            return View(new Book());
         }
         
         [Authorize(Roles = "admin")]
@@ -74,8 +75,9 @@ namespace MReader.Controllers
             try
             {
                 UpdateModel(book);
+                if (!book.IsValid) throw new Exception();
             }
-            catch
+            catch   
             {
                 foreach (var issue in book.GetRuleViolations())
                 {
@@ -98,15 +100,17 @@ namespace MReader.Controllers
 
             //check if the file exist and then deccompress it
             var c = Request.Files[0];
+            string fileName;
             if (c != null && c.ContentLength > 0)
             {
                 int lastSlashIndex = c.FileName.LastIndexOf("\\");
-                string fileName = c.FileName.Substring(lastSlashIndex + 1, c.FileName.Length - lastSlashIndex - 1);
+                fileName = c.FileName.Substring(lastSlashIndex + 1, c.FileName.Length - lastSlashIndex - 1);
 
                 fileName = Server.MapPath("/book/") + fileName;
                 c.SaveAs(fileName);
 
                 decompress((Server.MapPath("/book/") + book.Guid.ToString() + "_temp" + "\\"), fileName);
+                //System.IO.Directory.Delete(fileName, true);
             }
 
             //check the file to make sure correctness
@@ -124,6 +128,7 @@ namespace MReader.Controllers
             //save the change
             db.NewBook(book);
             db.save();
+
             return View("success");
         }
 
@@ -221,9 +226,9 @@ namespace MReader.Controllers
             proc.StartInfo.FileName = "Rar.exe";
             proc.StartInfo.Arguments = "e \"" + rarPatch + "\" \"" + unRarPatch + "\"";
 
-            proc.StartInfo.CreateNoWindow = true;
-            proc.StartInfo.UseShellExecute = false;
-            proc.StartInfo.RedirectStandardOutput = true;
+            proc.StartInfo.CreateNoWindow = false;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.RedirectStandardOutput = false;
 
             proc.Start();
             proc.WaitForExit();
