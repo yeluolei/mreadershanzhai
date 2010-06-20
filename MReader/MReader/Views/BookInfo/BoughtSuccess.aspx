@@ -12,6 +12,7 @@
     --%>
     <div>The new book is <b style="color: #0253a2"><%=Html.ActionLink(Model.Title, "ViewBook", "BookView", new { id = Model.ID, page = 0 }, new { })%></b>
     (<--click it's name to read)
+    <%Html.RenderPartial("CompactBookForm", Model); %>
     </div>
 
 </asp:Content>

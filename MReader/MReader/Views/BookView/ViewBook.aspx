@@ -192,7 +192,7 @@
                         });
 
                         $("#getBookmark").click(function(){
-                                                        $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),
+                                                        $.getJSON( ("/bookview/getbookmark?bookid=" +  <%=Model.book.ID %>),{},
                                             function(data){ 
                                                                 var temp = "";
                                                                 $("#bookmark_content").text("");
