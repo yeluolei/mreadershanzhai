@@ -68,6 +68,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationErroy.aspx.cs">
+      <DependentUpon>ApplicationErroy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplicationErroy.aspx.designer.cs">
+      <DependentUpon>ApplicationErroy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminBookController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
@@ -84,9 +91,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BookDB.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CustomerInfo.cs">
-      <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\SiteIncomeFormModel.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
@@ -112,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationErroy.aspx" />
     <Content Include="App_Data\BookDB.mdf" />
     <Content Include="App_Data\BookDB_log.ldf">
       <DependentUpon>BookDB.mdf</DependentUpon>
