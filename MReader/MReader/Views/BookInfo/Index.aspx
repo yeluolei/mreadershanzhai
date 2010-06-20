@@ -7,7 +7,8 @@
     <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
         $(function () {
-            $("a").button();
+            $("#button a").button();
+            $("#favouritelist a").button();
         })
     </script>
 </asp:Content>
@@ -64,7 +65,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <div>
+                        <div id="button" class = "forbutton">
                             <%if (Model.customer.HasBought(Model.book.ID))
                               {%>
                             <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
@@ -76,7 +77,7 @@
                         </div>
                         <div>
                             <%:Model.book.Description%></div>
-                        <div>
+                        <div id = "favouritelist" class ="forbutton" >
                             <% if (!Model.customer.HasFaved(Model.book.ID))
                                { %>
                             <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>

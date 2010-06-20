@@ -12,7 +12,6 @@
     width: 180px;
     height: 200px;
     padding-left: 30px;
-    padding-right: 10px;
 }
 .cover
 {
@@ -128,4 +127,10 @@ table
 .buyers li
 {
     padding-top:10px;
-    }
+}
+
+.forbutton
+{
+    padding-left: 20px;
+}
+    
