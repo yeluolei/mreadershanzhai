@@ -26,32 +26,32 @@ namespace MReader.Models
             return keyword;
         }
 
-        public BookSearchResult ByTitle (string book_title,int pageIndex,int pageSize)
-        {
-            List<Book> books = db.GetAllBooks().ToList();
-            List<Book> bookResult = new List<Book>() ;
-            List<string> keyword = MakeKeyword(book_title);
+        //public BookSearchResult ByTitle (string book_title,int pageIndex,int pageSize)
+        //{
+        //    List<Book> books = db.GetAllBooks().ToList();
+        //    List<Book> bookResult = new List<Book>() ;
+        //    List<string> keyword = MakeKeyword(book_title);
 
-            foreach (string yyx in keyword) {
-                foreach (Book book in books) {
-                    if (book.Title.ToLower().Contains(yyx.ToLower() ))
-                    {
-                        if (bookResult.Contains(book))
-                        {
-                            bookResult.Remove(book);
-                            bookResult.Insert(0, book);
-                        }
-                        else
-                            bookResult.Add(book);
-                    }
-                }
-            }
-            BookSearchResult result = new BookSearchResult(new Helps.PaginatedList<Book>(bookResult,pageIndex,pageSize));
-            result.keyword.Add(book_title);
-            return result;
-        }
+        //    foreach (string yyx in keyword) {
+        //        foreach (Book book in books) {
+        //            if (book.Title.ToLower().Contains(yyx.ToLower() ))
+        //            {
+        //                if (bookResult.Contains(book))
+        //                {
+        //                    bookResult.Remove(book);
+        //                    bookResult.Insert(0, book);
+        //                }
+        //                else
+        //                    bookResult.Add(book);
+        //            }
+        //        }
+        //    }
+        //    BookSearchResult result = new BookSearchResult(new Helps.PaginatedList<Book>(bookResult,pageIndex,pageSize));
+        //    result.keyword.Add(book_title);
+        //    return result;
+        //}
 
-        public BookSearchResult AdvancedSearch(string title  , string ISBN  , string author  , string Publisher  , int pageIndex = 0 ,int pageSize = 2 ) {
+        public BookSearchResult AdvancedSearch( int CategoryID , string title  , string ISBN  , string author  , string Publisher  , int pageIndex = 0 ,int pageSize = 2 ) {
             List<Book> books = db.GetAllBooks().ToList();
             List<Book> bookResult = new List<Book>();
             List<string> title_keyword = MakeKeyword ( title );
@@ -73,6 +73,13 @@ namespace MReader.Models
                         ifmatch = true ;
                     else 
                         ifmatch = false ;
+                }
+                if (CategoryID != 0 )
+                {
+                    if (String.Equals(CategoryID , book.CategoryID ))
+                        ifmatch = true;
+                    else
+                        ifmatch = false;
                 }
                 if (author != "") {
                     foreach (string yyx in author_keyword)
@@ -110,6 +117,7 @@ namespace MReader.Models
             result.keyword.Add(ISBN);
             result.keyword.Add(author);
             result.keyword.Add(Publisher) ;
+            result.keyword.Add(CategoryID.ToString());
 
             return result;
         }
