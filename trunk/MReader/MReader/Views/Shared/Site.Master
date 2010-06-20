@@ -54,21 +54,21 @@
         </div>
         <div class="MenuPage">
             <ul id="menu">
+                <li class="Menu6">
+                    <%: Html.ActionLink("About", "About", "Home")%></li>
                 <%if (Context.User.IsInRole("admin"))
                   { %>
-                <li class="Menu6">
-                    <%: Html.ActionLink("AdminUser", "Index", "AdminUser")%>
-                    <li class="Menu5">
-                        <%: Html.ActionLink("AdminBook", "Index", "AdminBook")%></li>
-                    <li class="Menu4">
-                        <%: Html.ActionLink("AdminIncome","Index", "SiteIncome")%></li>
-                    <%} %>
-                    <li class="Menu3">
-                        <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
-                    <li class="Menu2">
-                        <%: Html.ActionLink("About", "About", "Home")%></li>
-                    <li class="Menu1">
-                        <%: Html.ActionLink("Home", "Index", "Home")%></li>
+                <li class="Menu5">
+                    <%: Html.ActionLink("AdminUser", "Index", "AdminUser")%></li>
+                <li class="Menu4">
+                    <%: Html.ActionLink("AdminBook", "Index", "AdminBook")%></li>
+                <li class="Menu3">
+                    <%: Html.ActionLink("AdminIncome","Index", "SiteIncome")%></li>
+                <%} %>
+                <li class="Menu2">
+                    <%: Html.ActionLink("UserCenter", "index", "usercenter")%></li>
+                <li class="Menu1">
+                    <%: Html.ActionLink("Home", "Index", "Home")%></li>
             </ul>
         </div>
         <div id="main">

@@ -65,63 +65,67 @@
                                 </td>
                             </tr>
                         </table>
-                        <div id="button" class = "forbutton">
-                            <%if (Model.customer.HasBought(Model.book.ID))
-                              {%>
-                            <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
-                            <% }%>
-                            <%else
-                                { %>
-                            <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
-                            <%}%>
+                        <div id="button" class="forbutton">
+                            <h2>
+                                <%if (Model.customer.HasBought(Model.book.ID))
+                                  {%>
+                                <%: Html.ActionLink("Read This Book", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
+                                <% }%>
+                                <%else
+                                    { %>
+                                <%:Html.ActionLink("Buy This Book", "Buy", new { bookid = Model.book.ID })%>
+                                <%}%>
+                            </h2>
+                        </div>
+                        <div>
+                            <h4>
+                            <div id="favouritelist" class="forbutton">
+                                <% if (!Model.customer.HasFaved(Model.book.ID))
+                                   { %>
+                                <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
+                                <%} %>
+                                <% else
+                                    {
+                                %>
+                                This book is in your
+                                
+                                    <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{ }) %>.
+                                
+                                <%} %>
+                                </div>
+                            </h4>
                         </div>
                         <div>
                             <%:Model.book.Description%></div>
-                        <div id = "favouritelist" class ="forbutton" >
-                            <% if (!Model.customer.HasFaved(Model.book.ID))
-                               { %>
-                            <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
-                            <%} %>
-                            <% else
-                                {
-                            %>
-                            This book is in your
-                            <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
-                            <%} %>
-                        </div>
+                       
                     </div>
                 </td>
                 <td>
                     <div>
-                        <p>
-                            <%=Model.book.rate1 %>
-                            people rated the book as 1 star</p>
-                        <p>
-                            <%=Model.book.rate2 %>
-                            people rated the book as 2 star</p>
-                        <p>
-                            <%=Model.book.rate3 %>
-                            people rated the book as 3 star</p>
-                        <p>
-                            <%=Model.book.rate4 %>
-                            people rated the book as 4 star</p>
-                        <p>
-                            <%=Model.book.rate5 %>
-                            people rated the book as 5 star</p>
-                        <p>
-                            Average rating is
-                            <%=Model.book.averageRating.ToString() %>
-                            stars.</p>
+                        <%=Model.book.rate1 %>
+                        people rated the book as 1 star
+                        <%=Model.book.rate2 %><br />
+                        <%=Model.book.rate3 %>
+                        people rated the book as 3 star<br />
+                        <%=Model.book.rate4 %>
+                        people rated the book as 4 star<br />
+                        <%=Model.book.rate5 %>
+                        people rated the book as 5 star<br />
+                        Average rating is
+                        <%=Model.book.averageRating.ToString() %>
+                        stars.</p>
                         <% if (!Model.customer.HasRated(Model.book.ID))
                            { %>
                         <label>
                             rate as
                         </label>
-                        <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
-                        <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
-                        <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
-                        <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
-                        <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                        <h1>
+                            <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
+                            <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
+                            <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
+                            <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
+                            <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                        </h1>
                         <label>
                             stars.</label>
                         <%} %>

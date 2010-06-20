@@ -17,7 +17,7 @@
 <script type="text/javascript" language="javascript"> 
 $(function(){
     var page = 1;
-    var i = 4; //每版放4个图片
+    var i = 5; //每版放4个图片
     //向后 按钮
     $("span.next").click(function(){    //绑定click事件
 	     var $parent = $(this).parents("div.v_show");//根据当前点击元素获取到父元素
