@@ -51,21 +51,6 @@
                 TimesBought
             </th>
             <th>
-                rate5
-            </th>
-            <th>
-                rate4
-            </th>
-            <th>
-                rate3
-            </th>
-            <th>
-                rate2
-            </th>
-            <th>
-                rate1
-            </th>
-            <th>
                 CategoryID
             </th>
         </tr>
@@ -123,21 +108,6 @@
             </td>
             <td>
                 <%: item.TimesBought %>
-            </td>
-            <td>
-                <%: item.rate5 %>
-            </td>
-            <td>
-                <%: item.rate4 %>
-            </td>
-            <td>
-                <%: item.rate3 %>
-            </td>
-            <td>
-                <%: item.rate2 %>
-            </td>
-            <td>
-                <%: item.rate1 %>
             </td>
             <td>
                 <%: item.CategoryID %>

@@ -10,7 +10,6 @@
 
     <h3>Are you sure you want to delete this?</h3>
     <fieldset>
-        <legend>Fields</legend>
         
         <div class="display-label">ISBN</div>
         <div class="display-field"><%: Model.ISBN %></div>
@@ -44,7 +43,7 @@
     </fieldset>
     <% using (Html.BeginForm()) { %>
         <p>
-		    <input type="submit" value="Delete" /> |
+		    <input class="delete" type="submit" value="Delete" /> |
 		    <%: Html.ActionLink("Back to List", "Index") %>
         </p>
     <% } %>
@@ -52,5 +51,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" language ="javascript" >
+        $(function () {
+            $(".delete").button();
+        }
+        )
+    </script>
 </asp:Content>
 

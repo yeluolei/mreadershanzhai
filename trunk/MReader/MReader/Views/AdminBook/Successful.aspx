@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Successful</h2>
+    <h2>Successful!</h2>
         <div>
         <%: Html.ActionLink("Back to List", "Index") %>
     </div>

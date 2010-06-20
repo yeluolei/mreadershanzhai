@@ -8,7 +8,7 @@
 
     <h2>Index</h2>
 
-    <table>
+    <table style="width:100%;">
         <tr>
             <th></th>
             <th>
@@ -57,9 +57,6 @@
 
     </table>
 
-    <%--<p>
-        <%: Html.ActionLink("Create New", "Create") %>
-    </p>--%>
 
 </asp:Content>
 
