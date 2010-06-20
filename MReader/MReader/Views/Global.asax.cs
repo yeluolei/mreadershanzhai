@@ -46,6 +46,7 @@ namespace MReader
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+            routes.RouteExistingFiles = false;
 
         }
 
@@ -54,6 +55,19 @@ namespace MReader
             AreaRegistration.RegisterAllAreas();
 
             RegisterRoutes(RouteTable.Routes);
+
+        }
+        protected void Application_Error()
+        {
+            Exception erroy = Server.GetLastError();
+            string err = "出错页面是：" + Request.Url.ToString() + "<br>";
+            err += "异常信息：" + erroy.Message + "<br>";
+            err += "Source:" + erroy.Source + "<br>";
+            err += "StackTrace:" + erroy.StackTrace + "<br>";
+            Server.ClearError();
+            Application["erroy"] = err;
+            
+            Response.Redirect("/home/error?errmsg=undefined error");
         }
     }
 }

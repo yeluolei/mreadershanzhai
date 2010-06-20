@@ -31,6 +31,18 @@ namespace MReader.Controllers
             return View();
         }
 
+
+        public ActionResult Error(string errmsg)
+        { 
+            
+             
+                errmsg.Replace("#","<br/>");
+
+            
+            HandleErrorInfo herr = new HandleErrorInfo(new Exception(errmsg), "NULL", "NULL");
+            return View("error", herr);
+        }
+
          
 
 

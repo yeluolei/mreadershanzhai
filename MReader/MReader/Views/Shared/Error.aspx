@@ -12,5 +12,11 @@
     <p>The error message is <b>"<%=Model.Exception.Message %>"</b></p>
         <p>The ActionName is <b>"<%=Model.ActionName %>"</b></p>
         <p>The Controller name is <b> "<%=Model.ControllerName %>"</b></p>
+        <h3 style="color:Red">
+        <%if (Model.ActionName.ToLower() == "null")
+          { %>
+          <a href = "/applicationerroy.aspx">Error Details</a>
+        <% }%>
+        </h3>
          
 </asp:Content>
