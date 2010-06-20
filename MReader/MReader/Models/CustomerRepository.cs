@@ -48,9 +48,17 @@ namespace MReader.Models
             }
         }
 
-        public void Save()
+        public bool Save()
         {
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -109,7 +117,32 @@ namespace MReader.Models
         {
             return from ph in db.PurchaseHistories
                    where ph.PurchaseTime >= starttime && ph.PurchaseTime <= endtime
+                   orderby ph.PurchaseTime descending
                    select ph;
+        }
+
+        public void DeleteBook(Book book)
+        {
+            var bmToDel = from bm in db.Bookmarks
+                          where bm.BookID == book.ID
+                          select bm;
+            db.Bookmarks.DeleteAllOnSubmit(bmToDel);
+
+            var fvToDel = from fv in db.FavouriteBooks
+                          where fv.BookID == book.ID
+                          select fv;
+            db.FavouriteBooks.DeleteAllOnSubmit(fvToDel);
+
+            var phToDel = from ph in db.PurchaseHistories
+                          where ph.BookID == book.ID
+                          select ph;
+            db.PurchaseHistories.DeleteAllOnSubmit(phToDel);
+
+            var rtToDel = from rt in db.Raters
+                          where rt.BookId == book.ID
+                          select rt;
+            db.Raters.DeleteAllOnSubmit(rtToDel);
+
         }
     }
 }

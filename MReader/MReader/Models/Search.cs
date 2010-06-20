@@ -76,7 +76,7 @@ namespace MReader.Models
                 }
                 if (CategoryID != 0 )
                 {
-                    if (String.Equals(CategoryID , book.CategoryID ))
+                    if (CategoryID == book.CategoryID)
                         ifmatch = true;
                     else
                         ifmatch = false;
@@ -102,7 +102,8 @@ namespace MReader.Models
                 if (ifmatch == true)
                     bookResult.Add(book);
             }
-            BookSearchResult result = new BookSearchResult(new Helps.PaginatedList<Book>(bookResult,pageIndex,pageSize));
+            BookSearchResult result = new BookSearchResult(
+                new Helps.PaginatedList<Book>(bookResult,pageIndex,pageSize));
 
             //if (title != "")
             //    result.keyword.Add("Title:" + title + " ;");

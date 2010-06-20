@@ -32,28 +32,28 @@
         <elementListCompartment Id="9968cff5-5328-40ea-826c-995f94bae1ab" absoluteBounds="3.515, 2.335, 1.9700000000000002, 3.876841227213542" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 3.91077290852865); (6.25 : 3.91077290852865)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 3.91077290852865); (6.25 : 3.91077290852865)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BookDBDataContext/Book/Book_Buyer" />
       <nodes>
         <classShapeMoniker Id="e4a443a6-bd58-47fa-8ded-65c0ca21393a" />
         <classShapeMoniker Id="81bb24b3-0516-450b-86a5-a10af06f01a9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.84342061360677); (6.25 : 5.84342061360677)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.84342061360677); (6.25 : 5.84342061360677)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BookDBDataContext/Book/Book_Remark" />
       <nodes>
         <classShapeMoniker Id="e4a443a6-bd58-47fa-8ded-65c0ca21393a" />
         <classShapeMoniker Id="74f3f840-8b21-45da-85df-a7654dfdae46" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 2.09475321451823); (6.25 : 2.09475321451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 2.09475321451823); (6.25 : 2.09475321451823)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BookDBDataContext/Book/Book_PopularBook" />
       <nodes>
         <classShapeMoniker Id="e4a443a6-bd58-47fa-8ded-65c0ca21393a" />
         <classShapeMoniker Id="36a26683-bffd-49cc-9a45-8c60a2d796a1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.09475321451823); (3.5 : 4.09475321451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.09475321451823); (3.5 : 4.09475321451823)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BookDBDataContext/CatagoryLib/CatagoryLib_Book" />
       <nodes>
         <classShapeMoniker Id="59a95039-cf07-4462-9b4c-9e5ca8a782a8" />

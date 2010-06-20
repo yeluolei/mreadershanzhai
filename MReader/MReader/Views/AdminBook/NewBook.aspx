@@ -72,12 +72,12 @@
                 <%: Html.DropDownList("CategoryID",Model.Categories)%>
                 <%: Html.ValidationMessageFor(model => model.Description) %>
             </div>
-        <div>
+<%--        <div>
             <select nane="list" id="list">
                 <option value="png">png</option>
                 <option value="jpeg">jpeg</option>
             </select>
-        </div>
+        </div>--%>
         <input id="upload" type="file" name="Upload" /><br />
         <%: Html.ValidationMessage("Upload") %>
         <div class="editor-label">

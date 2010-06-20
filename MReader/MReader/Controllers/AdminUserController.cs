@@ -80,7 +80,7 @@ namespace MReader.Controllers
             Customer cus = db.getCustomer(username);
             try
             {
-                // TODO: Add update logic here
+                
                 UpdateModel(cus);
                 db.Save();
                 return RedirectToAction("Details", new { username = cus.UserName });

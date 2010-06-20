@@ -33,11 +33,12 @@ namespace MReader.Controllers
             try
             {
                 UpdateModel(model);
-                
+                if (model.StartTime <= new DateTime(1800, 1, 1) || model.EndTime <= new DateTime(1800, 1, 1))
+                    throw new Exception();
             }
             catch
             {
-                return View("index", model);
+                return RedirectToAction("index");
             }
 
 

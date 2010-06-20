@@ -76,6 +76,7 @@ namespace MReader.Controllers
 
             book.Buyers.Add(new Buyer(customer));
             book.TimesBought = book.Buyers.Count;
+            
             bookDb.save();
             BookInfoFormModel bookInfo = new BookInfoFormModel(book, customer);
             return View("BoughtSuccess", bookInfo);
@@ -144,8 +145,8 @@ namespace MReader.Controllers
             newfav.UserName = User.Identity.Name;
             newfav.FavTime = DateTime.Now;
             cus.FavouriteBooks.Add(newfav);
-             
-            //bookDb.save();
+            book.TimesFavored++;
+            bookDb.save();
             cusDb.Save();
             return this.Index(bookid, 0);
 
