@@ -80,6 +80,11 @@
     <Compile Include="Controllers\SiteIncomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Helps\PaginatedList.cs" />
+    <Compile Include="Models\BookDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\SiteIncomeFormModel.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
     <Compile Include="Models\BookSearchResult.cs" />
@@ -91,11 +96,6 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\BookDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Models\BookPageFormModel.cs" />
     <Compile Include="Models\BookRepository.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -250,7 +250,9 @@
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -360,11 +362,6 @@
     <Content Include="Views\UserCenter\UserCenter.Master" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\BookDB.dbml.layout">
-      <DependentUpon>BookDB.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Models\CustomerInfo.dbml.layout">
       <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </None>
@@ -378,6 +375,11 @@
     <Folder Include="book\Essential_C++\.svn\tmp\prop-base\" />
     <Folder Include="book\Essential_C++\.svn\tmp\props\" />
     <Folder Include="book\Essential_C++\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\BookDB.dbml.layout">
+      <DependentUpon>BookDB.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

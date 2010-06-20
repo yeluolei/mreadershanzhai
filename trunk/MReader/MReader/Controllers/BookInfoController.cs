@@ -26,7 +26,7 @@ namespace MReader.Controllers
         //
         // POST: /BookInfo
         [Authorize, AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Index(int bookid,int PageIndex,String RemarkContent)
+        public ActionResult Index(int bookid,String RemarkContent,int PageIndex=0)
         {
             Book book = bookDb.GetBookbyID(bookid);
             Remark remark = new Remark();

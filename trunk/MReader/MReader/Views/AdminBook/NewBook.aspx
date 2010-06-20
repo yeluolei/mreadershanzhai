@@ -73,11 +73,17 @@
             <div class="editor-label">
                 <%: Html.Label("regular expression") %>
             </div>
+
+             <div class="editor-field">
+                <%: Html.DropDownList("CategoryID",Model.Categories)%>
+                <%: Html.ValidationMessageFor(model => model.Description) %>
+            </div>
+
             <div class="editor-field">
                 <input name="regularExpression" type="text" />
             </div>
             <div>
-                <select nane="list" id="list" >
+                <select name="list" id="list" >
                     <option value="png">png</option>
                     <option value="jpeg">jpeg</option>
                 </select>
@@ -85,7 +91,8 @@
             <input id = "upload" type="file" name="Upload" /><br />
             <%: Html.ValidationMessage("Upload") %>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Description) %>
+                <%: Html.LabelFor(model => model.Description) %><br />
+                <%: Html.TextAreaFor(model => model.Description) %>
                 <%: Html.ValidationMessageFor(model => model.Description) %>
             </div>
             <p>
@@ -95,9 +102,9 @@
 
     <% } %>
 
-    <form action="/" method="post" enctype="multipart/form-data">
+ <%--   <form action="/" method="post" enctype="multipart/form-data">
 
-    </form>
+    </form>--%>
 
     <div>
         <%: Html.ActionLink("Back to List", "Index") %>
