@@ -165,6 +165,8 @@
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Content\jquery-ui-1.8.2.custom.css" />
     <Content Include="Content\jquery.rating.css" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\3.jpg" />
     <Content Include="images\accordion-left-act.png" />
     <Content Include="images\accordion-left-over.png" />
     <Content Include="images\accordion-left.png" />
@@ -176,6 +178,7 @@
     <Content Include="images\accordion-right.png" />
     <Content Include="images\arrow_left_green_48.png" />
     <Content Include="images\arrow_right_green_48.png" />
+    <Content Include="images\btn_cartoon.gif" />
     <Content Include="images\headertop.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\search.jpg" />

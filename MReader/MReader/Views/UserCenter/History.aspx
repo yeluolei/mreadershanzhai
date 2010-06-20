@@ -7,13 +7,13 @@
     <table style="width: 100%">
         <tr>
             <th>
-                <b>Price</b>
+                <h5>Book</h5>
             </th>
             <th>
-                <b>Purchase Time</b>
+                <h5>Price</h5>
             </th>
             <th>
-                <b>Book Title</b>
+                <h5>Purchase Time</h5>
             </th>
         </tr>
 
@@ -22,17 +22,18 @@
         foreach (var hist in Model.Customer.PurchaseHistories)
           { %>
         <tr>
+           <td>
+                <%Html.RenderPartial("BookForm",bookRepo.GetBookbyID(hist.BookID));%>
+            </td>
             <td>
             <%=hist.Price.ToString("C") %>
             </td>
             <td>
                 <%=hist.PurchaseTime.ToString() %>
             </td>
-            <td>
-                <%Html.RenderPartial("BookForm",bookRepo.GetBookbyID(hist.BookID));%>
-              <%--  <%=Html.ActionLink(hist.BookTitle, "index", "Bookinfo", new { bookid = hist.BookID }, new { })%>--%>
-            </td>
+            
         </tr>
         <%} %>
     </table>
 </asp:Content>
+

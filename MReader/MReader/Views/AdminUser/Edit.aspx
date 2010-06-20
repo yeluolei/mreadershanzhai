@@ -12,7 +12,6 @@
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
             
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.UserName) %>
@@ -55,7 +54,7 @@
             </div>
             
             <p>
-                <input type="submit" value="Save" />
+                <input class="save" type="submit" value="Save" />
             </p>
         </fieldset>
 
@@ -68,5 +67,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $(".save").button();
+        }
+        )
+    </script>
 </asp:Content>
 

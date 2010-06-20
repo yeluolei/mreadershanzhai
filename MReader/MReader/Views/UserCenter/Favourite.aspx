@@ -4,14 +4,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <h2>
         Favourite</h2>
-    <table>
+    <table style="width: 100%">
         <tr>
             <th>
-                <b>Book Name</b>
+                <h5>Book</h5>
             </th>
             
             <th>
-                <b>Operation</b>
+                <h5>Operation</h5>
             </th>
         </tr>
         <%
@@ -25,9 +25,17 @@
             </td>
             
             <td>
+            <div class="delete">
             <%=Html.ActionLink("Delete","DeleteFavourite",new{bookid = i.BookID}) %>
+            </div>
             </td>
         </tr>
         <%}%>
     </table>
+    <script type="text/javascript">
+        $(function () {
+            $(".delete a").button();
+        }
+        )
+    </script>
 </asp:Content>

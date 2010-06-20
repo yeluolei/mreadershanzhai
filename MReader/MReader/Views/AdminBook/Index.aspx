@@ -6,17 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         Index</h2>
-    <table>
-        <tr>
+    <table class="top">
+        <tr >
             <td>
-                <li>
-                    <%: Html.ActionLink("Upload a Book", "NewBook","AdminBook") %></li>
-        </tr>
-        </td>
-        <tr>
+                <%: Html.ActionLink("Upload a Book", "NewBook","AdminBook") %>
+            </td>
             <td>
-                <li>
-                    <%: Html.ActionLink("Popular Book List", "PopularBookList","AdminBook") %></li>
+                <%: Html.ActionLink("Popular Book List", "PopularBookList","AdminBook") %>
             </td>
         </tr>
     </table>
@@ -48,9 +44,12 @@
             <th>
                 ID
             </th>
-            <th>Times Bought</th>
-            <th>Times Favored</th>
-
+            <th>
+                Times Bought
+            </th>
+            <th>
+                Times Favored
+            </th>
             <th>
                 Operations
             </th>
@@ -70,7 +69,7 @@
                 <%: item.ISBN %>
             </td>
             <td>
-            <%=Html.ActionLink(item.Title,"index","bookinfo",new {bookid = item.ID},new{}) %>
+                <%=Html.ActionLink(item.Title,"index","bookinfo",new {bookid = item.ID},new{}) %>
                 <%--<%: item.Title %>--%>
             </td>
             <td>
@@ -94,10 +93,12 @@
             <td>
                 <%: item.ID %>
             </td>
-
-            <td><%:item.TimesBought %></td>
-            <td><%:item.TimesFavored %></td>
-
+            <td>
+                <%:item.TimesBought %>
+            </td>
+            <td>
+                <%:item.TimesFavored %>
+            </td>
             <%--<td>
                 <%: item.IsValid %>
             </td>--%>
@@ -117,4 +118,20 @@
     </table>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    $(function () {
+        $(".top a").button();
+    }
+)
+</script>
+<style type="text/css">
+.top
+{
+    border:0px;
+    }
+ .top td
+ {
+     border:0px;
+     }
+</style>
 </asp:Content>

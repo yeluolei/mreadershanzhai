@@ -9,22 +9,16 @@
     <h2>Details</h2>
 
     <fieldset>
-        <legend>Fields</legend>
         
-        <div class="display-label">UserName</div>
-        <div class="display-field"><%: Model.UserName %></div>
+        <div class="display-label">UserName:<%: Model.UserName %></div>
         
-        <div class="display-label">CurrentMoney</div>
-        <div class="display-field"><%: String.Format("{0:F}", Model.CurrentMoney) %></div>
+        <div class="display-label">CurrentMoney:<%: String.Format("{0:F}", Model.CurrentMoney) %></div>
         
-        <div class="display-label">DateRegistered</div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.DateRegistered) %></div>
+        <div class="display-label">DateRegistered:<%: String.Format("{0:g}", Model.DateRegistered) %></div>
         
-        <div class="display-label">SpentCost</div>
-        <div class="display-field"><%: String.Format("{0:F}", Model.SpentCost) %></div>
+        <div class="display-label">SpentCost:<%: String.Format("{0:F}", Model.SpentCost) %></div>
         
-        <div class="display-label">UserLevel</div>
-        <div class="display-field"><%: Model.UserLevel %></div>
+        <div class="display-label">UserLevel:<%: Model.UserLevel %></div>
         
     </fieldset>
     <p>

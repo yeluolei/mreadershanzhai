@@ -10,8 +10,9 @@
     <form runat="server">    
     <h2>Balance</h2>
     <%=Html.ValidationSummary() %>
-    <label>User Name : </label>
-    <%=Html.Label(Model.Customer.UserName) %><br />
+    <label><h5>Name : <%=Html.Label(Model.Customer.UserName) %></h5></label>
+    <br />
+    <br />
     <label>Current Balance :<%= Model.Customer.CurrentMoney.ToString("C") %> </label><br />
     <%=Html.LabelFor(m =>m.MoneyToAdd) %>
     <%=Html.TextBoxFor(model=>model.MoneyToAdd) %><br />

@@ -12,7 +12,6 @@
     <fieldset>
         <%=Html.Hidden("PageIndex",Model.PurchaseHistory.PageIndex) %>
         <%=Html.Hidden("PageSize",Model.PurchaseHistory.PageSize) %>
-        <legend>Fields</legend>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.StartTime) %>
         </div>
@@ -35,11 +34,11 @@
             <%: Html.ValidationMessageFor(model => model.TotalIncome) %>
         </div>
         <p>
-            <input type="submit" value="Query" />
+            <input class="Query" type="submit" value="Query" />
         </p>
     </fieldset>
     <% } %>
-    <table>
+    <table width="100%">
         <tr>
             <th>
                 Purchase Time
@@ -85,4 +84,10 @@
     <%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $(".Query").button();
+        }
+        )
+    </script>
 </asp:Content>

@@ -9,7 +9,6 @@
     <h2>PopularBook</h2>
 
     <fieldset>
-        <legend>Fields</legend>
         
         <div class="display-label">IsValid</div>
         <div class="display-field"><%: Model.IsValid %></div>
@@ -55,29 +54,13 @@
         
         <div class="display-label">TimesBought</div>
         <div class="display-field"><%: Model.TimesBought %></div>
-        
-        <div class="display-label">rate5</div>
-        <div class="display-field"><%: Model.rate5 %></div>
-        
-        <div class="display-label">rate4</div>
-        <div class="display-field"><%: Model.rate4 %></div>
-        
-        <div class="display-label">rate3</div>
-        <div class="display-field"><%: Model.rate3 %></div>
-        
-        <div class="display-label">rate2</div>
-        <div class="display-field"><%: Model.rate2 %></div>
-        
-        <div class="display-label">rate1</div>
-        <div class="display-field"><%: Model.rate1 %></div>
-        
         <div class="display-label">CategoryID</div>
         <div class="display-field"><%: Model.CategoryID %></div>
         
     </fieldset>
     <p>
 
-        <%: Html.ActionLink("确认将该书设为推荐书目?", "SetPopularBook", new { id=Model.ID }) %> |
+        <%: Html.ActionLink("Ensure?", "SetPopularBook", new { id=Model.ID }) %> |
         <%: Html.ActionLink("Back to List", "Index") %>
     </p>
 

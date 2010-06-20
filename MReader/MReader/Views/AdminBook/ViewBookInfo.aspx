@@ -9,45 +9,31 @@
     <h2>ViewBook</h2>
 
     <fieldset>
-        <legend>Fields</legend>
         
-        <div class="display-label">ISBN:</div>
-        <div class="display-field"><%: Model.ISBN %></div>
+        <div class="display-label">ISBN:<%: Model.ISBN %></div>
         
-        <div class="display-label">Title:</div>
-        <div class="display-field"><%: Model.Title %></div>
+        <div class="display-label">Title:<%: Model.Title %></div>
         
-        <div class="display-label">Price:</div>
-        <div class="display-field"><%: String.Format("{0:F}", Model.Price) %></div>
+        <div class="display-label">Price:<%: String.Format("{0:F}", Model.Price) %></div>
         
-        <div class="display-label">Publisher:</div>
-        <div class="display-field"><%: Model.Publisher %></div>
+        <div class="display-label">Publisher:<%: Model.Publisher %></div>
 
-        <div class="display-label">PublishDate:</div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.PublishDate) %></div>
+        <div class="display-label">PublishDate:<%: String.Format("{0:g}", Model.PublishDate) %></div>
         
-        <div class="display-label">Content:</div>
-        <div class="display-field"><%: Model.Content %></div>
+        <div class="display-label">Content:<%: Model.Content %></div>
         
-        <div class="display-label">Author:</div>
-        <div class="display-field"><%: Model.Author %></div>
+        <div class="display-label">Author:<%: Model.Author %></div>
         
-        <div class="display-label">TotalPages:</div>
-        <div class="display-field"><%: Model.TotalPages %></div>
+        <div class="display-label">TotalPages:<%: Model.TotalPages %></div>
         
-        <div class="display-label">ID:</div>
-        <div class="display-field"><%: Model.ID %></div>
+        <div class="display-label">ID:<%: Model.ID %></div>
         
-        <div class="display-label">IsValid:</div>
-        <div class="display-field"><%: Model.IsValid %></div>
+        <div class="display-label">IsValid:<%: Model.IsValid %></div>
 
+        <div class="display-label">Category:<%: Model.CatagoryLib.CatagoryName %></div>
                 
         <div class="display-label">Description:</div>
         <div class="display-field"><%: Model.Description %></div>
-
-        <div class="display-label">Category:</div>
-        <div class="display-field"><%: Model.CatagoryLib.CatagoryName %></div>
-        
     </fieldset>
     <p>
 
