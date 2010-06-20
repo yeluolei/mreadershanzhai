@@ -6,9 +6,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+
+        <div><%=Html.ActionLink("Programming", "BookSearch", "Search", new { CategoryID = 1 }, new { })%></div>
+        <div><%=Html.ActionLink("Novel", "BookSearch", "Search", new { CategoryID = 2 }, new { })%></div>
+        <div><%=Html.ActionLink("Magezine", "BookSearch", "Search", new { CategoryID = 3 }, new { })%></div>
+        <div><%=Html.ActionLink("Periodical", "BookSearch", "Search", new { CategoryID = 4 }, new { })%></div>
         <div> <%Html.RenderPartial("RecommendedBooks",10); %></div>
         <div><%Html.RenderPartial("PopularBooks",10); %></div>
-<%--        <div><%Html.ActionLink ( "Programming" , ) %></div>--%>
+
  
 </asp:Content>
 

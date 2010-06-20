@@ -41,9 +41,9 @@ Search Result
     <% for (int i = 1; i <= Model.books.TotalPages; i++)
        {%>
     <% if (i == Model.books.PageIndex)%>
-    <%=( i + 1 ).ToString()%>
+    <%=i.ToString()%>
     <% if (i != Model.books.PageIndex) %>
-    <%=Html.ActionLink((i + 1).ToString(), "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1], author = Model.keyword[2], Publisher = Model.keyword[3], pageIndex = i })%>
+    <%=Html.ActionLink(i.ToString(), "BookSearch", new { title = Model.keyword[0], ISBN = Model.keyword[1], author = Model.keyword[2], Publisher = Model.keyword[3], pageIndex = i })%>
     <label>
     </label>
     <%} %>

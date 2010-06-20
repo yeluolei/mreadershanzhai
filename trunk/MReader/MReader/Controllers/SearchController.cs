@@ -11,21 +11,7 @@ namespace MReader.Controllers
     {
         BookRepository bookdb = new BookRepository();
         Search search = new Search();
-        //
-        // GET: /Search/Title
 
-        //[Authorize]
-        
-        //public ActionResult Title(string book_title,int pageIndex = 0,int pageSize = 2)
-        //{
-        //    var books = search.ByTitle( book_title ,pageIndex,pageSize );
-        //    if (book_title == "")
-        //        return RedirectToAction("index", "home", new { });
-        //    if (books.books.Count() == 0)
-        //        return View("NotFound");
-        //    else
-        //        return View(books);
-        //}
 
         //
         // GET:/Search/AdvancedSearch
@@ -43,19 +29,16 @@ namespace MReader.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AdvancedSearch(FormCollection formValues)
         {
-            string title, ISBN, author, Publisher , Categories ;
-            title = Request.Form["title"].ToString();
-            ISBN = Request.Form["ISBN"].ToString();
-            author = Request.Form["author"].ToString();
-            Publisher = Request.Form["Publisher"].ToString();
-            Categories = Request.Form["Description"].ToString();
-            return RedirectToAction("BookSearch", "Search", new { title, ISBN, author, Publisher });
-            //var books = search.AdvancedSearch(title, ISBN, author, Publisher);
-
-            //if (books.books.Count() == 0)
-            //    return View("NotFound");
-            //else
-            //    return View("title", books);
+            string title, ISBN, author, Publisher  ;
+            int CategoryID;
+            Book abook = new Book();
+            UpdateModel(abook);
+            title = abook.Title;
+            ISBN = abook.ISBN;
+            author = abook.Author;
+            Publisher = abook.Publisher;
+            CategoryID = abook.CategoryID;
+            return RedirectToAction("BookSearch", "Search", new { CategoryID , title, ISBN, author, Publisher});
         }
 
         //
@@ -63,11 +46,11 @@ namespace MReader.Controllers
 
         [Authorize]
 
-        public ActionResult BookSearch(string title = "" , string ISBN = "" , string author = "" , string Publisher = "" , int pageIndex = 0, int pageSize = 2)
+        public ActionResult BookSearch( int CategoryID = 0 , string title = "" , string ISBN = "" , string author = "" , string Publisher = "" , int pageIndex = 0, int pageSize = 2)
         {
-            var books = search.AdvancedSearch(title, ISBN, author, Publisher,pageIndex );
+            var books = search.AdvancedSearch(CategoryID , title, ISBN, author, Publisher,pageIndex );
 
-            if (title == "" && ISBN == "" && author == "" && Publisher == "")
+            if (title == "" && ISBN == "" && author == "" && Publisher == "" && CategoryID == 0 )
                 return RedirectToAction("index", "home", new { });
             if (books.books.Count() == 0)
                 return View("NotFound");
