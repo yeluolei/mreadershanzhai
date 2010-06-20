@@ -5,11 +5,31 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript">
-        $(function () {
-            $("#button a").button();
-            $("#favouritelist a").button();
-        })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function runEffect() {
+                //most effect types need no options passed by default
+                var options = {  to: {width: 100,height: 20} };
+
+                //run the effect
+                $("#remarkarea").hide('scale', options, 500, callback);
+            };
+
+            //callback function to bring a hidden box back
+            function callback() {
+                setTimeout(function () {
+                    $("#remarkarea:hidden").removeAttr('style').hide().fadeIn();
+                }, 1000);
+            };
+
+
+            //set effect from select menu value
+            $(".comment").click(function () {
+                runEffect();
+                return true;
+            }).button();
+        }
+    )
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -65,67 +85,63 @@
                                 </td>
                             </tr>
                         </table>
-                        <div id="button" class="forbutton">
-                            <h2>
-                                <%if (Model.customer.HasBought(Model.book.ID))
-                                  {%>
-                                <%: Html.ActionLink("Read This Book", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
-                                <% }%>
-                                <%else
-                                    { %>
-                                <%:Html.ActionLink("Buy This Book", "Buy", new { bookid = Model.book.ID })%>
-                                <%}%>
-                            </h2>
-                        </div>
                         <div>
-                            <h4>
-                            <div id="favouritelist" class="forbutton">
-                                <% if (!Model.customer.HasFaved(Model.book.ID))
-                                   { %>
-                                <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
-                                <%} %>
-                                <% else
-                                    {
-                                %>
-                                This book is in your
-                                
-                                    <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{ }) %>.
-                                
-                                <%} %>
-                                </div>
-                            </h4>
+                            <%if (Model.customer.HasBought(Model.book.ID))
+                              {%>
+                            <%: Html.ActionLink("Read", "ViewBook", "BookView", new { id = Model.book.ID }, new { })%>
+                            <% }%>
+                            <%else
+                                { %>
+                            <%:Html.ActionLink("Buy", "Buy", new { bookid = Model.book.ID })%>
+                            <%}%>
                         </div>
                         <div>
                             <%:Model.book.Description%></div>
-                       
+                        <div>
+                            <% if (!Model.customer.HasFaved(Model.book.ID))
+                               { %>
+                            <%= Html.ActionLink("Add to favourite","Favourite","Bookinfo",new {bookid = Model.book.ID},new{}) %>
+                            <%} %>
+                            <% else
+                                {
+                            %>
+                            This book is in your
+                            <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
+                            <%} %>
+                        </div>
                     </div>
                 </td>
                 <td>
                     <div>
-                        <%=Model.book.rate1 %>
-                        people rated the book as 1 star
-                        <%=Model.book.rate2 %><br />
-                        <%=Model.book.rate3 %>
-                        people rated the book as 3 star<br />
-                        <%=Model.book.rate4 %>
-                        people rated the book as 4 star<br />
-                        <%=Model.book.rate5 %>
-                        people rated the book as 5 star<br />
-                        Average rating is
-                        <%=Model.book.averageRating.ToString() %>
-                        stars.</p>
+                        <p>
+                            <%=Model.book.rate1 %>
+                            people rated the book as 1 star</p>
+                        <p>
+                            <%=Model.book.rate2 %>
+                            people rated the book as 2 star</p>
+                        <p>
+                            <%=Model.book.rate3 %>
+                            people rated the book as 3 star</p>
+                        <p>
+                            <%=Model.book.rate4 %>
+                            people rated the book as 4 star</p>
+                        <p>
+                            <%=Model.book.rate5 %>
+                            people rated the book as 5 star</p>
+                        <p>
+                            Average rating is
+                            <%=Model.book.averageRating.ToString() %>
+                            stars.</p>
                         <% if (!Model.customer.HasRated(Model.book.ID))
                            { %>
                         <label>
                             rate as
                         </label>
-                        <h1>
-                            <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
-                            <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
-                            <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
-                            <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
-                            <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
-                        </h1>
+                        <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
+                        <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
+                        <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
+                        <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
+                        <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
                         <label>
                             stars.</label>
                         <%} %>
@@ -188,9 +204,11 @@
                                "Index",
                                new { bookid = Model.book.ID, page = (Model.pageIndex + 1) }, new { })%>
                     <% } %>
+                    <div ID="remarkarea">
                     <%:Html.TextArea("RemarkContent")%>
                     <input class="comment" type="submit" value="Leave a comment" />
                     <%} %>
+                    </div>
                 </td>
                 <td class="buyers">
                     <div class="topBar">

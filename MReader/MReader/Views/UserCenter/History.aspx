@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/UserCenter/UserCenter.Master"
     Inherits="System.Web.Mvc.ViewPage<MReader.Models.CustomerFormModel>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <h2>
         My Purchase History</h2>
     <table style="width: 100%">
@@ -20,7 +20,7 @@
           { %>
         <tr>
             <td>
-                <%=hist.Price.ToString("C") %>
+            <%=hist.Price.ToString("C") %>
             </td>
             <td>
                 <%=hist.PurchaseTime.ToString() %>
@@ -31,15 +31,4 @@
         </tr>
         <%} %>
     </table>
-    <%--
-     
-    <%
-        MReader.Models.BookRepository bookRepo = new MReader.Models.BookRepository();
-        
-        foreach (var i in Model.Customer.PurchaseHistories)
-      {%>
-    <%=Html.Label(Convert.ToDouble(i.Price).ToString())%>
-    <%=Html.Label(i.PurchaseTime.ToString()) %>
-    <%=Html.ActionLink(bookRepo.GetBookbyID(i.BookID).Title, "index", "Bookinfo", new { bookid = i.BookID }, new { })%><br />
-    <%}%>--%>
 </asp:Content>

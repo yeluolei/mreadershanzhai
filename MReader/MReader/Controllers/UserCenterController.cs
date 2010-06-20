@@ -9,6 +9,7 @@ namespace MReader.Controllers
     public class UserCenterController : Controller
     {
         CustomerRepository cusDb = new CustomerRepository();
+        BookRepository bookdb = new BookRepository();
         //
         // GET: /UserCenter/
         [Authorize]

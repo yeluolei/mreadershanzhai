@@ -5,6 +5,12 @@
 </asp:Content>
 
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".logon").button();
+    }
+)
+</script>
     <h2>Change Password</h2>
     <p>
         Use the form below to change your password. 
@@ -44,7 +50,7 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Change Password" />
+                    <input  class="change" type="submit" value="Change Password" />
                 </p>
             </fieldset>
         </div>

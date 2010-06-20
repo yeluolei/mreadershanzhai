@@ -1,18 +1,18 @@
-﻿body {
+﻿body 
+{
+    
 }
 
 .book
 {
     display:block;
-    height:200px;
     }
 
 .bookcover
 {
-    width: 180px;
-    height: 200px;
-    padding-left: 30px;
-}
+    width:180px;
+    padding-left:30px;
+    }
 .cover
 {
     height:200px;
@@ -20,7 +20,7 @@
     
 .bookInfo
 {
-    width:240px;
+    width:100%;
     font-size:110%;
     float:left;
     height:200px;
@@ -63,8 +63,10 @@ li .bar
     
 #RemarkContent
 {
+    overflow:auto;
+    margin-left:0px;
     white-space:normal;
-    width:100%;
+    width:99%;
     height:auto;
     min-height:70px;
     }
@@ -101,6 +103,11 @@ table
     max-width: 70%;
     width: 70%;
 }
+
+.remark .comment
+{
+    margin-top:20px;
+    }
 .topBar
 {
     padding :1px 1px 1px 1px;
@@ -108,9 +115,13 @@ table
     border: #bfceff 1px solid;
     font-weight: bold;
     font-size:large;
-       /* Firefox 3.6 */  
-    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffffff),color-stop(1, #ddecfb));   
+      /* Firefox 3.6 */  
+    background-image: -moz-linear-gradient(top, #ddecfb, #ffffff); 
      /* Safari & Chrome */
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffffff),color-stop(1, #ddecfb));   
+     
+     /*IE*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ddecfb', endColorstr='#ffffff');
 }
 .remark p
 {
@@ -120,17 +131,11 @@ table
 .buyers
 {
     padding-top:3px;
-  /*  border-left: 8px #9BBCE1 solid;*/
     padding-left:5px;
 }
 
 .buyers li
 {
     padding-top:10px;
-}
-
-.forbutton
-{
-    padding-left: 20px;
-}
-    
+    padding-left:5px;
+    }
