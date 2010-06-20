@@ -75,11 +75,20 @@
 #tooltip
 {
     position: absolute;
-    border: 4px solid #6B90DA;
-    background: #FFFFFF;
     padding: 1px;
     color: #333;
     display: none;
+    background-image: url('../images/shadow.png');
+    background-repeat: no-repeat;
+    width: 240px;
+    height: 175px;
+    background-position: -5px -5px;
+    text-align: center;
+    font-size: medium;
+}
+#tooltip h3
+{
+    font-size: large;
 }
 
 .deletebookmark
