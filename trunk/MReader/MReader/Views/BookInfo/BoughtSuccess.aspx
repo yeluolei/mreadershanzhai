@@ -10,7 +10,9 @@
         <table>
             <tr>
                 <td class="bookcover">
-                    <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
+                    <a href="/bookview/viewbook/<%=Model.book.ID.ToString()%>">
+                        <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
+                    </a>
                 </td>
                 <td>
                     <div class="bookInfo">
@@ -70,8 +72,17 @@
                             <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
                         </h6>
                         <%} %>
-                        <div>
-                            <%:Model.book.Description%></div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>
+                                        Brief Discription:</h3>
+                                </td>
+                                <td>
+                                    <%:Model.book.Description%>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </td>
                 <td>
@@ -105,7 +116,7 @@
     <style type="text/css">
         h3
         {
-            display:inline;
+            display: inline;
             color: #0253a2;
         }
     </style>

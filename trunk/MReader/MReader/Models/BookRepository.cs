@@ -118,6 +118,11 @@ namespace MReader.Models
         //删除
         public void DeleteBook(Book book)
         {
+            db.Buyers.DeleteAllOnSubmit(book.Buyers);
+            db.PopularBooks.DeleteAllOnSubmit(book.PopularBooks);
+            db.Remarks.DeleteAllOnSubmit(book.Remarks);
+            
+            
             db.Books.DeleteOnSubmit(book);
         }
 
@@ -137,9 +142,18 @@ namespace MReader.Models
 
         }
 
-        public void save()
+        public bool save()
         {
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
         public List<Book> PopularBooks(int count)

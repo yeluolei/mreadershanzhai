@@ -85,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerInfo.cs">
+      <DependentUpon>CustomerInfo.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\SiteIncomeFormModel.cs" />
     <Compile Include="Models\BookInfoFormModel.cs" />
     <Compile Include="Models\BookSearchResult.cs" />
@@ -224,7 +227,9 @@
     <Content Include="Views\UserCenter\Favourite.aspx" />
     <Content Include="Views\UserCenter\History.aspx" />
     <Content Include="Views\UserCenter\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

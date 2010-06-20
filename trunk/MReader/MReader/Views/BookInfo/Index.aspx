@@ -195,7 +195,7 @@
                     <%} %>
                     <% using (Html.BeginForm("Index", "BookInfo"))
                        {%>
-                    <%:Html.Hidden("id", Model.book.ID)%>
+                    <%:Html.Hidden("bookid", Model.book.ID)%>
                     <%:Html.Hidden("PageIndex",Model.pageIndex) %>
                     <%--上一页与下一页--%>
                     <% if (Model.HasPreviousPage)

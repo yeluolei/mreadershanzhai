@@ -12,8 +12,8 @@ namespace MReader.Controllers
 {
     public class AdminBookController : Controller
     {
-        BookRepository db = new BookRepository();
-
+        BookRepository bookdb = new BookRepository();
+        CustomerRepository cusdb = new CustomerRepository();
         //string bookPath = "E:\\study\\Programming\\Web\\MReaderIT2 - Copy\\MReader\\MReader\\book\\";
         //
         // GET: /Admin/
@@ -21,27 +21,27 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            var books = db.GetAllBooks().ToList();
+            var books = bookdb.GetAllBooks().ToList();
             return View("Index", books);
         }
 
         [Authorize(Roles = "admin")]
         public ActionResult SetPopularBook(int id)
         {
-            Book book = db.GetBookbyID(id);
-            db.SetPopular(book);
-            db.save();
+            Book book = bookdb.GetBookbyID(id);
+            bookdb.SetPopular(book);
+            bookdb.save();
             return RedirectToAction("successful");
         }
 
         [Authorize(Roles = "admin")]
         public ActionResult UnsetPopularBook(int id)
         {
-            Book book = db.GetBookbyID(id);
-            if (db.IsPopular(book))
+            Book book = bookdb.GetBookbyID(id);
+            if (bookdb.IsPopular(book))
             {
-                db.UnsetPopular(book);
-                db.save();
+                bookdb.UnsetPopular(book);
+                bookdb.save();
             }
             return RedirectToAction("successful");
         }
@@ -62,7 +62,7 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult PopularBookList()
         {
-            return View(db.GetAllPopBooks().ToList());
+            return View(bookdb.GetAllPopBooks().ToList());
         }
 
 
@@ -110,14 +110,20 @@ namespace MReader.Controllers
                 c.SaveAs(fileName);
 
                 decompress((Server.MapPath("/book/") + book.Guid.ToString() + "_temp" + "\\"), fileName);
-                //System.IO.Directory.Delete(fileName, true);
+                try
+                {
+                    System.IO.File.Delete(fileName);
+                }
+                catch
+                {
+                }
             }
 
             //check the file to make sure correctness
             if (!CheckFile((Server.MapPath("/book/") + book.Guid.ToString() + "_temp" + "\\"), book.TotalPages, Request.Form["regularExpression"]))
             {
                 System.IO.Directory.Delete(Server.MapPath("/book/") + book.Guid.ToString() + "_temp" + "\\",true);
-                HandleErrorInfo err = new HandleErrorInfo(new Exception("Someting is wrong in the file"), "Admin", "NewBook");
+                HandleErrorInfo err = new HandleErrorInfo(new Exception("Please specify correct file name pattern in that <b>regular expression</b> box"), "Admin", "NewBook");
                 return View("error", err);
             }
             else
@@ -126,8 +132,8 @@ namespace MReader.Controllers
             }
 
             //save the change
-            db.NewBook(book);
-            db.save();
+            bookdb.NewBook(book);
+            bookdb.save();
 
             return View("success");
         }
@@ -135,8 +141,8 @@ namespace MReader.Controllers
         [Authorize( Roles = "admin" )]
         public ActionResult DeleteBook( int id )
         {
-            Book book = db.GetBookbyID(id);
-            if (book == null)
+            Book book = bookdb.GetBookbyID(id);
+            if (book.Title.ToLower() == "null")
                 return View("NotFound");
             return View(book);
         }
@@ -145,23 +151,32 @@ namespace MReader.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DeleteBook(int id, string confirmButton)
         {
-            Book book = db.GetBookbyID(id);
+            Book book = bookdb.GetBookbyID(id);
             
-            if (book == null)
+            if (book.Title.ToLower() == "null")
             {
                 return View("NotFound");
             }
             else
             {
-                db.DeleteBook(book);
-
+                bookdb.DeleteBook(book);
+                cusdb.DeleteBook(book);
+                
                 //delete the corresponding file
                 int lastIndex = book.Content.LastIndexOf("/");
                 string tempPath = book.Content.Substring(0, lastIndex);
-                System.IO.Directory.Delete(Server.MapPath(tempPath), true);
+                try
+                {
+                    System.IO.Directory.Delete(Server.MapPath(tempPath), true);
+                }
+                catch
+                {
+                    //TODO: handle this error
+                }
 
                 //save the change
-                db.save();
+                bookdb.save();
+                cusdb.Save();
                 return View("success");
             } 
         }
@@ -175,7 +190,7 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult ViewBookInfo(int id)
         {
-            Book book = db.GetBookbyID(id);
+            Book book = bookdb.GetBookbyID(id);
             if (book == null)
             {
                 return View();
@@ -188,7 +203,7 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult EditBook(int id)
         {
-            Book book = db.GetBookbyID(id);
+            Book book = bookdb.GetBookbyID(id);
             return View(book);
         }
 
@@ -197,11 +212,11 @@ namespace MReader.Controllers
         [Authorize(Roles = "admin"), AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditBook(int id, FormCollection collection)
         {
-            Book book = db.GetBookbyID(id);
+            Book book = bookdb.GetBookbyID(id);
             try
             {
                 UpdateModel(book);
-                db.save();
+                bookdb.save();
                 return RedirectToAction("ViewBookInfo", new { id = book.ID });
             }
             catch

@@ -11,34 +11,33 @@
     <h3>Are you sure you want to delete this?</h3>
     <fieldset>
         
-        <div class="display-label">ISBN</div>
-        <div class="display-field"><%: Model.ISBN %></div>
         
-        <div class="display-label">Title</div>
-        <div class="display-field"><%: Model.Title %></div>
+      <div> ISBN: <%: Model.ISBN %></div>
         
-        <div class="display-label">Price</div>
-        <div class="display-field"><%: String.Format("{0:F}", Model.Price) %></div>
         
-        <div class="display-label">Publisher</div>
-        <div class="display-field"><%:Model.Publisher %></div>
+        <div class="display-field"> Title:<%: Model.Title %></div>
+        
+        
+        <div class="display-field">Price:<%: String.Format("{0:F}", Model.Price) %></div>
+        
+         
+        <div class="display-field">Publisher:<%:Model.Publisher %></div>
 
 
-        <div class="display-label">PublishDate</div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.PublishDate) %></div>
+        
+        <div class="display-field"> PublishDate: <%: String.Format("{0:g}", Model.PublishDate) %></div>
         
         
-        <div class="display-label">Author</div>
-        <div class="display-field"><%: Model.Author %></div>
+         
+        <div class="display-field">Author:<%: Model.Author %></div>
+         
+        <div class="display-field">TotalPages:<%: Model.TotalPages %></div>
         
-        <div class="display-label">TotalPages</div>
-        <div class="display-field"><%: Model.TotalPages %></div>
         
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.ID %></div>
+        <div class="display-field"> ID :<%: Model.ID %></div>
         
-        <div class="display-label">Decription</div>
-        <div class="display-field"><%:Model.Description %></div>
+         
+        <div class="display-field">Decription:<%:Model.Description %></div>
         
     </fieldset>
     <% using (Html.BeginForm()) { %>

@@ -38,7 +38,8 @@ namespace MReader.Controllers
             author = abook.Author;
             Publisher = abook.Publisher;
             CategoryID = abook.CategoryID;
-            return RedirectToAction("BookSearch", "Search", new { CategoryID , title, ISBN, author, Publisher});
+            return RedirectToAction("BookSearch", "Search", 
+                new { CategoryID , title, ISBN, author, Publisher});
         }
 
         //
@@ -46,7 +47,8 @@ namespace MReader.Controllers
 
         [Authorize]
 
-        public ActionResult BookSearch( int CategoryID = 0 , string title = "" , string ISBN = "" , string author = "" , string Publisher = "" , int pageIndex = 0, int pageSize = 2)
+        public ActionResult BookSearch( int CategoryID = 0 , string title = "" , string ISBN = "" , 
+            string author = "" , string Publisher = "" , int pageIndex = 0, int pageSize = 2)
         {
             var books = search.AdvancedSearch(CategoryID , title, ISBN, author, Publisher,pageIndex );
 

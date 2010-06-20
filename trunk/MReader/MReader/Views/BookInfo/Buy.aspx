@@ -11,7 +11,9 @@
         <table>
             <tr>
                 <td class="bookcover">
-                    <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
+                    
+                        <img class="cover" alt="cover" src="<%=(Model.bookcover)%>" />
+                    
                 </td>
                 <td>
                     <div class="bookInfo">
@@ -56,6 +58,14 @@
                                     <%: Model.book.Price.ToString("C") %>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    Brief Discription:
+                                </td>
+                                <td>
+                                    <%:Model.book.Description%>
+                                </td>
+                            </tr>
                         </table>
                         <% if (!Model.customer.HasFaved(Model.book.ID))
                            { %>
@@ -66,13 +76,9 @@
                         <% else
                             {
                         %>
-                        <h6>
-                            This book is in your
-                            <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
-                        </h6>
+                        This book is in your
+                        <%=Html.ActionLink("favourite list","favourite","usercenter",new{},new{}) %>.
                         <%} %>
-                        <div>
-                            <%:Model.book.Description%></div>
                     </div>
                 </td>
                 <td>
@@ -87,16 +93,17 @@
                     <div class="button">
                         <table>
                             <tr>
-                                <td>
-                                    <%=Html.ActionLink("Recharge my account", "Balance", "UserCenter", new { }, new { })%>
-                                </td>
-                                <td>
+                                <td style="width:80px;">
                                     <% using (Html.BeginForm())
                                        { %>
                                     <input id="Buy" type="submit" value="Buy" />
                                     <%} %>
                                 </td>
+                                <td >
+                                    <%=Html.ActionLink("Recharge my account", "Balance", "UserCenter", new { }, new { })%>
+                                </td>
                             </tr>
+                           
                         </table>
                     </div>
                 </td>

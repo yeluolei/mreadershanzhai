@@ -11,7 +11,7 @@
                 <div class="topBar">
                     <center>
                         <h4 style="display: inline;">
-                            Book</h4>
+                            Browse by category</h4>
                     </center>
                 </div>
                 <div class="content">
@@ -21,7 +21,7 @@
                     <li>
                         <%=Html.ActionLink("Novel", "BookSearch", "Search", new { CategoryID = 2 }, new { })%></li>
                     <li>
-                        <%=Html.ActionLink("Magezine", "BookSearch", "Search", new { CategoryID = 3 }, new { })%></li>
+                        <%=Html.ActionLink("Magazine", "BookSearch", "Search", new { CategoryID = 3 }, new { })%></li>
                     <li>
                         <%=Html.ActionLink("Periodical", "BookSearch", "Search", new { CategoryID = 4 }, new { })%></li>
                 </ul>
