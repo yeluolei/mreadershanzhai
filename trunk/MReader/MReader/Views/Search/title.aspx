@@ -5,6 +5,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
+        <%--<%MReader.Models.Book book = new MReader.Models.Book() ;
+        book.CategoryID=Convert.ToInt32(Model.keyword[4]);
+        %>--%>
         <%if (Model.keyword[0] != "")
           { %>
         Title :
@@ -28,6 +31,10 @@
         Publisher :
         <%: Html.Label ( Model.keyword[3] + " ;" ) %>
         <%} %>
+      <%--  <% if (Model.keyword[4]!="0"){ %>
+        Category :
+        <%=book.CatagoryLib.CatagoryName %>
+        <%} %>--%>
     </h2>
     <div class="searchresult">
         <ul>

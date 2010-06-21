@@ -5,12 +5,17 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/BookInfo.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/jquery.rating.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.rating.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".bookInfo tr td:first").css('width', '100px');
             $(".button a").button();
             $("#Buy").button();
             $(".favourite").button();
+
+            $("#stara").rating("select", parseInt('<%=Model.book.averageRating %>') - 1);
+            $("#stara").rating("disable");
             function runEffect() {
                 //most effect types need no options passed by default
                 var options = { to: { width: 100, height: 20} };
@@ -124,38 +129,77 @@
                 </td>
                 <td>
                     <div>
-                        <p>
+                        <label>
                             <%=Model.book.rate1 %>
-                            people rated the book as 1 star</p>
-                        <p>
-                            <%=Model.book.rate2 %>
-                            people rated the book as 2 star</p>
-                        <p>
-                            <%=Model.book.rate3 %>
-                            people rated the book as 3 star</p>
-                        <p>
-                            <%=Model.book.rate4 %>
-                            people rated the book as 4 star</p>
-                        <p>
-                            <%=Model.book.rate5 %>
-                            people rated the book as 5 star</p>
-                        <p>
-                            Average rating is
-                            <%=Model.book.averageRating.ToString() %>
-                            stars.</p>
-                        <% if (!Model.customer.HasRated(Model.book.ID))
-                           { %>
-                        <label>
-                            rate as
+                            people rated
                         </label>
-                        <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
-                        <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
-                        <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
-                        <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
-                        <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                        <br />
+                        <input type="radio" name="star1" class="star" disabled="disabled" checked="checked" />
+                        <input type="radio" name="star1" class="star" disabled="disabled" />
+                        <input type="radio" name="star1" class="star" disabled="disabled" />
+                        <input type="radio" name="star1" class="star" disabled="disabled" />
+                        <input type="radio" name="star1" class="star" disabled="disabled" /><br />
                         <label>
-                            stars.</label>
-                        <%} %>
+                            <%=Model.book.rate2 %>
+                            people rated
+                        </label>
+                        <br />
+                        <input type="radio" name="star2" class="star" disabled="disabled" />
+                        <input type="radio" name="star2" class="star" disabled="disabled" checked="checked" />
+                        <input type="radio" name="star2" class="star" disabled="disabled" />
+                        <input type="radio" name="star2" class="star" disabled="disabled" />
+                        <input type="radio" name="star2" class="star" disabled="disabled" /><br />
+                        <label>
+                            <%=Model.book.rate3 %>
+                            people rated
+                        </label>
+                        <br />
+                        <input type="radio" name="star3" class="star" disabled="disabled" />
+                        <input type="radio" name="star3" class="star" disabled="disabled" />
+                        <input type="radio" name="star3" class="star" disabled="disabled" checked="checked" />
+                        <input type="radio" name="star3" class="star" disabled="disabled" />
+                        <input type="radio" name="star3" class="star" disabled="disabled" /><br />
+                        <label>
+                            <%=Model.book.rate4 %>
+                            people rated
+                        </label>
+                        <br />
+                        <input type="radio" name="star4" class="star" disabled="disabled" />
+                        <input type="radio" name="star4" class="star" disabled="disabled" />
+                        <input type="radio" name="star4" class="star" disabled="disabled" />
+                        <input type="radio" name="star4" class="star" disabled="disabled" checked="checked" />
+                        <input type="radio" name="star4" class="star" disabled="disabled" /><br />
+                        <label>
+                            <%=Model.book.rate5 %>
+                            people rated
+                        </label>
+                        <br />
+                        <input type="radio" name="star5" class="star" disabled="disabled" />
+                        <input type="radio" name="star5" class="star" disabled="disabled" />
+                        <input type="radio" name="star5" class="star" disabled="disabled" />
+                        <input type="radio" name="star5" class="star" disabled="disabled" />
+                        <input type="radio" name="star5" class="star" disabled="disabled" checked="checked" /><br />
+                        <label>
+                            Average rating
+                        </label>
+                        <br />
+                        <input type="radio" name="stara" id="stara" class="star" />
+                        <input type="radio" name="stara" id="stara" class="star" />
+                        <input type="radio" name="stara" id="stara" class="star" />
+                        <input type="radio" name="stara" id="stara" class="star" />
+                        <input type="radio" name="stara" id="stara" class="star" /><br />   
+                        <div>
+                            <% if (!Model.customer.HasRated(Model.book.ID))
+                               { %>
+                            rate as
+                            <%= Html.ActionLink("1 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 1},new{})%>
+                            <%= Html.ActionLink("2 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 2},new{})%>
+                            <%= Html.ActionLink("3 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 3},new{})%>
+                            <%= Html.ActionLink("4 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 4},new{})%>
+                            <%= Html.ActionLink("5 ","rate","bookinfo",new{bookid = Model.book.ID,rating = 5},new{})%>
+                            stars.
+                            <%} %>
+                        </div>
                     </div>
                 </td>
             </tr>

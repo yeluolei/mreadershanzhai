@@ -4,112 +4,134 @@
     bookview
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <%using (Html.BeginForm())
       {%>
     <div id="pager">
         <div id="header">
         </div>
-        <div id="titlebar"><h2 id="title"><%=Model.book.Title %></h2></div>
+        <div id="titlebar">
+            <h2 id="title">
+                <%=Model.book.Title %></h2>
+        </div>
         <div id="content">
-            <%=Html.Hidden("ID",Model.book.ID) %> 
+            <%=Html.Hidden("ID",Model.book.ID) %>
             <table id="viewport">
                 <tr>
                     <td id="sideviewport">
-                        <div id="sidebar">  
-                                <div id="sidebarcover">
-                                    <img alt="cover" height="125" width="90px" src="<%=(Model.bookcover) %>" />
-                                </div>
-                                <div id="sidebarnav">
-                                    <ul>
-                                       <li><%=Html.ActionLink("Leave a comment","Index","BookInfo",
+                        <div id="sidebar">
+                            <div id="sidebarcover">
+                                <img alt="cover" height="125" width="90px" src="<%=(Model.bookcover) %>" />
+                            </div>
+                            <div id="sidebarnav">
+                                <ul>
+                                    <li>
+                                        <%=Html.ActionLink("Leave a comment","Index","BookInfo",
                                                new {bookid = Model.book.ID},new{}) %></li>
-                                       
-                                    </ul>
+                                    <li>
+                                        <label>
+                                            Average Rating :</label><br />
+                                        <input type="radio" class="star" id="stara" />
+                                        <input type="radio" class="star" id="stara" />
+                                        <input type="radio" class="star" id="stara" />
+                                        <input type="radio" class="star" id="stara" />
+                                        <input type="radio" class="star" id="stara" /></li>
+                                </ul>
+                            </div>
+                            <div id="bookprofile">
+                                <h3>
+                                    <a href="#">Book Information</a></h3>
+                                <div>
+                                    <p>
+                                        <b>
+                                            <%:Html.Label("Title:") %></b>
+                                        <br />
+                                        &nbsp&nbsp
+                                        <%=Model.book.Title %></p>
+                                    <p>
+                                        <b>
+                                            <%:Html.Label("Author:") %></b><br />
+                                        &nbsp&nbsp
+                                        <%=Model.book.Author %></p>
+                                    <p>
+                                        <b>
+                                            <%:Html.Label("PublishData:") %>
+                                        </b>
+                                        <br />
+                                        &nbsp&nbsp
+                                        <%=Model.book.PublishDate %>
+                                    </p>
+                                    <p>
+                                        <b>
+                                            <%:Html.Label("Publisher:") %></b><br />
+                                        &nbsp&nbsp
+                                        <%=Model.book.Publisher %></p>
+                                    <p>
+                                        <b>
+                                            <%:Html.Label("Price:") %></b><br />
+                                        &nbsp&nbsp
+                                        <%=Model.book.Price %></p>
                                 </div>
-                                <input type="radio" class="star" />
-                                <input type="radio" class="star" />
-                                <input type="radio" class="star" />
-                                <input type="radio" class="star" />
-                                <input type="radio" class="star" />
-
-                                <div id="bookprofile">
-                                    <h3><a href="#">Book Information</a></h3>
-                                    <div> 
-                                        <p><b><%:Html.Label("Title:") %></b> <br />
-			                            &nbsp&nbsp <%=Model.book.Title %></p> 
-                                        <p><b><%:Html.Label("Author:") %></b><br />
-			                            &nbsp&nbsp <%=Model.book.Author %></p>
-                                        <p><b> <%:Html.Label("PublishData:") %> </b><br />
-			                            &nbsp&nbsp <%=Model.book.PublishDate %> </p>
-                                        <p><b> <%:Html.Label("Publisher:") %></b><br />
-                                        &nbsp&nbsp <%=Model.book.Publisher %></p>
-                                        <p><b> <%:Html.Label("Price:") %></b><br />
-                                        &nbsp&nbsp <%=Model.book.Price %></p>
-		                            </div> 
-                                    
-                                    <h3 id = "bookmarktitle"><a href="#" id="getBookmark">Bookmark</a></h3>
-
-                                    <div id = "bookmark_content">                                
-		                            </div>
-                                </div> <%-- bookprofile--%>
+                                <h3 id="bookmarktitle">
+                                    <a href="#" id="getBookmark">Bookmark</a></h3>
+                                <div id="bookmark_content">
+                                </div>
+                            </div>
+                            <%-- bookprofile--%>
                         </div>
                     </td>
                     <td>
-                    
                         <div id="toolbar">
                             <table>
                                 <tr>
                                     <td>
-                                        <div id = "previousbutton">  
-                                           <img class="imagebutton" alt="previous" onclick = "previous()" src="/images/arrow_left_green_48.png" />
+                                        <div id="previousbutton">
+                                            <img class="imagebutton" alt="previous" onclick="previous()" src="/images/arrow_left_green_48.png" />
                                         </div>
                                     </td>
-                                    <td>                                       
+                                    <td>
                                         <%=Html.TextBox("pageIndex",Model.pageIndex) %>
                                         <%=Html.Label("/"+Model.book.TotalPages.ToString() + " Pages")%>
-                                        <input id = "go" type="submit" value="Go" />
-                                        
+                                        <input id="go" type="submit" value="Go" />
                                     </td>
                                     <td>
-                                        <div id="nextbutton">                                    
-                                            <img onclick="next()" class="imagebutton" alt="next" src="/images/arrow_right_green_48.png" />                     
+                                        <div id="nextbutton">
+                                            <img onclick="next()" class="imagebutton" alt="next" src="/images/arrow_right_green_48.png" />
                                         </div>
                                     </td>
                                     <td>
-                                        <input id = "bookmark" type = "button" value="bookmark"/>
+                                        <input id="bookmark" type="button" value="bookmark" />
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div id="bookcontent">
-                            <img id="book" height="1035px" width="800px" alt="loading" oncontextmenu="return false;" src="<%=Model.pageURL%>"  />
+                            <img id="book" height="1035px" width="800px" alt="loading" oncontextmenu="return false;"
+                                src="<%=Model.pageURL%>" />
                         </div>
-                        
                     </td>
                 </tr>
             </table>
         </div>
     </div>
     <%}%>
-     <div class="demo">
- 
-    <div id="dialog" title="Add Bookmark">
-	    <label>note:</label><input type="text" id="note2" /><br />
-        <input type="button" id="submitnote" value="submit"/>
-    </div>
+    <div class="demo">
+        <div id="dialog" title="Add Bookmark">
+            <label>
+                note:</label><input type="text" id="note2" /><br />
+            <input type="button" id="submitnote" value="submit" />
+        </div> 
+         <div id="dialog2" title="Add Bookmark">
+            <label>OK</label>
+            <input type="button" id="Button1" value="submit" />
+        </div>
     </div>
 </asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID= "HeadContent" runat="server">
-
-
-        <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
-        <link href="/Content/jquery.rating.css" rel="stylesheet" type="text/css" />
-        <script src="/Scripts/jquery.rating.js" type="text/javascript"></script>
-		<link href="/Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
-
-        <script language="javascript" type="text/javascript">         
+<asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/jquery.rating.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.rating.js" type="text/javascript"></script>
+    <link href="/Content/BookViewStyle.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript">         
 
             var pageNumGlobal;
             var bookURLGlobal;
@@ -176,11 +198,13 @@
                         bookURLGlobal = "<%= Model.book.Content %>";
                         totalPagesGlobal = <%=Model.book.TotalPages %>;
                         Buttonvisible();
-
+                        
+                        $("#stara").rating("select", parseInt('<%=Model.book.averageRating %>'));
+                        $("#stara").rating("disable");
                         $("#submitnote").click( function() {
                                 GetURL();
-                                $.get( ajaxUrl, function(data, textStatus){ alert("succeed");} );
-                                $("#dialog").dialog("close");
+                                $.get( ajaxUrl, function(data, textStatus){ /*alert("succeed");*/} );
+                                $("#dialog").dialog("close");$("#dialog2").dialog("show");
                                 getbookmarkJson();
                         });
                         $("#bookmark").click( function() {
@@ -211,8 +235,10 @@
                         getbookmarkJson(); 
                         bindlable();
                         $("#dialog").dialog({autoOpen:false, show: 'blind', modal:true, height: 140, hide: 'explode'});
+                        $("#dialog2").dialog({autoOpen:false, show: 'blind', modal:true, height: 140, hide: 'explode'});
                         $("#go").button();
                         $("#bookmark").button();
+                        $("#submitnote").button();
 //                        $("#bookmark").droppable({
 //			                        activeClass: 'ui-state-hover',
 //			                        hoverClass: 'ui-state-active',
@@ -283,5 +309,5 @@
 //                                bindlable();
                                     }
                                           
-   </script>
+    </script>
 </asp:Content>

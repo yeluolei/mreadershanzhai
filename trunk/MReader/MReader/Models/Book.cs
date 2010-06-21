@@ -11,6 +11,7 @@ namespace MReader.Models
     {
 
      //   public string bookcover = string.Format(content, "cover");
+        private SelectList _Categories;
         public bool IsValid
         {
             get { return (GetRuleViolations().Count() == 0); }
@@ -56,8 +57,17 @@ namespace MReader.Models
         {
             get
             {
-                BookRepository bookdb = new BookRepository();
-                return bookdb.Categories;
+                if (_Categories == null)
+                {
+                    BookRepository bookdb = new BookRepository();
+                    return bookdb.Categories;
+                }
+                else
+                    return _Categories;
+            }
+            set
+            {
+                _Categories = value;
             }
         }
 
