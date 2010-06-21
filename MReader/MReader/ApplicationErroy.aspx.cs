@@ -12,7 +12,7 @@ namespace MReader
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.Write(Application["erroy"].ToString());
-            Response.Write("HHH");
+            
         }
     }
 }

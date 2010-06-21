@@ -20,6 +20,12 @@ namespace MReader.Controllers
         public ActionResult AdvancedSearch()
         {
             Book abook = new Book () ;
+            List<SelectListItem> tmp = new List<SelectListItem>(abook.Categories);
+            SelectListItem item = new SelectListItem();
+            item.Value="0";
+            item.Text = "All";
+            tmp.Add(item);
+            abook.Categories = new SelectList(tmp,"Value","Text");
             return View( abook );
         }
 
@@ -52,8 +58,8 @@ namespace MReader.Controllers
         {
             var books = search.AdvancedSearch(CategoryID , title, ISBN, author, Publisher,pageIndex );
 
-            if (title == "" && ISBN == "" && author == "" && Publisher == "" && CategoryID == 0 )
-                return RedirectToAction("index", "home", new { });
+            //if (title == "" && ISBN == "" && author == "" && Publisher == "" && CategoryID == 0 )
+            //    return RedirectToAction("index", "home", new { });
             if (books.books.Count() == 0)
                 return View("NotFound");
             else
