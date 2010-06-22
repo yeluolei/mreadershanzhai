@@ -57,17 +57,17 @@ namespace MReader
             RegisterRoutes(RouteTable.Routes);
 
         }
-        protected void Application_Error()
-        {
-            Exception erroy = Server.GetLastError();
-            string err = "出错页面是：" + Request.Url.ToString() + "<br>";
-            err += "异常信息：" + erroy.Message + "<br>";
-            err += "Source:" + erroy.Source + "<br>";
-            err += "StackTrace:" + erroy.StackTrace + "<br>";
-            Server.ClearError();
-            Application["erroy"] = err;
+        //protected void Application_Error()
+        //{
+        //    Exception erroy = Server.GetLastError();
+        //    string err = "出错页面是：" + Request.Url.ToString() + "<br>";
+        //    err += "异常信息：" + erroy.Message + "<br>";
+        //    err += "Source:" + erroy.Source + "<br>";
+        //    err += "StackTrace:" + erroy.StackTrace + "<br>";
+        //    Server.ClearError();
+        //    Application["erroy"] = err;
             
-            Response.Redirect("/home/error?errmsg=undefined error");
-        }
+        //    Response.Redirect("/home/error?errmsg=undefined error");
+        //}
     }
 }
