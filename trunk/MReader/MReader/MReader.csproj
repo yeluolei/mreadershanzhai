@@ -34,14 +34,14 @@
     <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1" Enabled="False">
           <Destination Path="" />
           <Object Type="dbFullSql">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
             <Source Path="obj\Release\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
           </Object>
         </ObjectGroup>
-        <ObjectGroup Name="bookdbConnectionString1-Deployment" Order="3" xmlns="">
+        <ObjectGroup Name="bookdbConnectionString1-Deployment" Order="3" xmlns="" Enabled="False">
           <Destination Path="" />
           <Object Type="dbFullSql">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=bookdb%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
@@ -112,10 +112,6 @@
     </Compile>
     <Compile Include="Controllers\SiteIncomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Helps\PaginatedList.cs" />
     <Compile Include="Models\BookDB.designer.cs">
       <AutoGen>True</AutoGen>
@@ -478,7 +474,6 @@
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Content\jquery-ui-1.8.2.custom.css" />
     <Content Include="Content\jquery.rating.css" />
-    <Content Include="Default.aspx" />
     <Content Include="images\2.jpg" />
     <Content Include="images\3.jpg" />
     <Content Include="images\accordion-left-act.png" />
