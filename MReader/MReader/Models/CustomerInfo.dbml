@@ -1,5 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BookDB" Class="CustomerInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BookDB.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BookDBConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bookdb" Class="CustomerInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=bookdb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="bookdbConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Customers" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CurrentMoney" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DateRegistered" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpentCost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="UserLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Rater" Member="Raters" ThisKey="UserName" OtherKey="UserName" Type="Rater" />
+      <Association Name="Customer_FavouriteBook" Member="FavouriteBooks" ThisKey="UserName" OtherKey="UserName" Type="FavouriteBook" />
+      <Association Name="Customer_PurchaseHistory" Member="PurchaseHistories" ThisKey="UserName" OtherKey="UserName" Type="PurchaseHistory" />
+      <Association Name="Customer_Bookmark" Member="Bookmarks" ThisKey="UserName" OtherKey="UserName" Type="Bookmark" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Raters" Member="Raters">
+    <Type Name="Rater">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Customer_Rater" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.FavouriteBooks" Member="FavouriteBooks">
     <Type Name="FavouriteBook">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -21,14 +42,6 @@
       <Association Name="Customer_PurchaseHistory" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Raters" Member="Raters">
-    <Type Name="Rater">
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="Customer_Rater" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Bookmarks" Member="Bookmarks">
     <Type Name="Bookmark">
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
@@ -38,19 +51,6 @@
       <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Note" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Customer_Bookmark" Member="Customer" ThisKey="UserName" OtherKey="UserName" Type="Customer" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Customers" Member="Customers">
-    <Type Name="Customer">
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CurrentMoney" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DateRegistered" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SpentCost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="UserLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Customer_FavouriteBook" Member="FavouriteBooks" ThisKey="UserName" OtherKey="UserName" Type="FavouriteBook" />
-      <Association Name="Customer_PurchaseHistory" Member="PurchaseHistories" ThisKey="UserName" OtherKey="UserName" Type="PurchaseHistory" />
-      <Association Name="Customer_Rater" Member="Raters" ThisKey="UserName" OtherKey="UserName" Type="Rater" />
-      <Association Name="Customer_Bookmark" Member="Bookmarks" ThisKey="UserName" OtherKey="UserName" Type="Bookmark" />
     </Type>
   </Table>
 </Database>

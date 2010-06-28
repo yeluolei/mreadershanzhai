@@ -31,6 +31,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
+            <Source Path="obj\Release\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="bookdbConnectionString1-Deployment" Order="3" xmlns="">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=bookdb%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
+            <Source Path="obj\Release\AutoScripts\bookdbConnectionString1-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +71,9 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -60,8 +81,12 @@
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -77,6 +102,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminBookController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BookInfoController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
@@ -86,6 +112,10 @@
     </Compile>
     <Compile Include="Controllers\SiteIncomeController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Helps\PaginatedList.cs" />
     <Compile Include="Models\BookDB.designer.cs">
       <AutoGen>True</AutoGen>
@@ -98,7 +128,7 @@
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\Search.cs" />
-    <Compile Include="Views\Global.asax.cs">
+    <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
@@ -117,18 +147,338 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationErroy.aspx" />
-    <Content Include="App_Data\BookDB.mdf" />
-    <Content Include="App_Data\BookDB_log.ldf">
-      <DependentUpon>BookDB.mdf</DependentUpon>
-    </Content>
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-1.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-10.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-11.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-12.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-13.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-14.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-15.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-16.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-17.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-18.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-19.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-2.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-20.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-3.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-4.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-5.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-6.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-7.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-8.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-9.png" />
+    <Content Include="book\1013c8f1-71b5-43db-b787-da5e6b6507bf\pp-cover.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-1.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-10.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-100.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-101.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-102.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-103.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-104.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-105.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-106.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-107.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-108.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-109.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-11.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-110.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-111.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-112.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-113.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-114.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-115.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-116.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-117.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-118.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-119.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-12.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-120.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-121.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-122.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-123.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-124.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-125.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-126.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-127.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-128.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-129.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-13.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-130.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-131.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-132.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-133.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-134.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-135.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-136.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-137.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-138.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-139.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-14.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-140.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-141.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-142.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-143.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-144.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-145.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-146.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-147.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-148.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-149.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-15.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-150.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-151.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-152.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-153.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-154.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-155.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-156.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-157.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-158.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-159.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-16.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-160.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-161.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-162.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-163.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-164.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-165.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-166.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-167.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-168.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-169.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-17.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-170.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-171.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-172.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-173.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-174.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-175.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-176.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-177.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-178.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-179.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-18.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-180.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-181.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-182.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-183.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-184.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-185.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-186.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-187.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-188.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-189.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-19.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-190.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-191.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-192.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-193.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-194.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-195.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-196.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-197.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-198.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-199.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-2.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-20.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-200.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-201.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-202.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-203.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-204.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-205.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-206.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-207.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-208.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-209.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-21.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-210.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-211.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-212.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-213.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-214.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-215.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-216.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-217.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-218.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-219.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-22.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-220.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-221.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-222.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-223.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-224.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-225.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-226.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-227.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-228.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-229.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-23.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-230.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-231.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-232.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-233.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-234.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-235.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-236.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-237.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-238.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-239.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-24.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-240.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-241.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-25.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-26.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-27.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-28.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-29.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-3.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-30.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-31.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-32.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-33.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-34.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-35.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-36.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-37.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-38.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-39.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-4.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-40.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-41.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-42.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-43.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-44.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-45.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-46.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-47.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-48.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-49.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-5.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-50.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-51.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-52.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-53.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-54.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-55.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-56.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-57.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-58.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-59.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-6.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-60.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-61.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-62.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-63.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-64.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-65.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-66.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-67.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-68.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-69.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-7.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-70.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-71.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-72.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-73.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-74.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-75.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-76.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-77.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-78.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-79.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-8.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-80.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-81.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-82.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-83.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-84.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-85.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-86.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-87.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-88.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-89.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-9.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-90.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-91.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-92.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-93.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-94.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-95.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-96.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-97.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-98.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-99.png" />
+    <Content Include="book\38beb2b5-67c0-466c-898b-6a1849e7aaa9\jquery-cover.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-1.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-10.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-11.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-12.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-13.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-14.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-15.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-16.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-17.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-18.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-19.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-2.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-20.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-3.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-4.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-5.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-6.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-7.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-8.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-9.png" />
+    <Content Include="book\586b767b-f188-4f64-bd91-fc38f2d2f2ce\A-cover.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-1.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-10.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-11.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-12.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-13.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-14.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-15.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-16.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-17.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-18.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-19.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-2.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-20.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-3.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-4.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-5.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-6.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-7.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-8.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-9.png" />
+    <Content Include="book\dd66ebee-5b25-45d7-867c-da757a8312c4\p-cover.png" />
+    <Content Include="Content\accordion\SearchTitle.css" />
+    <Content Include="Content\demo.css" />
     <Content Include="Content\homeindex.css" />
     <Content Include="Content\accordion\flora.accordion.css" />
+    <Content Include="Content\images\ui-anim_basic_16x16.gif" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\star.gif" />
     <Content Include="Content\UserCenter.css" />
     <Content Include="Content\SearchTitle.css" />
     <Content Include="Content\BookInfo.css" />
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Content\jquery-ui-1.8.2.custom.css" />
     <Content Include="Content\jquery.rating.css" />
+    <Content Include="Default.aspx" />
     <Content Include="images\2.jpg" />
     <Content Include="images\3.jpg" />
     <Content Include="images\accordion-left-act.png" />
@@ -171,7 +521,7 @@
     <Content Include="Views\BookInfo\BoughtSuccess.aspx" />
     <Content Include="Views\BookInfo\Buy.aspx" />
     <Content Include="Views\BookInfo\Index.aspx" />
-    <Content Include="Views\Global.asax" />
+    <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Views\AdminBook\NewBook.aspx" />
     <Content Include="Views\BookView\ViewBook.aspx" />
@@ -246,7 +596,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="book\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="book\temp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\BookDB.dbml.layout">
@@ -270,8 +621,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7357</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/MReader</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

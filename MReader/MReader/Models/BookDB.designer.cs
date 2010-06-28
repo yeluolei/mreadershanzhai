@@ -22,7 +22,7 @@ namespace MReader.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BookDB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="bookdb")]
 	public partial class BookDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,15 +30,15 @@ namespace MReader.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertCatagoryLib(CatagoryLib instance);
+    partial void UpdateCatagoryLib(CatagoryLib instance);
+    partial void DeleteCatagoryLib(CatagoryLib instance);
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
     partial void InsertBuyer(Buyer instance);
     partial void UpdateBuyer(Buyer instance);
     partial void DeleteBuyer(Buyer instance);
-    partial void InsertCatagoryLib(CatagoryLib instance);
-    partial void UpdateCatagoryLib(CatagoryLib instance);
-    partial void DeleteCatagoryLib(CatagoryLib instance);
     partial void InsertRemark(Remark instance);
     partial void UpdateRemark(Remark instance);
     partial void DeleteRemark(Remark instance);
@@ -48,7 +48,7 @@ namespace MReader.Models
     #endregion
 		
 		public BookDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BookDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["bookdbConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -77,6 +77,14 @@ namespace MReader.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<CatagoryLib> CatagoryLibs
+		{
+			get
+			{
+				return this.GetTable<CatagoryLib>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Book> Books
 		{
 			get
@@ -90,14 +98,6 @@ namespace MReader.Models
 			get
 			{
 				return this.GetTable<Buyer>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CatagoryLib> CatagoryLibs
-		{
-			get
-			{
-				return this.GetTable<CatagoryLib>();
 			}
 		}
 		
@@ -115,6 +115,120 @@ namespace MReader.Models
 			{
 				return this.GetTable<PopularBook>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CatagoryLib")]
+	public partial class CatagoryLib : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _CatagoryName;
+		
+		private EntitySet<Book> _Books;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCatagoryNameChanging(string value);
+    partial void OnCatagoryNameChanged();
+    #endregion
+		
+		public CatagoryLib()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatagoryName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CatagoryName
+		{
+			get
+			{
+				return this._CatagoryName;
+			}
+			set
+			{
+				if ((this._CatagoryName != value))
+				{
+					this.OnCatagoryNameChanging(value);
+					this.SendPropertyChanging();
+					this._CatagoryName = value;
+					this.SendPropertyChanged("CatagoryName");
+					this.OnCatagoryNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatagoryLib_Book", Storage="_Books", ThisKey="ID", OtherKey="CategoryID")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.CatagoryLib = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.CatagoryLib = null;
 		}
 	}
 	
@@ -909,120 +1023,6 @@ namespace MReader.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CatagoryLib")]
-	public partial class CatagoryLib : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _CatagoryName;
-		
-		private EntitySet<Book> _Books;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnCatagoryNameChanging(string value);
-    partial void OnCatagoryNameChanged();
-    #endregion
-		
-		public CatagoryLib()
-		{
-			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatagoryName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CatagoryName
-		{
-			get
-			{
-				return this._CatagoryName;
-			}
-			set
-			{
-				if ((this._CatagoryName != value))
-				{
-					this.OnCatagoryNameChanging(value);
-					this.SendPropertyChanging();
-					this._CatagoryName = value;
-					this.SendPropertyChanged("CatagoryName");
-					this.OnCatagoryNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatagoryLib_Book", Storage="_Books", ThisKey="ID", OtherKey="CategoryID")]
-		public EntitySet<Book> Books
-		{
-			get
-			{
-				return this._Books;
-			}
-			set
-			{
-				this._Books.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Books(Book entity)
-		{
-			this.SendPropertyChanging();
-			entity.CatagoryLib = this;
-		}
-		
-		private void detach_Books(Book entity)
-		{
-			this.SendPropertyChanging();
-			entity.CatagoryLib = null;
 		}
 	}
 	

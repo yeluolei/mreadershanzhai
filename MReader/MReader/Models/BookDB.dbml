@@ -1,5 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BookDB" Class="BookDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BookDB.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BookDBConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bookdb" Class="BookDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=bookdb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="bookdbConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CatagoryLib" Member="CatagoryLibs">
+    <Type Name="CatagoryLib">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatagoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CatagoryLib_Book" Member="Books" ThisKey="ID" OtherKey="CategoryID" Type="Book" />
+    </Type>
+  </Table>
   <Table Name="dbo.Books" Member="Books">
     <Type Name="Book">
       <Column Name="ISBN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -34,13 +41,6 @@
       <Column Name="BuyUserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="BookID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_Buyer" Member="Book" ThisKey="BookID" OtherKey="ID" Type="Book" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CatagoryLib" Member="CatagoryLibs">
-    <Type Name="CatagoryLib">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CatagoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="CatagoryLib_Book" Member="Books" ThisKey="ID" OtherKey="CategoryID" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.Remarks" Member="Remarks">

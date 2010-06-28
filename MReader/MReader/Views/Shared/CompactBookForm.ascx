@@ -3,7 +3,8 @@
     <fieldset>
         <center>
             <div id="bookcover">
-                <a href="http://localhost:7357/BookInfo/index/<%=Model.ID.ToString()%>">
+                
+                <a href="http://<%= Request.Url.Host %>/BookInfo/index/<%=Model.ID.ToString()%>">
                     <img height="130px" src="<%=String.Format(Model.Content,"cover") %>" alt="<%=Model.Title%>" />
                 </a>
             </div>
