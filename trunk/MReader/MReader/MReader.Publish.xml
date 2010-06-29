@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="C:\inetpub\wwwroot\mreader" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="mreader" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="http://localhost:8000" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="mreader" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="mreader" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="yeluolei" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAk5xl5iQHLUC3gOes/evMsQAAAAACAAAAAAAQZgAAAAEAACAAAADR8NKYvWrLpZONahiHpjjnreg4rwxyT3cxxaMx48cGoAAAAAAOgAAAAAIAACAAAAAIbX2fG4xuLFA45CRB54BMpkKOnvO2XwaMWhvG+igTzRAAAAC5UpAh7qLd+6aM9rvmg9tbQAAAAFJBFcAkeecEfdIfaPy5EG/5+UfFXIxQ4neUz0qClDC0hs5Pksz/4JFZ6Uhr9ETkUiSyIQ6wximptAu/lH7H3s4=" SelectedForPublish="True">
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-89.png" publishTime="06/20/2010 13:00:30" />
     <file relUrl="Scripts/accordion/jquery.dimensions.js" publishTime="06/16/2010 19:15:11" />
     <file relUrl="Views/BookInfo/Index.aspx" publishTime="06/28/2010 18:59:24" />
@@ -45,8 +45,7 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-199.png" publishTime="06/20/2010 13:00:51" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-241.png" publishTime="06/20/2010 13:00:59" />
     <file relUrl="Properties/AssemblyInfo.cs" publishTime="06/02/2010 21:46:37" />
-    <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-14.png" publishTime="06/12/2010 11:50:37" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-32.png" publishTime="06/20/2010 13:00:18" />
+    <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-6.png" publishTime="06/12/2010 11:50:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-209.png" publishTime="06/20/2010 13:00:53" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-19.png" publishTime="06/20/2010 13:00:16" />
     <file relUrl="ApplicationErroy.aspx.designer.cs" publishTime="06/20/2010 21:43:44" />
@@ -131,14 +130,14 @@
     <file relUrl="images/accordion-right.png" publishTime="06/02/2010 21:46:41" />
     <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-6.png" publishTime="06/20/2010 11:01:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-190.png" publishTime="06/20/2010 13:00:49" />
+    <file relUrl="Content/accordion/SearchTitle.css" publishTime="06/19/2010 20:57:45" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-82.png" publishTime="06/20/2010 13:00:29" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-73.png" publishTime="06/20/2010 13:00:27" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-91.png" publishTime="06/20/2010 13:00:30" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-65.png" publishTime="06/20/2010 13:00:25" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-120.png" publishTime="06/20/2010 13:00:36" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-125.png" publishTime="06/20/2010 13:00:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-27.png" publishTime="06/20/2010 13:00:17" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-16.png" publishTime="06/20/2010 13:00:15" />
+    <file relUrl="Helps/PaginatedList.cs" publishTime="06/17/2010 22:52:22" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-41.png" publishTime="06/20/2010 13:00:20" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-121.png" publishTime="06/20/2010 13:00:36" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-233.png" publishTime="06/20/2010 13:00:57" />
@@ -157,7 +156,6 @@
     <file relUrl="images/btn_cartoon.gif" publishTime="06/20/2010 18:32:15" />
     <file relUrl="Views/Account/LogOn.aspx" publishTime="06/20/2010 15:25:48" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-116.png" publishTime="06/20/2010 13:00:35" />
-    <file relUrl="Controllers/HomeController.cs" publishTime="06/22/2010 18:15:13" />
     <file relUrl="Global.asax.cs" publishTime="06/28/2010 16:40:16" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-1.png" publishTime="06/12/2010 11:50:36" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-cover.png" publishTime="06/12/2010 11:50:37" />
@@ -165,14 +163,12 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-156.png" publishTime="06/20/2010 13:00:42" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-33.png" publishTime="06/20/2010 13:00:18" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-57.png" publishTime="06/20/2010 13:00:24" />
-    <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-5.png" publishTime="06/20/2010 11:01:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-77.png" publishTime="06/20/2010 13:00:28" />
     <file relUrl="Views/AdminBook/SetPopularBook.aspx" publishTime="06/20/2010 18:32:14" />
     <file relUrl="book/586b767b-f188-4f64-bd91-fc38f2d2f2ce/A-13.png" publishTime="06/16/2010 21:20:40" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-137.png" publishTime="06/20/2010 13:00:39" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-200.png" publishTime="06/20/2010 13:00:51" />
     <file relUrl="Global.asax" publishTime="06/02/2010 21:46:38" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-205.png" publishTime="06/20/2010 13:00:52" />
     <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-20.png" publishTime="06/20/2010 11:01:36" />
     <file relUrl="book/586b767b-f188-4f64-bd91-fc38f2d2f2ce/A-12.png" publishTime="06/16/2010 21:20:40" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-170.png" publishTime="06/20/2010 13:00:46" />
@@ -185,8 +181,10 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-202.png" publishTime="06/20/2010 13:00:52" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-16.png" publishTime="06/12/2010 11:50:37" />
     <file relUrl="Views/SiteIncome/Index.aspx" publishTime="06/20/2010 18:32:14" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-213.png" publishTime="06/20/2010 13:00:53" />
     <file relUrl="Models/CustomerInfo.dbml.layout" publishTime="06/28/2010 15:18:23" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-172.png" publishTime="06/20/2010 13:00:46" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-142.png" publishTime="06/20/2010 13:00:40" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-171.png" publishTime="06/20/2010 13:00:46" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-222.png" publishTime="06/20/2010 13:00:55" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-70.png" publishTime="06/20/2010 13:00:26" />
@@ -205,7 +203,7 @@
     <file relUrl="Controllers/AdminController.cs" publishTime="06/28/2010 18:59:24" />
     <file relUrl="Controllers/AdminUserController.cs" publishTime="06/20/2010 20:12:57" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-227.png" publishTime="06/20/2010 13:00:56" />
-    <file relUrl="Views/AdminBook/Index.aspx" publishTime="06/20/2010 18:32:14" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-5.png" publishTime="06/20/2010 13:00:14" />
     <file relUrl="Views/Home/Index.aspx" publishTime="06/28/2010 18:59:24" />
     <file relUrl="images/accordion-right-act.png" publishTime="06/02/2010 21:46:41" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-226.png" publishTime="06/20/2010 13:00:56" />
@@ -215,26 +213,28 @@
     <file relUrl="Views/UserCenter/Balance.aspx" publishTime="06/20/2010 18:32:13" />
     <file relUrl="Views/Account/Register.aspx" publishTime="06/20/2010 15:25:48" />
     <file relUrl="Content/SearchTitle.css" publishTime="06/19/2010 23:28:16" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-142.png" publishTime="06/20/2010 13:00:40" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-32.png" publishTime="06/20/2010 13:00:18" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-20.png" publishTime="06/12/2010 11:50:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-235.png" publishTime="06/20/2010 13:00:57" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-46.png" publishTime="06/20/2010 13:00:21" />
     <file relUrl="bin/MReader.pdb" publishTime="06/28/2010 19:01:02" />
     <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-15.png" publishTime="06/20/2010 11:01:36" />
     <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-16.png" publishTime="06/20/2010 11:01:36" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-1.png" publishTime="06/20/2010 13:00:13" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-37.png" publishTime="06/20/2010 13:00:19" />
-    <file relUrl="Helps/PaginatedList.cs" publishTime="06/17/2010 22:52:22" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-34.png" publishTime="06/20/2010 13:00:19" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-108.png" publishTime="06/20/2010 13:00:33" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-81.png" publishTime="06/20/2010 13:00:28" />
     <file relUrl="Views/AdminUser/Delete.aspx" publishTime="06/16/2010 19:15:03" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-188.png" publishTime="06/20/2010 13:00:49" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-80.png" publishTime="06/20/2010 13:00:28" />
+    <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-5.png" publishTime="06/20/2010 11:01:37" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-8.png" publishTime="06/12/2010 11:50:37" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-80.png" publishTime="06/20/2010 13:00:28" />
     <file relUrl="book/1013c8f1-71b5-43db-b787-da5e6b6507bf/pp-4.png" publishTime="06/20/2010 11:01:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-87.png" publishTime="06/20/2010 13:00:29" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-232.png" publishTime="06/20/2010 13:00:57" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-122.png" publishTime="06/20/2010 13:00:36" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-86.png" publishTime="06/20/2010 13:00:29" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-123.png" publishTime="06/20/2010 13:00:36" />
     <file relUrl="book/586b767b-f188-4f64-bd91-fc38f2d2f2ce/A-4.png" publishTime="06/16/2010 21:20:40" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-194.png" publishTime="06/20/2010 13:00:50" />
@@ -243,8 +243,9 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-61.png" publishTime="06/20/2010 13:00:25" />
     <file relUrl="book/586b767b-f188-4f64-bd91-fc38f2d2f2ce/A-5.png" publishTime="06/16/2010 21:20:41" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-29.png" publishTime="06/20/2010 13:00:18" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-100.png" publishTime="06/20/2010 13:00:32" />
     <file relUrl="Models/Customer.cs" publishTime="06/18/2010 21:53:01" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-8.png" publishTime="06/20/2010 13:00:14" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-125.png" publishTime="06/20/2010 13:00:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-164.png" publishTime="06/20/2010 13:00:44" />
     <file relUrl="Scripts/jquery.rating.js" publishTime="06/18/2010 23:15:14" />
     <file relUrl="Scripts/jquery-ui-1.8.2.custom.min.js" publishTime="06/16/2010 19:15:12" />
@@ -273,6 +274,7 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-204.png" publishTime="06/20/2010 13:00:52" />
     <file relUrl="Scripts/jquery.validate.js" publishTime="06/02/2010 21:44:46" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-113.png" publishTime="06/20/2010 13:00:34" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-16.png" publishTime="06/20/2010 13:00:15" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-119.png" publishTime="06/20/2010 13:00:35" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-220.png" publishTime="06/20/2010 13:00:55" />
     <file relUrl="Content/accordion/flora.accordion.css" publishTime="06/16/2010 19:15:11" />
@@ -315,7 +317,7 @@
     <file relUrl="Content/Site.css" publishTime="06/28/2010 18:59:27" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-181.png" publishTime="06/20/2010 13:00:48" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-39.png" publishTime="06/20/2010 13:00:20" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-5.png" publishTime="06/20/2010 13:00:14" />
+    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="06/02/2010 21:44:48" />
     <file relUrl="Models/Buyer.cs" publishTime="06/09/2010 16:07:16" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-239.png" publishTime="06/20/2010 13:00:58" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-103.png" publishTime="06/20/2010 13:00:32" />
@@ -372,10 +374,9 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-198.png" publishTime="06/20/2010 13:00:51" />
     <file relUrl="Controllers/AdminBookController.cs" publishTime="06/28/2010 18:59:25" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-99.png" publishTime="06/20/2010 13:00:32" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-162.png" publishTime="06/20/2010 13:00:44" />
     <file relUrl="Content/jquery.rating.css" publishTime="06/18/2010 23:15:17" />
     <file relUrl="Views/AdminBook/NewBook.aspx" publishTime="06/20/2010 19:03:19" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-213.png" publishTime="06/20/2010 13:00:53" />
+    <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-14.png" publishTime="06/12/2010 11:50:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-195.png" publishTime="06/20/2010 13:00:50" />
     <file relUrl="Content/images/ui-bg_highlight-soft_100_deedf7_1x100.png" publishTime="06/18/2010 23:15:16" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-210.png" publishTime="06/20/2010 13:00:53" />
@@ -397,13 +398,13 @@
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-11.png" publishTime="06/12/2010 11:50:37" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-47.png" publishTime="06/20/2010 13:00:21" />
     <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-9.png" publishTime="06/12/2010 11:50:37" />
-    <file relUrl="book/dd66ebee-5b25-45d7-867c-da757a8312c4/p-6.png" publishTime="06/12/2010 11:50:37" />
+    <file relUrl="Controllers/HomeController.cs" publishTime="06/22/2010 18:15:13" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-155.png" publishTime="06/20/2010 13:00:42" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="06/02/2010 21:44:46" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-46.png" publishTime="06/20/2010 13:00:21" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-205.png" publishTime="06/20/2010 13:00:52" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-15.png" publishTime="06/20/2010 13:00:15" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-54.png" publishTime="06/20/2010 13:00:23" />
-    <file relUrl="Content/accordion/SearchTitle.css" publishTime="06/19/2010 20:57:45" />
+    <file relUrl="images/header.old" publishTime="06/02/2010 21:46:41" />
     <file relUrl="images/shadow.png" publishTime="06/20/2010 11:01:38" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-179.png" publishTime="06/20/2010 13:00:47" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-166.png" publishTime="06/20/2010 13:00:45" />
@@ -437,7 +438,6 @@
     <file relUrl="Models/BookSearchResult.cs" publishTime="06/17/2010 22:45:43" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-107.png" publishTime="06/20/2010 13:00:33" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-10.png" publishTime="06/20/2010 13:00:14" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-86.png" publishTime="06/20/2010 13:00:29" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-83.png" publishTime="06/20/2010 13:00:29" />
     <file relUrl="book/586b767b-f188-4f64-bd91-fc38f2d2f2ce/A-7.png" publishTime="06/16/2010 21:20:41" />
     <file relUrl="images/arrow_left_green_48.png" publishTime="06/02/2010 21:46:41" />
@@ -455,11 +455,11 @@
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-102.png" publishTime="06/20/2010 13:00:32" />
     <file relUrl="Models/BookRepository.cs" publishTime="06/20/2010 20:12:57" />
     <file relUrl="Scripts/MicrosoftMvcAjax.js" publishTime="06/02/2010 21:44:47" />
-    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="06/02/2010 21:44:48" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-162.png" publishTime="06/20/2010 13:00:44" />
     <file relUrl="Content/images/ui-bg_glass_80_d7ebf9_1x400.png" publishTime="06/18/2010 23:15:16" />
-    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-8.png" publishTime="06/20/2010 13:00:14" />
+    <file relUrl="Views/AdminBook/Index.aspx" publishTime="06/20/2010 18:32:14" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-163.png" publishTime="06/20/2010 13:00:44" />
-    <file relUrl="images/header.old" publishTime="06/02/2010 21:46:41" />
+    <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-100.png" publishTime="06/20/2010 13:00:32" />
     <file relUrl="Views/UserCenter/History.aspx" publishTime="06/20/2010 18:32:14" />
     <file relUrl="book/38beb2b5-67c0-466c-898b-6a1849e7aaa9/jquery-173.png" publishTime="06/20/2010 13:00:46" />
   </publishProfile>
