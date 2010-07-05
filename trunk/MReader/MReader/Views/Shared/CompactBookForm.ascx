@@ -4,7 +4,7 @@
         <center>
             <div id="bookcover">
                 
-                <a href="http://<%= Request.Url.Host %>/BookInfo/index/<%=Model.ID.ToString()%>">
+                <a href="/BookInfo/index/<%=Model.ID.ToString()%>">
                     <img height="130px" src="<%=String.Format(Model.Content,"cover") %>" alt="<%=Model.Title%>" />
                 </a>
             </div>

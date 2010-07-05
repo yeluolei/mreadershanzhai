@@ -2,7 +2,9 @@
 <table class="list">
     <tr>
         <td class="cover">
-            <a href="http://localhost:7357/BookInfo/index/<%=Model.ID.ToString()%>">
+            
+             
+            <a href="/BookInfo/index/<%=Model.ID.ToString()%>">
                 <img alt="cover" src="<%=String.Format(Model.Content, "cover")%>" />
             </a>
         </td>

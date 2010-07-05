@@ -50,6 +50,7 @@
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
+    <DocumentationFile>bin\MReader.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
